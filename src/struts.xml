@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="default" extends="struts-default" namespace="/">
+        <action name="run" class="com.org.Run">
+            <result name="success">success.jsp</result>
+            <result name="error">Login.jsp</result>
+        </action>
+        <action name="test" class="dao.TestC">
+        	<result name="success">success.jsp</result>
+        </action>
+        <action name="contactAction" class="controller.contactController">
+        	<result name="success">contact.jsp</result>
+        	<result name="error">error.html</result>
+        </action>
+        <action name="orderAction" class="controller.orderController">
+        	<result name="success">bookingstepThree.jsp</result>
+        	<result name="error">error.html</result>
+        	<result name="step3">bookingstepTwo.jsp</result>
+        </action>
+        <action name="serchTourAction" class="controller.tourSearchController">
+        	<result name="success">searchTour.jsp</result>
+        	<result name="error">error.html</result>
+        </action>        
+    </package>
+</struts>

@@ -1,10 +1,24 @@
 package model;
 
 public class OrderModel {
+	private String idOrder;
+	private int totalPrice;
 	private  int stateGetMoney;
 	private String fullName;
 	private int phone;
 	private int member;
+	public String getIdOrder() {
+		return idOrder;
+	}
+	public void setIdOrder(String idOrder) {
+		this.idOrder = idOrder;
+	}
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
 	private String email;
 	private String address;
 	private String note;

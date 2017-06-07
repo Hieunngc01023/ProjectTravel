@@ -20,9 +20,24 @@
         	<result name="error">error.html</result>
         	<result name="step3">bookingstepTwo.jsp</result>
         </action>
+        
         <action name="serchTourAction" class="controller.tourSearchController">
         	<result name="success">searchTour.jsp</result>
         	<result name="error">error.html</result>
-        </action>        
+        </action> 
+        <action name="loginAction" class="controller.AuthenticationAction" method="login">
+        	<result name="success">index.jsp</result>
+        	<result name= "input">login.jsp</result>
+        </action>
+        <action name="logout" class="controller.AuthenticationAction" method="logout">
+        	<result name="success">login.jsp</result>
+        </action> 
+        <action name="registerAction" class="controller.RegisterController">
+        	<result name="success">index.jsp</result>
+        	<result name="input">register.jsp</result>
+        </action>   
+        <action name="commentAction" class="controller.CommentController">
+        	<result name=""></result>
+        	</action>   
     </package>
 </struts>

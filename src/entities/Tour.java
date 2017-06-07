@@ -32,12 +32,34 @@ public class Tour {
 	@Column(name= "IMAGE_TITLE", nullable = false)
 	private String imageTitle;
 	
+	public List<SubComment> getListSubComments() {
+		return listSubComments;
+	}
+
+	public void setListSubComments(List<SubComment> listSubComments) {
+		this.listSubComments = listSubComments;
+	}
+
 	@Column(name= "CONTENT", nullable = false)
 	@Lob
 	private String content;
+	public List<Comment> getListComments() {
+		return listComments;
+	}
+
+	public void setListComments(List<Comment> listComments) {
+		this.listComments = listComments;
+	}
+
 	@OneToMany(mappedBy = "tour")
 	private List<TourDetail> listTourDetails = new ArrayList<>();
-
+	@OneToMany(mappedBy = "tour")
+	private List<Comment> listComments = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "tour")
+	private List<SubComment> listSubComments = new ArrayList<>();
+	
+	
 	public List<TourDetail> getListTourDetails() {
 		return listTourDetails;
 	}

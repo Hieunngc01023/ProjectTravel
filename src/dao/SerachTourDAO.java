@@ -29,6 +29,7 @@ public class SerachTourDAO {
 			{
 				if(!pickUpPlace.isEmpty()){
 				Query query = session.createQuery("select t.idTourDeTail, t.realPrice, t.virtualPrice, tour.title, t.timeBegin from TourDetail as t inner join t.tour as tour where t.stateTour = 1 and  tour.placePickUp = ? ");
+				query.setCacheable(true);
 				query.setParameter(0, pickUpPlace);
 				List<Object[]> listTour = query.list();
 				for(Object[] tourSearch : listTour){
@@ -47,6 +48,7 @@ public class SerachTourDAO {
 				if(!dropOffPlace.isEmpty())
 				{
 				Query query = session.createQuery("select t.idTourDeTail, t.realPrice, t.virtualPrice, tour.title, t.timeBegin from TourDetail as t inner join t.tour as tour where t.stateTour = 1 and  tour.placeDropOff = ? ");
+				query.setCacheable(true);
 				query.setParameter(0, dropOffPlace);
 				List<Object[]> listTour = query.list();
 				for(Object[] tourSearch : listTour){
@@ -78,6 +80,7 @@ public class SerachTourDAO {
 					 Date addDate = calAdditation.getTime();
 					 
 					Query query = session.createQuery("select t.idTourDeTail, t.realPrice, t.virtualPrice, tour.title, t.timeBegin from TourDetail as t inner join t.tour as tour where t.stateTour = 1 and  t.timeBegin between ? and ? ");
+					query.setCacheable(true);
 					query.setParameter(0, subDate);
 					query.setParameter(1, addDate);
 					List<Object[]> listTour = query.list();
@@ -91,6 +94,7 @@ public class SerachTourDAO {
 						setTours.add(tour);
 					}
 					
+					
 				} catch (Exception e) {
 					System.out.println("Error date: "+e.getMessage());
 				}				
@@ -98,6 +102,7 @@ public class SerachTourDAO {
 			}
 			if(quantityDate >0){
 				Query query = session.createQuery("select t.idTourDeTail, t.realPrice, t.virtualPrice, tour.title, t.timeBegin, t.timeOff from TourDetail as t inner join t.tour as tour where t.stateTour = 1");
+				query.setCacheable(true);
 				List<Object[]> listTour = query.list();
 				for(Object[] tourSearch : listTour){
 					TourModel tour = new TourModel();

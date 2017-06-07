@@ -1034,7 +1034,7 @@
 		<div class="lb-wrap">
 			<a href="#" class="close">x</a>
 			<div class="lb-content">
-				<form class="row">
+				<form class="row" method="post" action="loginAction">
 					<h3>Đăng Nhập</h3>
 					<div class="f-item full-width">
 						<label for="email">Email</label>

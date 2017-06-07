@@ -40,6 +40,7 @@ public class OrderTourDAO {
 					
 					// add User if didn't login 
 					Query query = session.createQuery("from User where email = ?");
+					query.setCacheable(true);
 					query.setParameter(0, order.getEmail());
 					User userEntity = (User) query.uniqueResult();					
 					if(userEntity == null)
@@ -51,10 +52,12 @@ public class OrderTourDAO {
 						userEntity.setPhoneNumber(order.getPhone());
 						session.save(userEntity);												
 					}
-					else{					
+					else{
+						// update User if email is exist in DB
 						userEntity.setAddress(order.getAddress());
 						userEntity.setFullName(order.getFullName());
 						userEntity.setPhoneNumber(order.getPhone());
+						session.update(userEntity);
 					}
 //					
 //					// update TourDetail

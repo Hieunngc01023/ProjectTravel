@@ -21,6 +21,7 @@
         <property name="current_session_context_class">thread</property>
 
         <!-- Disable the second-level cache  -->
+        <property name="cache.use_query_cache">true</property>
         <property name="cache.use_second_level_cache">true</property>
         <property name="cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
 
@@ -36,7 +37,8 @@
 		<mapping class= "entities.TourDetail"/>
 		<mapping class= "entities.Order"/>
 		<mapping class= "entities.Contact"/>
-
+		<mapping class= "entities.Comment"/>
+		<mapping class= "entities.SubComment"/>
 		
 	</session-factory>
 </hibernate-configuration>

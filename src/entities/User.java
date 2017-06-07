@@ -29,6 +29,16 @@ public class User {
 	private String password;
 	@OneToMany(mappedBy= "user")
 	private List<Order> listOrder = new ArrayList<>();
+	public List<Comment> getListComments() {
+		return listComments;
+	}
+	public void setListComments(List<Comment> listComments) {
+		this.listComments = listComments;
+	}
+	@OneToMany(mappedBy= "user")
+	private List<Comment> listComments = new ArrayList<>();
+	@OneToMany(mappedBy ="user")
+	private List<SubComment> lisSubComments = new ArrayList<>();
 	
 	public int getId() {
 		return id;

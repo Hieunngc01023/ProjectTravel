@@ -68,6 +68,7 @@ public class TourDAO {
 		try {
 			session.beginTransaction();		
 			Query query = session.createQuery("from TourDetail where stateTour = 1");
+			query.setCacheable(true);
 			listTour = query.list();
 			session.getTransaction().commit();		
 			

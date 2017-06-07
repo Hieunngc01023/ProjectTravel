@@ -21,5 +21,9 @@ public class HibernateUtil {
 	public static SessionFactory getSessionFactory(){
 		return sessionFactory;
 	}
+	public static void sutdown(){
+		// close cache and pools
+		getSessionFactory().close();
+	}
 	
 }

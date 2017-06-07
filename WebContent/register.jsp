@@ -1034,11 +1034,14 @@
 		<div class="lb-wrap">
 			<a href="#" class="close">x</a>
 			<div class="lb-content">
-				<form class="row">
+				<form class="row" method="post" action="registerAction">
 					<h3>Đăng Kí</h3>
+					<c:if test="${stateRegister != null }">
+						<h4> ${stateRegister }</h4>
+					</c:if>
 					<div class="f-item full-width">
 						<label for="f_name">Họ và Tên</label>
-						<input type="text" id="ns_name" name="ns_name" />
+						<input type="text" id="ns_name" name="fullname" />
 					</div>
 					<div class="f-item full-width">
 						<label for="email">E-mail </label>

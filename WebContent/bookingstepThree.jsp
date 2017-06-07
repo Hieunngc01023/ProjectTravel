@@ -184,6 +184,25 @@
 							<h3>Thông tin Khách hàng</h3>
 							<div class="text-wrap">
 								<div class="output">
+									<c:choose>
+										<c:when test="${sessionScope.order != null }">
+										
+									<p>ID Booking:</p>
+									<p>${sessionScope.order.idOrder }</p>
+									<p>Họ và Tên:</p>
+									<p>${sessionScope.order.fullName }</p>
+									<p>E-mail: </p>
+									<p>${sessionScope.order.email }</p>
+									<p>Address:</p>
+									<p>${sessionScope.order.address }</p>
+					
+									<p>Phone: </p>
+									<p>${sessionScope.order.phone }</p>
+									<p>Số Người:</p>
+									<p> ${sessionScope.order.member }</p>
+										</c:when>
+										<c:otherwise>
+										
 									<p>ID Booking:</p>
 									<p>${idOrder }</p>
 									<p>Họ và Tên: </p>
@@ -197,6 +216,9 @@
 									<p>${phone }</p>
 									<p>Số Người:</p>
 									<p> ${member }</p>
+									</c:otherwise>
+									</c:choose>
+									
 								</div>
 							</div>
 						
@@ -224,16 +246,24 @@
 				</div>
 				<!--//three-fourth content-->
 			<jsp:useBean id="tourDAO" class="dao.TourDAO" scope="page"></jsp:useBean>
-			<c:set var="tour" value="${tourDAO.getTourDetail(idTourDetail)}"></c:set>  
+			<c:choose>
+				<c:when test="${sessionScope.order != null }">
+				    <c:set var="tour" value="${tourDAO.getTourDetail(sessionScope.order.idTourDetail)}"></c:set>  
+				</c:when>
+				<c:otherwise>
+					<c:set var="tour" value="${tourDAO.getTourDetail(idTourDetail)}"></c:set>  
+				</c:otherwise>
+			</c:choose>
+			
 				<!--right sidebar-->
-				<
+				
 				<aside class="one-fourth right-sidebar">
 						<!--Booking details-->
 						<article class="hotel-details booking-details">
 						<h1>${tour.title }	</h1>
 						<dl class="booking-info">
 							<dt>Mã Tour</dt>
-							<dd>${idTourDetail }</dd>
+							<dd>${tour.idTourDetail }</dd>
 							<dt>Thời Gian</dt>
 							<dd>${tour.quatiDate }</dd>
 							<dt>Khởi Hành</dt>

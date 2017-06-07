@@ -1,5 +1,9 @@
 package controller;
 
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
 import model.OrderModel;
 import model.TourModel;
 
@@ -7,7 +11,9 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import dao.OrderTourDAO;
 
-public class orderController extends ActionSupport {
+public class orderController extends ActionSupport implements SessionAware {
+	private Map<String, Object> sessionOrder;
+	public static int check =0;
 	private String checkCash;
 	private String fullName;
 	private int phone;
@@ -18,17 +24,17 @@ public class orderController extends ActionSupport {
 	private String idTourDetail;
 	private String idOrder;
 	private int totalPrice;
-	private OrderModel order;
+//	private OrderModel order;
 	
 	
 
-	public OrderModel getOrder() {
-		return order;
-	}
-
-	public void setOrder(OrderModel order) {
-		this.order = order;
-	}
+//	public OrderModel getOrder() {
+//		return order;
+//	}
+//
+//	public void setOrder(OrderModel order) {
+//		this.order = order;
+//	}
 
 	public String getIdOrder() {
 		return idOrder;
@@ -113,8 +119,9 @@ public class orderController extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		
-		if(order == null){
-			order = new OrderModel();
+
+
+			OrderModel order = new OrderModel();
 			order.setAddress(address);
 			order.setEmail(email);
 			order.setFullName(fullName);
@@ -123,51 +130,55 @@ public class orderController extends ActionSupport {
 			order.setMember(member);
 			order.setNote(note);
 			order.setPhone(phone);
-			String typePayment = checkCash;			
-		}
-//		
-//		OrderModel order = new OrderModel();
-//		order.setAddress(address);
-//		order.setEmail(email);
-//		order.setFullName(fullName);
-//		order.setIdTourDetail(idTourDetail);
-//		order.setIdUser(0);
-//		order.setMember(member);
-//		order.setNote(note);
-//		order.setPhone(phone);
+		
+
 		String typePayment = checkCash;
 		boolean enoughSeat = false;	
 			switch (typePayment) {
 			case "tienmat":
+				if(sessionOrder.get("order") != null)
+					sessionOrder.remove("order");
 					order.setModelPayment(1);
 					order.setStateGetMoney(0);
 				 enoughSeat =	new OrderTourDAO().executeOrder(order);
 				break;
 			case "chuyenkhoan":
+				if(sessionOrder.get("order") != null)
+					sessionOrder.remove("order");
 				order.setModelPayment(2);
 				order.setStateGetMoney(0);
 				 enoughSeat =	new OrderTourDAO().executeOrder(order);
 				break;
 			case "online":
-				return "step3";
+				order.setModelPayment(3);
+				order.setStateGetMoney(1);	
+				sessionOrder.put("order", order);				
+				return "step3";	
+				
 //				order.setModelPayment(3);
 //				order.setStateGetMoney(1);				
 //				 enoughSeat =	new OrderTourDAO().executeOrder(order);
 			case "onlineReturn":
-				order.setModelPayment(3);
-				order.setStateGetMoney(1);				
-				enoughSeat =	new OrderTourDAO().executeOrder(order);
-			default:				
+				OrderModel or = (OrderModel) sessionOrder.get("order");
+				or.setModelPayment(3);
+				or.setStateGetMoney(1);						
+				enoughSeat =	new OrderTourDAO().executeOrder(or);
+				or.setIdOrder(OrderTourDAO.idOrderNew);
+				or.setTotalPrice(OrderTourDAO.totalPrice);
+				sessionOrder.put("order", or);
 				break;
 			}
 			this.idOrder = OrderTourDAO.idOrderNew;
 			this.totalPrice = OrderTourDAO.totalPrice;
 			if(enoughSeat == true)
 				return "success";
-			
-			
 			return "error";
-			
+	}
+
+	@Override
+	public void setSession(Map<String, Object> arg0) {
+
+		this.sessionOrder = arg0;
 	}
 
 }

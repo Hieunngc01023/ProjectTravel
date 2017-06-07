@@ -172,14 +172,107 @@
 			
 			<div class="row">
 				<!--three-fourth content-->
-				<div class="three-fourth">
-					<form  action="orderAction" method="post" id="form_register" class="static-content ">
-						<fieldset>
-							<h2><span>01 </span>Thông Tin Khách Hàng </h2>
+				<div class="three-fourth">	
+							<c:choose>
+								<c:when test="${sessionScope.email != null }">
+									<jsp:useBean id="user" class="dao.UserDAO" scope="page"></jsp:useBean>
+								    <c:set var="user" value="${user.getUserDetail(sessionScope.email) }"></c:set>
+									<form  action="orderAction" method="post" id="form_register" class="static-content ">
+						            <fieldset>
+						            <h2><span>01 </span>Thông Tin Khách Hàng </h2>
 							<div class="row full-width">
 								<div class="f-item one-half">
 									<label for="fullname">Họ và Tên</label>
-									<input type="text" id="fullname" name="fullName" />
+									<input type="text" id="fullname" name="fullName" value=" ${user.fullName}"  />
+									 <p class="info" id="fullname_error"></p>
+								</div>
+								<div class="f-item one-fourth">
+									<label for="phone">Số Điện Thoại</label>
+									<input type="number" id="phone" name="phone" value="${user.phoneNumber }"/>
+									<p class="info" id="phone_error"></p>
+								</div>
+								<div class="f-item one-fifth">
+									<label for="member">Số Người</label>
+									<input type="number" id="member" name="member" />
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="f-item one-half">
+									<label for="email">Email </label>
+									<input type="email" id="email" name="email" value = "${user.email }" />
+									<p class="info" id="email_error"></p>
+								</div>
+								<div class="f-item one-half">
+									<label for="address">Địa Chỉ</label>
+									<input type="text" id="address" name="address" placeholder="Phường,Quận,Khu vực" value="${user.address }" />
+									<p class="info" id="address_error"></p>
+								</div>
+								 
+							</div>
+							<div class="row">
+								<div class="f-item full-width">
+									<label>Ghi Chú Yêu Cầu Đặc Biệt:</label>
+									<textarea rows="7" cols="7" name="note"></textarea>
+								</div>
+							</div>
+							<h2><span>02 </span>Xin Quý Khách Chọn Hình Thức Thanh Toán </h2>
+							<div class="row full-width">
+								<div class="f-item radio-cash">
+									<label>Tiền Mặt</label>
+									<input type="radio" id="checkCash1" name="checkCash" value="tienmat">
+								</div>
+								<div class="f-item radio-cash">
+									<label>Chuyển Khoản</label>
+									<input type="radio" id="checkCash2" name="checkCash" value="chuyenkhoan" checked="checked">
+								</div>
+								<div class="f-item radio-cash">
+									<label>Thanh Toán Online</label>
+									<input type="radio" id="checkCash3" name="checkCash" value="online">
+								</div>
+								<div class="f-item" id="check-btn1" style="display:none;">
+									<label style="font-size: 17px;"><strong>Quý khách vui lòng thanh toán bất kì đại lý nào BookTravel</strong></label>
+									 
+								</div>
+								<div class="f-item" id="check-btn2" style="display:none;">
+									<label style="font-size: 17px;"><strong>Phương thức thanh toán chuyển khoản</strong></label>
+									<p style="margin-left: 10px">
+										<br>
+										<b>Chủ tài khoản</b> : Công ty cổ phần Du lịch và Tiếp Thị Giao Thông Vận Tải Việt Nam- BookTravel.<br>
+										<b>Ngân hàng</b> : Ngân hàng Ngoại Thương - Chi nhánh Tp. Hà Nội.<br>
+										Số tài khoản :<br>
+										<b> Tài khoản VNĐ :</b> <font color="#FF0000">0071000012584</font><br>
+									<b>Tài khoản USD : </b><font color="#FF0000">0071370089095</font> </p>
+									 
+								</div>
+								<div class="f-item" id="check-btn3" style="display:none;">
+									<span id="UcReadFilePayment1_lbContent">
+									<label style="font-size: 17px;"><strong>Chọn thanh toán bằng thẻ tín dụng 123Pay</strong></label><br>
+										Tất cả giao dịch của quý khách thông qua cổng thanh toán 123Pay được xử lý bảo mật trên nền tảng bảo mật của VeriSign và tiêu chuẩn bảo mật nối tiếng PCI DSS được chứng thực bởi Trustwave, Vietravel không lưu giữ bất kì thông tin nào về thẻ của quý khách tại hệ thống của Vietravel. Do đó, quý khách có thể hoàn toàn an tâm rằng thông tin thẻ của quý khách được bảo đảm an toàn tuyệt đối.<br>
+										Hiện tại hệ thống www.travel.com.vn chấp nhận cho Quý khách thanh toán bằng một trong các loại thẻ sau: VISA (Credit hoặc Debit), MasterCard (Credit), JCB (Credit) của các ngân hàng phát hành tại Việt Nam</span>
+									 
+								</div>
+							</div> 
+							<jsp:useBean id="tourDAO" class="dao.TourDAO" scope="page"></jsp:useBean>
+				<c:set var="id" value="${param.id}"></c:set>
+				<c:set var="tour" value="${tourDAO.getTourDetail(id)}"></c:set>
+							<div class="row">
+								<div class=" full-width">
+								<input type="hidden" value="${tour.idTourDetail}" name="idTourDetail">
+										<input type="submit" class="gradient-button" value="Đặt Tour" id="next-step" />
+								</div>
+							</div>
+						</fieldset>
+					</form>
+								</c:when>
+								<c:otherwise>
+									<form  action="orderAction" method="post" id="form_register" class="static-content ">
+						                <fieldset>
+						                <h2><span>01 </span>Thông Tin Khách Hàng </h2>
+							<div class="row full-width">
+								<div class="f-item one-half">
+									<label for="fullname">Họ và Tên</label>
+									<input type="text" id="fullname" name="fullName"  />
 									 <p class="info" id="fullname_error"></p>
 								</div>
 								<div class="f-item one-fourth">
@@ -249,9 +342,9 @@
 									 
 								</div>
 							</div> 
-							<jsp:useBean id="tourDAO" class="dao.TourDAO" scope="page"></jsp:useBean>
+							<jsp:useBean id="tourDAO1" class="dao.TourDAO" scope="page"></jsp:useBean>
 				<c:set var="id" value="${param.id}"></c:set>
-				<c:set var="tour" value="${tourDAO.getTourDetail(id)}"></c:set>
+				<c:set var="tour" value="${tourDAO1.getTourDetail(id)}"></c:set>
 							<div class="row">
 								<div class=" full-width">
 								<input type="hidden" value="${tour.idTourDetail}" name="idTourDetail">
@@ -261,8 +354,11 @@
 							</div>
 						</fieldset>
 					</form>
+								</c:otherwise>
+							</c:choose>
 
-				</div>
+
+			</div>
 				<!--//three-fourth content-->
 				
 				<!--right sidebar-->

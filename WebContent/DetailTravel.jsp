@@ -392,9 +392,91 @@
 						</article>
 					</section>
 					<!--//things to do-->
+					
+					
+					<!-- comment -->
+				
+				
+				
+				
+				
+					<div class="comments">
+					
+						<h2>4 comments</h2>	
+						<!--single comment-->
+						<div class="comment depth-0">
+							<div class="third">
+								<figure><img alt="avatar" src="images/uploads/avatar.jpg" /></figure>
+								<address>
+									<span>Admin</span><br />
+									22.3.2016
+								</address>
+							</div>
+							<div class="comment-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nisi elit, feugiat vestibulum laoreet at, auctor sit amet velit. Vivamus in consequat magna. Sed ipsum diam, volutpat sed consectetur in, tristique nec justo. Nullam egestas consectetur odio, a gravida odio lobortis vitae.</div>
+							<a href="#form" class="reply" onclick="callfunction(1,2)">Reply</a>
+							<script type="text/javascript">
+								function callfunction(a, b){
+									document.getElementById("name").value = a;
+									document.getElementById("eadress").value = b;
+								}
+							</script>
+						</div>
+						<!--//single comment-->
+
+						<!--//single comment-->
+						
+						<!--single comment-->
+						<div class="comment depth-1">
+							<div class="third">
+								<figure><img alt="avatar" src="images/uploads/avatar.jpg" /></figure>
+								<address>
+									<span>Admin</span><br />
+									22.3.2016
+								</address>
+							</div>
+							<div class="comment-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nisi elit, feugiat vestibulum laoreet at, auctor sit amet velit. Vivamus in consequat magna. Sed ipsum diam, volutpat sed consectetur in, tristique nec justo. Nullam egestas consectetur odio, a gravida odio lobortis vitae.</div>
+							<!-- <a href="#" class="reply">Reply</a> -->
+						</div>
+						<!--//single comment-->
+						
+						
+						<!--//single comment-->
+						
+						<!--post comment form-->
+						<article class="post-comment static-content">
+							<h3>Để Lại Bình Luận</h3>
+							<form class="row" id= "form" >
+							<input type="hidden" name="typeComment" id="typeComment" value="main">
+							<input type="hidden" name="idMain" value ="" id="idMain">
+							<input type="hidden" name="idTour" value="${tour.idTour }">
+								<div class="f-item full-width">
+									<label for="name">Họ và Tên</label>
+									<input type="text" placeholder="Phải Nhập Họ Tên" id="name" name="name"/>
+								</div>
+								<div class="f-item full-width">
+									<label for="eadress">E-mail</label>
+									<input type="email" placeholder="Phải nhập Email" id="email" name="email"/>
+								</div>
+								<div class="f-item full-width">
+									<label for="comment">Nội Dung</label>
+									<textarea id="comment" rows="10" cols="10" name="content"></textarea>
+								</div>
+								<div class="f-item full-width">
+									<input type="submit" value="Gửi Bình Luận" class="gradient-button" />
+								</div>
+							</form>
+						</article>
+						<!--//post comment form-->
+					</div>
+					<!--//comments-->
+					
 				</section>
 				<!--//hotel content-->
 				
+					
+					
+					
+					
 				<!--sidebar-->
 				<aside class="one-fourth right-sidebar">	
 					<!--Need Help Booking?-->

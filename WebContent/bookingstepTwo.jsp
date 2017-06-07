@@ -171,7 +171,7 @@
 			<div class="row">
 				<!--three-fourth content-->
 				<div class="three-fourth">
-					<form id="booking" method="post" action="orderController" class="static-content booking">
+					<form id="booking" method="post" action="orderAction" class="static-content booking">
 						<fieldset>
 							<h2><span>02 </span>Thanh Toán</h2>
 							<div class="row">
@@ -213,7 +213,7 @@
 							
 							<div class="row">
 								<div class="full-width">
-									<input type="hidden" name= "order" value="${order }"/>
+								<%-- 	<input type="hidden" name= "order" value=" ${sessionScope.order }"/> --%>
 									<input type="hidden" name="checkCash" value="onlineReturn"/>
 									<input type="submit" class="gradient-button" value="Chuyển khoản" id="next-step" />
 								</div>

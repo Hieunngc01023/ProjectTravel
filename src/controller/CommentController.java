@@ -7,6 +7,7 @@ import dao.CommentDAO;
 public class CommentController extends ActionSupport {
 	private String typeComment;
 	private  int idMain ;
+	
 	private String name;
 	private String email;
 	private String content;

@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.IdClass;
 
+import model.CommentModel;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -127,13 +129,23 @@ public class CommentDAO {
 			session.close();
 		}
 	}
-	public List<Comment> getListComments(String idTour){
+	public List<CommentModel> getListComments(String idTour){
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		List<Comment> listComment = new ArrayList<>();
+		List<CommentModel> listComment = new ArrayList<>();
 		try {
 			session.beginTransaction();
 			Tour tour = (Tour) session.get(Tour.class, idTour);
-			listComment = tour.getListComments();
+			List<Comment> list = tour.getListComments();
+			if(list.size() > 0){
+				for(Comment comment : list){
+					CommentModel cmt = new CommentModel();
+					cmt.setIdComment(comment.getIdComment());
+					cmt.setDateComment(comment.getDateComment());
+					cmt.setContent(comment.getContent());
+					cmt.setNameUser(comment.getUser().getFullName());
+					listComment.add(cmt);
+				}
+			}
 			
 			session.getTransaction().commit();
 		} catch (Exception e) {
@@ -144,5 +156,35 @@ public class CommentDAO {
 		}
 		return listComment;
 	}
-
+	
+	
+	public List<CommentModel> getListSubComment(int idComment){
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		List<CommentModel> listSubComment = new ArrayList<>();
+		try {
+			session.beginTransaction();
+			Comment commentQuery = (Comment) session.get(Comment.class, idComment);
+			List<SubComment> listComment = commentQuery.getLiSubComments();
+			if(listComment.size() >0){
+				for(SubComment comment :listComment){
+					CommentModel cmt = new CommentModel();
+					cmt.setIdComment(comment.getIdSubComment());
+					cmt.setDateComment(comment.getDateComment());
+					cmt.setContent(comment.getContent());
+					cmt.setNameUser(comment.getUser().getFullName());
+					listSubComment.add(cmt);
+				}
+			}
+			
+			session.getTransaction().commit();
+			
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+			System.out.println("Error: "+e.getMessage());
+		}
+		finally{
+			session.close();
+		}
+		return listSubComment;
+	}
 }

@@ -406,47 +406,58 @@
 				
 				
 				
-				
+					
 					<div class="comments">
 						<jsp:useBean id="commentDAO" class="dao.CommentDAO" scope="page"></jsp:useBean>
 						<h2>${commentDAO.getTotalComment(tour.idTour) } comments</h2>	
 						<!--single comment-->
-						
-						<div class="comment depth-0">
+						<c:forEach items="${commentDAO.getListComments(tour.idTour) }" var="comment">
+							<c:if test="${commentDAO.getListComments(tour.idTour).size() >0 }">															
+								<div class="comment depth-0">
 							<div class="third">
 								<figure><img alt="avatar" src="images/uploads/avatar.jpg" /></figure>
 								<address>
-									<span>Admin</span><br />
-									22.3.2016
+									<span>${comment.nameUser }</span><br />
+									${comment.dateComment }
 								</address>
 							</div>
-							<div class="comment-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nisi elit, feugiat vestibulum laoreet at, auctor sit amet velit. Vivamus in consequat magna. Sed ipsum diam, volutpat sed consectetur in, tristique nec justo. Nullam egestas consectetur odio, a gravida odio lobortis vitae.</div>
-							<a href="#form" class="reply" onclick="callfunction(1,2)">Reply</a>
-							<script type="text/javascript">
+							<div class="comment-content">${comment.content }</div>
+							<a href="#form" class="reply" onclick="callfunction(${comment.idComment}, 'sub')">Reply</a>
+						</div>
+							<c:if test="${commentDAO.getListSubComment(comment.idComment).size() > 0 }">
+								<c:forEach items="${commentDAO.getListSubComment(comment.idComment)}" var="sub">
+									<div class="comment depth-1">
+							<div class="third">
+								<figure><img alt="avatar" src="images/uploads/avatar.jpg" /></figure>
+								<address>
+									<span> ${sub.nameUser }</span><br />
+									 ${sub.dateComment}
+								</address>
+							</div>
+							<div class="comment-content">${sub.content }</div>
+						</div>
+
+							</c:forEach>
+								
+							</c:if>
+								
+							</c:if>
+						</c:forEach>
+						
+						
+						
+						<script type="text/javascript">
 								function callfunction(a, b){
-									document.getElementById("name").value = a;
-									document.getElementById("eadress").value = b;
+									document.getElementById("typeComment").value = b;
+									document.getElementById("idMain").value = a;
 								}
 							</script>
-						</div>
-						
-						<div class="comment depth-1">
-							<div class="third">
-								<figure><img alt="avatar" src="images/uploads/avatar.jpg" /></figure>
-								<address>
-									<span>Admin</span><br />
-									22.3.2016
-								</address>
-							</div>
-							<div class="comment-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nisi elit, feugiat vestibulum laoreet at, auctor sit amet velit. Vivamus in consequat magna. Sed ipsum diam, volutpat sed consectetur in, tristique nec justo. Nullam egestas consectetur odio, a gravida odio lobortis vitae.</div>
-							<!-- <a href="#" class="reply">Reply</a> -->
-						</div>
 						
 						
 						<!--post comment form-->
 						<article class="post-comment static-content">
 							<h3>Để Lại Bình Luận</h3>
-							<form class="row" id= "form" >
+							<form class="row" id= "form" action="commentAction">
 							<input type="hidden" name="typeComment" id="typeComment" value="main">
 							<input type="hidden" name="idMain" value ="" id="idMain">
 							<input type="hidden" name="idTour" value="${tour.idTour }">
@@ -464,7 +475,7 @@
 									<textarea id="comment" rows="10" cols="10" name="content"></textarea>
 								</div>
 								<div class="f-item full-width">
-									<input type="submit" value="Gửi Bình Luận" class="gradient-button" />
+									<input type="submit" value="Gửi Bình Luận" class="gradient-button"  />
 								</div>
 							</form>
 						</article>

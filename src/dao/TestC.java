@@ -32,8 +32,7 @@ public class TestC extends ActionSupport {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		try {
 			session.beginTransaction();
-				Comment tour = (Comment) session.get(Tour.class, 1);
-					System.out.println(tour.getLiSubComments().size());
+					System.out.println(new CommentDAO().getListComments("tour1").get(0));
 			session.getTransaction().commit();
 
 			

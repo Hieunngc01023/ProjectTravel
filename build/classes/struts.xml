@@ -37,7 +37,8 @@
         	<result name="input">register.jsp</result>
         </action>   
         <action name="commentAction" class="controller.CommentController">
-        	<result name=""></result>
+        	<result name="success">DetailTravel.jsp</result>
+        	<result name="error">error.html</result>
         	</action>   
     </package>
 </struts>

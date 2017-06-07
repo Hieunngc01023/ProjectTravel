@@ -15,6 +15,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.sun.xml.internal.ws.api.pipe.Tube;
 
 import entities.Category;
+import entities.Comment;
 import entities.Contact;
 import entities.Order;
 import entities.Tour;
@@ -25,14 +26,16 @@ public class TestC extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		
-		Contact contact = new Contact();
-		contact.setEmail("ngochieu.hut@gmail.com");
-		contact.setContent("OK!");
+			
+		
+		
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		try {
 			session.beginTransaction();
-			session.save(contact);
+				Comment tour = (Comment) session.get(Tour.class, 1);
+					System.out.println(tour.getLiSubComments().size());
 			session.getTransaction().commit();
+
 			
 			
 		} catch (HibernateException e) {

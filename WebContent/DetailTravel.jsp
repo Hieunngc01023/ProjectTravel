@@ -185,8 +185,15 @@
 							<div class=" box-content col-md-5 col-md-offset-1"> 
 							<c:set var="id" value="${param.idTour}"></c:set>
 							<c:out value=""></c:out>
-							
-						<c:set var="tour" value="${tourDAO.getTourDetail(id)}"></c:set>  
+						<c:choose>
+							<c:when test="${idTourDetail != null }">
+								<c:set var="tour" value="${tourDAO.getTourDetail(idTourDetail)}"></c:set>
+							</c:when>
+							<c:otherwise>
+								<c:set var="tour" value="${tourDAO.getTourDetail(id)}"></c:set>  
+							</c:otherwise>
+						</c:choose>
+						
 								<p>Mã tour:<b>${tour.idTourDetail}</b></p>
 								<p>Thời gian: <b>${tour.quatiDate} Ngày</b></p>
 								<p>
@@ -401,9 +408,10 @@
 				
 				
 					<div class="comments">
-					
-						<h2>4 comments</h2>	
+						<jsp:useBean id="commentDAO" class="dao.CommentDAO" scope="page"></jsp:useBean>
+						<h2>${commentDAO.getTotalComment(tour.idTour) } comments</h2>	
 						<!--single comment-->
+						
 						<div class="comment depth-0">
 							<div class="third">
 								<figure><img alt="avatar" src="images/uploads/avatar.jpg" /></figure>
@@ -421,11 +429,7 @@
 								}
 							</script>
 						</div>
-						<!--//single comment-->
-
-						<!--//single comment-->
 						
-						<!--single comment-->
 						<div class="comment depth-1">
 							<div class="third">
 								<figure><img alt="avatar" src="images/uploads/avatar.jpg" /></figure>
@@ -437,10 +441,7 @@
 							<div class="comment-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nisi elit, feugiat vestibulum laoreet at, auctor sit amet velit. Vivamus in consequat magna. Sed ipsum diam, volutpat sed consectetur in, tristique nec justo. Nullam egestas consectetur odio, a gravida odio lobortis vitae.</div>
 							<!-- <a href="#" class="reply">Reply</a> -->
 						</div>
-						<!--//single comment-->
 						
-						
-						<!--//single comment-->
 						
 						<!--post comment form-->
 						<article class="post-comment static-content">
@@ -449,6 +450,7 @@
 							<input type="hidden" name="typeComment" id="typeComment" value="main">
 							<input type="hidden" name="idMain" value ="" id="idMain">
 							<input type="hidden" name="idTour" value="${tour.idTour }">
+							<input type="hidden" name= "idTourDetail" value="${tour.idTourDetail }">
 								<div class="f-item full-width">
 									<label for="name">Họ và Tên</label>
 									<input type="text" placeholder="Phải Nhập Họ Tên" id="name" name="name"/>

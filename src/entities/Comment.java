@@ -72,6 +72,12 @@ public class Comment {
 	private User user;
 	
 
+	public List<SubComment> getLiSubComments() {
+		return liSubComments;
+	}
+	public void setLiSubComments(List<SubComment> liSubComments) {
+		this.liSubComments = liSubComments;
+	}
 	@JoinColumn(name = "ID_TOUR")
 	@ManyToOne
 	private Tour tour;

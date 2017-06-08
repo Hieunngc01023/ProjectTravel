@@ -60,6 +60,7 @@ public class CarDAO {
 				carModel.setQuanitySeat(car.getQuanitySeat());
 				carModel.setQuantityCar(car.getQuantityCar());
 				carModel.setBrand(car.getBrand());
+				carModel.setFuel(car.getFuel());
 			}
 			session.getTransaction().commit();
 			

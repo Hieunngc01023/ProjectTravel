@@ -36,6 +36,12 @@
         <action name="commentAction" class="controller.CommentController">
         	<result name="success">DetailTravel.jsp</result>
         	<result name="error">error.html</result>
-        	</action>   
+       	</action> 
+       	<action name="orderCarAction" class="OrderCarAction">
+       		<result name="success"></result>
+       		<result name="error">error.html</result>
+       		<result name="step3"></result>
+       	</action>  
+        	
     </package>
 </struts>

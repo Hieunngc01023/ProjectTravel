@@ -110,11 +110,21 @@ public class OrderCar {
 	
 	@Column(name = "PRICE", nullable = false)
 	private int price;
+	@Column(name = "NOTE")
+	private String note;
 	
 	@ManyToOne
 	private Car car;
 	
 	
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
+	}
+
 	@ManyToOne
 	private User user;
 	

@@ -8,8 +8,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import dao.UserDAO;
 
-public class AuthenticationAction extends ActionSupport implements SessionAware {
-	
+public class AuthenticationAction extends ActionSupport implements SessionAware {	
 	private Map<String, Object> sessionMap;
 	private String stateLogin;
 	private String email;

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -171,12 +173,47 @@
 			<div class="row">
 				<!--three-fourth content-->
 				<div class="three-fourth">
-					<form  action="booking-step2.html" method="post" id="form_register" class="static-content ">
+					<form  action="orderCarAction" method="post" id="form_register" class="static-content ">
 						<fieldset>
 							<h2><span>01 </span>Thông Tin Khách Hàng </h2>
-							<div class="row ">
+							<c:choose>
+							<c:when test="${sessionScope.email != null  }">
+							<jsp:useBean id="user" class="dao.UserDAO" scope="page"></jsp:useBean>
+								    <c:set var="user" value="${user.getUserDetail(sessionScope.email) }"></c:set>
+								<div class="row ">
 								<div class="full-width">
 									<div class="f-item one-half">
+									
+										<label for="fullname">Họ và Tên</label>
+										<input type="text" id="fullname" name="fullName"  value=" ${user.fullName}" readonly="readonly" />
+										<p class="info" id="fullname_error"></p>
+									</div>
+									<div class="f-item one-half">
+										<label for="phone">Số Điện Thoại</label>
+										<input type="number" id="phone" name="phone"  value="${user.phoneNumber }" />
+										<p class="info" id="phone_error"></p>
+									</div>
+									 
+								</div>
+								<div class="full-width">
+									<div class="f-item one-half">
+										<label for="email">Email </label>
+										<input type="email" id="email" name="email" value="${user.email }" readonly="readonly"/>
+										<p class="info" id="email_error"></p>
+									</div>
+									<div class="f-item one-half">
+										<label for="address">Địa Chỉ</label>
+										<input type="text" id="address" name="address" placeholder="Nhập số nhà ,đường,phường"  value="${user.address }"/>
+										<p class="info" id="address_error"></p>
+									</div>
+								</div>
+							</div>
+							</c:when>
+							<c:otherwise>
+								<div class="row ">
+								<div class="full-width">
+									<div class="f-item one-half">
+									
 										<label for="fullname">Họ và Tên</label>
 										<input type="text" id="fullname" name="fullName" />
 										<p class="info" id="fullname_error"></p>
@@ -201,6 +238,9 @@
 									</div>
 								</div>
 							</div>
+							</c:otherwise>
+								
+							</c:choose>
 							<div class="row">
 								<div class="f-item full-width">
 									<label>Ghi Chú Yêu Cầu Đặc Biệt:</label>
@@ -212,17 +252,17 @@
 								<div class="full-width">
 									<div class="f-item one-fourth">
 										<label for="datepicker12">Thời Gian Lấy Xe</label>
-										<div class="datepicker-wrap"><input type="text" placeholder="" id="pickUp" name="pickUp" /></div>
+										<div class="datepicker-wrap"><input type="text" placeholder="" id="pickUp" name="timePickUp" /></div>
 									</div>
 									<div class="one-fifth" style="margin-top: -10px;">
 										<label for="getCar">Địa Điểm Lấy Xe </label>
 										<div class="f-item radio-cash">
 											<label for="checkAddress1">Tại BookTravel</label>
-											<input type="radio" checked id="checkAddress1" name="checkAddress">
+											<input type="radio" checked id="checkAddress1" name="placeRecieve">
 										</div>
 										<div class="f-item radio-cash">
 											<label for="checkAddress2">Tại Nhà Riêng</label>
-											<input type="radio" id="checkAddress2" name="checkAddress">
+											<input type="radio" id="checkAddress2" name="placeRecieve">
 										</div>
 									</div>
 									<div class="f-item one-half">
@@ -235,17 +275,17 @@
 								<div class="full-width">
 									<div class="f-item one-fourth">
 										<label for="datepicker12">Thời Gian Trả</label>
-										<div class="datepicker-wrap"><input type="text" placeholder="" id="dropOff" name="dropOff" /></div>
+										<div class="datepicker-wrap"><input type="text" placeholder="" id="dropOff" name="tiemDropOff" /></div>
 									</div>
 									<div class="one-fifth" style="margin-top: -10px;">
 										<label for="returnCar">Địa Điểm Trả Xe</label>
 										<div class="f-item radio-cash">
 											<label for="checkAddress3">Tại BookTravel</label>
-											<input type="radio" checked id="checkAddress3" name="checkAddress1">
+											<input type="radio" checked id="checkAddress3" name="placeRender">
 										</div>
 										<div class="f-item radio-cash">
 											<label for="checkAddress4">Tại Nhà Riêng</label>
-											<input type="radio" id="checkAddress4" name="checkAddress1">
+											<input type="radio" id="checkAddress4" name="placeRender">
 										</div>
 									</div>
 									<div class="f-item one-half">
@@ -260,15 +300,15 @@
 							<div class="row full-width">
 								<div class="f-item radio-cash">
 									<label>Tiền Mặt</label>
-									<input type="radio" id="checkCash1" name="checkCash">
+									<input type="radio" id="checkCash1" name="checkCash" value="tienmat">
 								</div>
 								<div class="f-item radio-cash">
 									<label>Chuyển Khoản</label>
-									<input type="radio" id="checkCash2" name="checkCash">
+									<input type="radio" id="checkCash2" name="checkCash" value="chuyenkhoan">
 								</div>
 								<div class="f-item radio-cash">
 									<label>Thanh Toán Online</label>
-									<input type="radio" checked id="checkCash3" name="checkCash">
+									<input type="radio" checked id="checkCash3" name="checkCash"  value="online">
 								</div>
 								<div class="f-item" id="check-btn1" style="display:none;">
 									<label style="font-size: 17px;"><strong>Quý khách vui lòng thanh toán bất kì đại lý nào BookTravel</strong></label>
@@ -296,6 +336,11 @@
 							<div class="row">
 								<div class=" full-width">
 									 <!-- -->
+									 		<jsp:useBean id="carDAO" class="dao.CarDAO"></jsp:useBean>
+			<c:set var="id" value="${param.id }"></c:set>
+			<c:set var="car" value="${carDAO.getCarDetails(id) }"></c:set>
+										<input type="hidden" value="${car.idCar }" name="idCar">
+									 
 									<input type="submit" onclick=" return checkdate()"   class="gradient-button" value="Đặt Tour" id="next-step" />
 								</div>
 							</div>
@@ -309,21 +354,41 @@
 				<aside class="one-fourth right-sidebar">
 					<!--Booking details-->
 					<article class="hotel-details booking-details">
-						<h1>Toyota Camry</h1>
+			
+					
+						<h1>${car.nameCar }</h1>
 						<dl class="booking-info">
 							<dt>Mã Xe</dt>
-							<dd>NDSGN389-008-310517VJ-P</dd>
+							<dd>${car.idCar }</dd>
 							<dt>Nhà Sản Xuất</dt>
-							<dd>Toyota</dd>
+							<dd>${car.brand }</dd>
 							<dt>Số Ghế</dt>
-							<dd>4</dd>
+							<dd>${car.quanitySeat }</dd>
 							<dt>Hộp Số </dt>
-							<dd>Số sàn</dd>
+							<dd>
+								<c:choose>
+										<c:when test="${car.gear ==1 }">
+											Hộp Số:<b>Số Sàn</b>
+										</c:when>
+										<c:otherwise>
+											Hộp Số:<b>Số Tự Động</b>
+										</c:otherwise>
+									</c:choose>
+									
+							</dd>
 							<dt>Nhiên Liệu </dt>
-							<dd>Xăng</dd>
+							<c:choose>
+								<c:when test="${car.fuel ==1}">
+									<dd>Xăng</dd>
+								</c:when>
+								<c:otherwise>
+									<dd>Dầu</dd>
+								</c:otherwise>
+							</c:choose>
+							
 						</dl>
 						<div class="price">
-							<p class="total">Giá:  1,000,000/ngày</p>	
+							<p class="total">Giá:  <f:formatNumber value="${car.price }"  maxFractionDigits="0"  minFractionDigits="0"></f:formatNumber> đ/ngày</p>	
 						</div>
 					</article>
 					<!--//Booking details-->

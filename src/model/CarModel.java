@@ -10,6 +10,13 @@ public class CarModel {
 	private int quantityCar;
 	private String content;
 	private String brand;
+	private int fuel;
+	public int getFuel() {
+		return fuel;
+	}
+	public void setFuel(int fuel) {
+		this.fuel = fuel;
+	}
 	public int getIdCar() {
 		return idCar;
 	}

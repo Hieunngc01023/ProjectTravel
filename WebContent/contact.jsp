@@ -84,7 +84,7 @@
 					<li><a href="flights.html" title="Flights">Chuyến Bay</a></li>
 					<li><a href="flight_and_hotels.html" title="Flight + Hotel">Bay + Hotel</a></li>
 					<li><a href="cruises.html" title="Cruises">Chuyến Đi</a></li>
-					<li><a href="car_rentals.html" title="Car rental">Thuê Xe</a></li>
+					<li><a href="car.jsp" title="Car rental">Thuê Xe</a></li>
 					 <li><a href="contact.html" title="Contact">Liên Hệ</a></li>
 					<li><a href="blog.html" title="Blog">Chia Sẻ</a>
 						<ul>

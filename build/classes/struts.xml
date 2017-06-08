@@ -4,10 +4,7 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
 	<package name="default" extends="struts-default" namespace="/">
-        <action name="run" class="com.org.Run">
-            <result name="success">success.jsp</result>
-            <result name="error">Login.jsp</result>
-        </action>
+        
         <action name="test" class="dao.TestC">
         	<result name="success">success.jsp</result>
         </action>

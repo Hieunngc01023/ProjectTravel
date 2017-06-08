@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
     <%@ taglib prefix="f"  uri="http://java.sun.com/jsp/jstl/fmt"%>
-    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -12,10 +11,12 @@
 	<meta name="description" content="Book Your Travel - Online Booking HTML Template">
 	<meta name="author" content="themeenergy.com">
 	
-	<title>Book Your Travel - Page</title>
+	<title>Book Your Travel - TourDetail</title>
 	
 	<link rel="stylesheet" href="css/style.css" />
 	<link rel="stylesheet" href="css/theme-turqoise.css" id="template-color" />
+	<link rel="stylesheet" href="css/lightslider.min.css" />
+	<link rel="stylesheet" href="css/lightgallery.min.css" />
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800|Roboto+Slab:400,700&subset=latin,latin-ext,greek-ext,greek,cyrillic,vietnamese,cyrillic-ext">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<script src="https://use.fontawesome.com/e808bf9397.js"></script>
@@ -29,7 +30,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
+<body onload="initialize()">
 	<!--- loading animation -->
 	<div class="loading">
 		<div class="ball"></div>
@@ -37,7 +38,7 @@
 	</div>
 	<!--- //loading animation -->
 	
-		<!--header-->
+	<!--header-->
 	<header class="header">
 		<div class="wrap">
 			<!--logo-->
@@ -86,7 +87,7 @@
 					<li><a href="flights.html" title="Flights">Chuyến Bay</a></li>
 					<li><a href="flight_and_hotels.html" title="Flight + Hotel">Bay + Hotel</a></li>
 					<li><a href="cruises.html" title="Cruises">Chuyến Đi</a></li>
-					<li><a href="car.jsp" title="Car rental">Thuê Xe</a></li>
+					<li><a href="car_rentals.html" title="Car rental">Thuê Xe</a></li>
 					 <li><a href="contact.html" title="Contact">Liên Hệ</a></li>
 					<li><a href="blog.html" title="Blog">Chia Sẻ</a>
 						<ul>
@@ -157,157 +158,188 @@
 	<!--main-->
 	<main class="main">		
 		<div class="wrap">
+		
 			<!--breadcrumbs-->
 			<nav class="breadcrumbs">
 				<!--crumbs-->
 				<ul>
-					<li><a href="index.html" title="Home">Home</a></li> 
-					<li>Page with right sidebar</li>                                       
+					<li><a href="#" title="Home">Home</a></li>
+					<li><a href="#" title="Hotels">Hotels</a></li>
+					<li><a href="#" title="United Kingdom">United Kingdom</a></li>
+					<li><a href="#" title="London">London</a></li>  
+					<li>Search results</li>                                       
 				</ul>
 				<!--//crumbs-->
 			</nav>
 			<!--//breadcrumbs-->
+			<jsp:useBean id="carDAO" class="dao.CarDAO"></jsp:useBean>
+			<c:set var="id" value="${param.id }"></c:set>
+			<c:set var="car" value="${carDAO.getCarDetails(id) }"></c:set>
 			
 			<div class="row">
-				<!--three-fourth content-->
-				<div class="three-fourth">
-			 
-					
-					<div class="row deals  results">
-						<c:set var="tours" value="${setTours}"></c:set>
-						<c:if test="${tours.size() == 0 }">
-							<h1>Không tìm thấy Tour bạn yêu cầu:</h1>
-						</c:if>
-						<c:forEach items="${setTours }" var="tour">
-							<article class="one-third promo">
-								<div class="ribbon-small">- <f:formatNumber value="${(tour.virtualPrice - tour.realPrice)*100/tour.virtualPrice }" minFractionDigits="0" maxFractionDigits="0"></f:formatNumber>%</div>
-								<figure><a href="#" title=""><img src="images/uploads/cruise1.jpg" alt="" /></a></figure>
-								<div class="details">
-									<h3>${tour.title }</h3>
-									 <span class="price">Giá :	  <em style="text-decoration: line-through;"> <f:formatNumber value="${tour.virtualPrice }" minFractionDigits="0" maxFractionDigits="0"></f:formatNumber>  VND </em> <em> <f:formatNumber value="${tour.realPrice }" minFractionDigits="0" maxFractionDigits="0" ></f:formatNumber> VND | </em>  </span>
-									<div class="description">
-										 <span class="price"> 20/5/2017 <em>5 Ngày</em></span>
-									</div>
-									<a href="DetailTravel.jsp?idTour=${tour.idTourDetail}" title="Book now" class="gradient-button"> Đặt Vé</a>
-								</div>
-							</article>
-						</c:forEach>
-					
-						<!--deal-->
-							<!-- <article class="one-third promo">
-								<div class="ribbon-small">- 10%</div>
-								<figure><a href="#" title=""><img src="images/uploads/cruise1.jpg" alt="" /></a></figure>
-								<div class="details">
-									<h3>Royal Caribbean</h3>
-									 <span class="price">Giá :	  <em style="text-decoration: line-through;"> $1000   </em> <em>$ 500 | </em>  </span>
-									<div class="description">
-										 <span class="price"> 20/5/2017 <em>5 Ngày</em></span>
-									</div>
-									<a href="DetailTravel.html" title="Book now" class="gradient-button"> Đặt Vé</a>
-								</div>
-							</article>
-							//deal
-						deal
-							<article class="one-third promo">
-								<div class="ribbon-small">- 10%</div>
-								<figure><a href="#" title=""><img src="images/uploads/cruise1.jpg" alt="" /></a></figure>
-								<div class="details">
-									<h3>Royal Caribbean</h3>
-									 <span class="price">Giá :	  <em style="text-decoration: line-through;"> $1000   </em> <em>$ 500 | </em>  </span>
-									<div class="description">
-										 <span class="price"> 20/5/2017 <em>5 Ngày</em></span>
-									</div>
-									<a href="DetailTravel.html" title="Book now" class="gradient-button"> Đặt Vé</a>
-								</div>
-							</article>
-							//deal
-							deal
-							<article class="one-third promo">
-								<div class="ribbon-small">- 10%</div>
-								<figure><a href="#" title=""><img src="images/uploads/cruise1.jpg" alt="" /></a></figure>
-								<div class="details">
-									<h3>Royal Caribbean</h3>
-									 <span class="price">Giá :	  <em style="text-decoration: line-through;"> $1000   </em> <em>$ 500 | </em>  </span>
-									<div class="description">
-										 <span class="price"> 20/5/2017 <em>5 Ngày</em></span>
-									</div>
-									<a href="DetailTravel.html" title="Book now" class="gradient-button"> Đặt Vé</a>
-								</div>
-							</article>
-							//deal
-							deal
-							<article class="one-third promo">
-								<div class="ribbon-small">- 10%</div>
-								<figure><a href="#" title=""><img src="images/uploads/cruise1.jpg" alt="" /></a></figure>
-								<div class="details">
-									<h3>Royal Caribbean</h3>
-									 <span class="price">Giá :	  <em style="text-decoration: line-through;"> $1000   </em> <em>$ 500 | </em>  </span>
-									<div class="description">
-										 <span class="price"> 20/5/2017 <em>5 Ngày</em></span>
-									</div>
-									<a href="DetailTravel.html" title="Book now" class="gradient-button"> Đặt Vé</a>
-								</div>
-							</article>
-							//deal
-							deal
-							<article class="one-third promo">
-								<div class="ribbon-small">- 10%</div>
-								<figure><a href="#" title=""><img src="images/uploads/cruise1.jpg" alt="" /></a></figure>
-								<div class="details">
-									<h3>Royal Caribbean</h3>
-									 <span class="price">Giá :	  <em style="text-decoration: line-through;"> $1000   </em> <em>$ 500 | </em>  </span>
-									<div class="description">
-										 <span class="price"> 20/5/2017 <em>5 Ngày</em></span>
-									</div>
-									<a href="DetailTravel.html" title="Book now" class="gradient-button"> Đặt Vé</a>
-								</div>
-							</article>
-							//deal
-							deal
-							<article class="one-third promo">
-								<div class="ribbon-small">- 10%</div>
-								<figure><a href="#" title=""><img src="images/uploads/cruise1.jpg" alt="" /></a></figure>
-								<div class="details">
-									<h3>Royal Caribbean</h3>
-									 <span class="price">Giá :	  <em style="text-decoration: line-through;"> $1000   </em> <em>$ 500 | </em>  </span>
-									<div class="description">
-										 <span class="price"> 20/5/2017 <em>5 Ngày</em></span>
-									</div>
-									<a href="DetailTravel.html" title="Book now" class="gradient-button"> Đặt Vé</a>
-								</div>
-							</article> -->
-							<!--//deal-->
-							
-						<!-- <div class="bottom-nav">
-							back up button
-							<a href="#" class="scroll-to-top" title="Back up">Back up</a> 
-							//back up button
-							
-							pager
-							<div class="pager">
-								<span><a href="#">First page</a></span>
-								<span><a href="#">&lt;</a></span>
-								<span class="current">1</span>
-								<span><a href="#">2</a></span>
-								<span><a href="#">3</a></span>
-								<span><a href="#">4</a></span>
-								<span><a href="#">5</a></span>
-								<span><a href="#">6</a></span>
-								<span><a href="#">7</a></span>
-								<span><a href="#">8</a></span>
-								<span><a href="#">&gt;</a></span>
-								<span><a href="#">Last page</a></span>
+				<!--hotel three-fourth content-->
+				<section class="three-fourth">
+					<!--gallery-->
+					<div class="gallery col-md-10">
+						<div class="col-md-10 " >
+							<img src="images/uploads/car13.jpg" alt="" />
+					<!-- 		<ul id="image-gallery" class="cS-hidden">
+								<li data-thumb="images/uploads/car24.jpg"> 
+									<img src="images/uploads/car24.jpg" alt="" />
+								</li>
+								<li data-thumb="images/uploads/car13.jpg"> 
+								<img src="images/uploads/car13.jpg" alt="" />
+								</li>
+								<li data-thumb="images/uploads/car24.jpg"> 
+									<img src="images/uploads/car24.jpg" alt="" />
+								</li>
+								<li data-thumb="images/uploads/car5.jpg"> 
+									<img src="images/uploads/car5.jpg" alt="" />
+								</li>
+								<li data-thumb="images/uploads/car7.jpg"> 
+									<img src="images/uploads/car7.jpg" alt="" />
+								</li>
+								<li data-thumb="images/uploads/car13.jpg"> 
+									<img src="images/uploads/car13.jpg" alt="" />
+								</li>
+							</ul> -->
+						</div>
+						<div class="detail-book col-md-10">
+							<div class=" box-content col-md-5 col-md-offset-1"> 
+								<p>Mã xe:<b>${car.idCar }</b></p>
+								<p>Tên Xe: <b>${car.nameCar } </b></p>
+								<p>
+									<c:choose>
+										<c:when test="${car.gear ==1 }">
+											Hộp Số:<b>Số Sàn</b>
+										</c:when>
+										<c:otherwise>
+											Hộp Số:<b>Số Tự Động</b>
+										</c:otherwise>
+									</c:choose>
+									
+								</p>
+								<p>
+									Số chỗ : <b class="price">${car.quanitySeat }</b>
+								</p>
+								<p>
+									<c:choose>
+										<c:when test="${car.quantityCar >0 }">
+											Trạng Thái  : <b class="price">Còn xe</b>
+										</c:when>
+										<c:otherwise>
+											Trạng Thái  : <b class="price">Hết Xe</b>
+										</c:otherwise>
+									</c:choose>
+									
+								</p>
 							</div>
-							//pager
-						</div> -->
-						<!--//bottom navigation-->
+							<div class="col-md-6 box-price">
+							
+								<!-- Nếu chỉ hiển thị 1 giá thì dùng div dưới -->
+								<div class="price-book4" style="font-size: 30px; font-weight: bold;color: #be0500; text-align: center; margin-top: 35px;"><span itemprop="price"><f:formatNumber value="${car.price }" maxFractionDigits="0" minFractionDigits="0"></f:formatNumber></span><span> đ</span></div>
+
+								<div class="btn-book">
+									<a href="bookCarStep1.jsp?id=${car.idCar }" class="gradient-button ">Thuê Xe</a>
+								</div>
+							</div>
+						</div>
 					</div>
-				</div>
-				<!--//three-fourth content-->
+					<!--//gallery-->
+				
+					<!--inner navigation-->
+					<nav class="inner-nav">
+						<ul>
+							<li class="availability"><a href="#availability" title="Availability">Một số hình ảnh</a></li>
+							<li class="description"><a href="#description" title="Description">Điều Kiện Thuê</a></li>
+							<li class="facilities"><a href="#facilities" title="Facilities">Lưu ý</a></li>
+							<li class="location"><a href="#location" title="Location">Liên Hệ</a></li>
+						</ul>
+					</nav>
+					<!--//inner navigation-->
+					
+					<!--availability-->
+					<section id="availability" class="tab-content">
+						<article>
+							<h2>Chương Trình Tour</h2>
+							<div class="text-wrap">
+								<img src="images/uploads/car13.jpg" alt="" /><br>
+								<img src="images/uploads/car13.jpg" alt="" /><br>
+								<img src="images/uploads/car13.jpg" alt="" /><br>
+								<img src="images/uploads/car13.jpg" alt="" /><br>
+							</div>
+							
+							
+						</article>
+					</section>
+					<!--//availability-->
+					
+					<!--description-->
+					<section id="description" class="tab-content">
+						<article>
+							<h2>Điều Kiện Thuê Xe</h2>
+
+							<div class="text-wrap">	
+								<p>Điều kiện cần và đủ của người thuê xe :</p><br>
+								<p>- Giấy tờ : <strong>Hộ Khẩu ; CMND ; GPLX B1-B2</strong></p><br>
+								<p>- Bảo đảm : <strong> Xe máy + giấy tờ xe máy chính chủ</strong></p>
+							</div>
+						</article>
+					</section>
+					<!--//description-->
+					
+					<!--facilities-->
+					<section id="facilities" class="tab-content">
+						<article>
+							<h2>Lưu Ý</h2>
+							<div class="text-wrap">
+								<p>- Giá trên chưa bao gồm: 10% thuế VAT, ăn nghỉ của lái xe.</p><br>
+								<p>- Giá đã bao gồm chi phí: xăng (dầu), cầu, phà, bến, bãi, lương lái xe.</p><br>
+								<p>Báo giá cho thuê xe có thể thay đổi theo từng thời điểm, để biết thêm thông tin chi tiết xe  xin liên hệ với BookTravel theo số: 0989-999-888
+								</p>
+							</div>
+						</article>
+					</section>
+					<!--//facilities-->
+					
+					<!--location-->
+					<section id="location" class="tab-content">
+						<article>
+							<!--map-->
+								<div class="gmap" id="map_canvas"></div>
+							<!--//map-->
+						</article>
+					</section>
+					<!--//location-->
+					
+					<!--reviews-->
+					<section id="reviews" class="tab-content">
+						<article>
+							<h2>Chưa Update Nội Dung</h2>
+							
+						</article>
+					</section>
+					<!--//reviews-->
+					
+					<!--things to do-->
+					<section id="things-to-do" class="tab-content">
+						<article>
+							<h2>Chưa Update Nội Dung</h2>
+							
+						</article>
+					</section>
+					<!--//things to do-->
+						 
+					
+				 
+				</section>
+				<!--//hotel content-->
+
+				
 				
 				<!--sidebar-->
-				<aside class="one-fourth right-sidebar">
-						<!--Need Help Booking?-->
+				<aside class="one-fourth right-sidebar">	
+					<!--Need Help Booking?-->
 					<article class="widget">
 						<h4>Bạn Cần Trợ Giúp?</h4>
 						<p>Hãy gọi tới số dưới đây , Nhân viên của chúng tôi sẽ cung cấp các thông tin cho bạn nhanh nhất và dịch vu tốt nhất, Cảm ơn bạn đã tới <a href="#">BookTravel</a></p>
@@ -332,10 +364,13 @@
 						<p>Hotline & Hỗ trợ trực tuyến</p>
 					</article>
 					<!--//Why Book with us?-->
+					
 				</aside>
 				<!--//sidebar-->
 			</div>
-			<!--//main content-->
+			<!--//row-->
+		 
+		 
 		</div>
 	</main>
 	<!--//main-->
@@ -394,8 +429,76 @@
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+	<script src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false"></script>
+	<script type="text/javascript"  src="js/infobox.js"></script>
 	<script type="text/javascript" src="js/jquery.uniform.min.js"></script>
 	<script type="text/javascript" src="js/jquery.slimmenu.min.js"></script>
+	<script type="text/javascript" src="js/lightslider.min.js"></script>
+	<script type="text/javascript" src="js/lightgallery-all.min.js"></script>
 	<script type="text/javascript" src="js/scripts.js"></script>
-</body>
+	<script type="text/javascript">
+	function initialize() {
+		var secheltLoc = new google.maps.LatLng(21.0287935, 105.7800219);
+
+		var myMapOptions = {
+			 zoom: 17
+			,center: secheltLoc
+			,mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+		var theMap = new google.maps.Map(document.getElementById("map_canvas"), myMapOptions);
+
+
+		var marker = new google.maps.Marker({
+			map: theMap,
+			draggable: true,
+			position: new google.maps.LatLng(21.0287935, 105.7800219),
+			visible: true
+		});
+
+		var boxText = document.createElement("div");
+		boxText.innerHTML = "<strong>Book Travel</strong> Hotline:0989-999-888 <br>Số 8 Tôn-Thât-Thuyết HN";
+
+		var myOptions = {
+			 content: boxText
+			,disableAutoPan: false
+			,maxWidth: 0
+			,pixelOffset: new google.maps.Size(-140, 0)
+			,zIndex: null
+			,closeBoxURL: ""
+			,infoBoxClearance: new google.maps.Size(1, 1)
+			,isHidden: false
+			,pane: "floatPane"
+			,enableEventPropagation: false
+		};
+
+		google.maps.event.addListener(marker, "click", function (e) {
+			ib.open(theMap, this);
+		});
+
+		var ib = new InfoBox(myOptions);
+		ib.open(theMap, marker);
+	}
+	</script>
+	
+	<script type="text/javascript">
+    	 $(document).ready(function() {
+            $('#image-gallery').lightSlider({
+                gallery:true,
+                item:1,
+                thumbItem:6,
+                slideMargin: 0,
+                speed:500,
+                auto:true,
+                loop:true,
+                onSliderLoad: function() {
+                    $('#image-gallery').removeClass('cS-hidden');
+                }  
+            });
+			
+			$('#gallery1,#gallery2,#gallery3,#gallery4').lightGallery({
+				download:false
+			});
+		});
+    </script>
+	</body>
 </html>

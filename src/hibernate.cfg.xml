@@ -39,6 +39,9 @@
 		<mapping class= "entities.Contact"/>
 		<mapping class= "entities.Comment"/>
 		<mapping class= "entities.SubComment"/>
+		<mapping class= "entities.Blog"/>
+		<mapping class= "entities.Car"/>
+		<mapping class= "entities.OrderCar"/>
 		
 	</session-factory>
 </hibernate-configuration>

@@ -1,23 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="f"  uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords" content="Book Your Travel - Online Booking HTML Template">
 	<meta name="description" content="Book Your Travel - Online Booking HTML Template">
 	<meta name="author" content="themeenergy.com">
 	
-	<title>Book Your Travel - Home</title>
+	<title>Book Your Travel - Car rental</title>
 	
 	<link rel="stylesheet" href="css/style.css" />
 	<link rel="stylesheet" href="css/theme-turqoise.css" id="template-color" />
 	<link rel="stylesheet" href="css/lightslider.min.css" />
-	<link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
-	<link rel="stylesheet" href="css/font-awesome.css" />
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800|Roboto+Slab:400,700&subset=latin,latin-ext,greek-ext,greek,cyrillic,vietnamese,cyrillic-ext">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<script src="https://use.fontawesome.com/e808bf9397.js"></script>
@@ -31,7 +29,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="body1"> 
+<body>
 	<!--- loading animation -->
 	<div class="loading">
 		<div class="ball"></div>
@@ -51,7 +49,7 @@
 				<nav>
 					<ul class="profile-nav">
 						<li class="active"><a href="#" title="My Account">Tài Khoản</a></li>
-						<li><a href="login.jsp" title="Login">Đăng Nhập</a></li>
+						<li><a href="login.html" title="Login">Đăng Nhập</a></li>
 						<li><a href="my_account.html" title="Settings">Cài Đặt</a></li>
 					</ul>
 					<ul class="lang-nav">
@@ -88,8 +86,8 @@
 					<li><a href="flights.html" title="Flights">Chuyến Bay</a></li>
 					<li><a href="flight_and_hotels.html" title="Flight + Hotel">Bay + Hotel</a></li>
 					<li><a href="cruises.html" title="Cruises">Chuyến Đi</a></li>
-					<li><a href="car.jsp" title="Car rental">Thuê Xe</a></li>
-					 <li><a href="contact.jsp" title="Contact">Liên Hệ</a></li>
+					<li><a href="car_rentals.html" title="Car rental">Thuê Xe</a></li>
+					 <li><a href="contact.html" title="Contact">Liên Hệ</a></li>
 					<li><a href="blog.html" title="Blog">Chia Sẻ</a>
 						<ul>
 							<li><a href="blog_single.html" title="Single Post">Single Post</a>
@@ -175,8 +173,7 @@
 	<!--search-->
 	<div class="main-search">
 		<div class="wrap">
-		
-			<form id="main-search" method="post" action="search_results.html">
+			<form id="main-search" method="post" action="">
 				<div class="row">
 					<!--column-->
 					<div class="column radios one-fourth">
@@ -195,7 +192,7 @@
 								<label for="cruise">Chuyến Đi</label>
 							</div>
 							<div class="f-item one-half">
-								<input type="radio" name="radio" id="rent_a_car" value="form6" />
+								<input type="radio" name="radio" id="rentcar" value="form6" />
 								<label for="rent_a_car">Thuê Xe</label>
 							</div>
 						</div>
@@ -345,38 +342,35 @@
 							<!--column-->
 							<div class="column  one-third">
 								<h5><span>02</span> Chọn Điểm Đến ?</h5>
-								
 								<div class="row">
-								<div class="f-item full-width">
- 										<label>Chọn Điểm Đón</label>
- 										<select name="pickUpPlace">
- 											<option value="Hà Nội">Hà Nội</option>
- 											<option value="Hồ Chí Minh">Hồ Chí Minh</option>											
- 										</select>
- 									</div>
-								
 									<div class="f-item full-width">
-									
+										<label>Chọn Điểm Đón</label>
+										<select>
+											<option value="1">Hà Nội</option>
+											<option value="2">Hồ Chí Minh</option>
+										</select>
+									</div>
+									<div class="f-item full-width">
 										<label>Chọn Điểm Đến</label>
-										<select name = "dropOffPlace">
-											<option>Lấy Các điểm điểm Việt nam</option>											
- 											<option value="Hà Nội">Hà Nội</option>
- 											<option value="Đà Nẵng">Đà Nẵng</option>
- 											<option value="Huế">Huế</option>
- 											<option value="Hồ Chí Minh">Hồ Chí Minh</option>
- 											<option value="Nha Trang">Nha Trang</option>
- 											<option value="Ninh Bình">Ninh Bình</option>
- 											<option value="Thanh Hoá">Thanh Hoá</option>
- 											<option value="Quảng Trị">Quảng Trị</option>
- 											<option value="Đà Lạt">Đà Lạt</option>
- 											<option value="Phú Quốc">Phú Quốc</option>
- 											<option value="Kon Tum">Kon Tum</option>
- 											<option value="Băc Ninh">Băc Ninh</option>
- 											<option value="Sơn La">Sơn La</option>
- 											<option value="Hà Giang">Hà Giang</option>
- 											<option value="Lạng Sơn">Lạng Sơn</option>
- 											<option value="Hải Phòng">Hải Phòng</option>
- 											<option value="Phan Thiết">Phan Thiết</option>
+										<select>
+											<option>Địa Điểm Việt Nam</option>
+											<option value="1">Hà Nội</option>
+											<option value="2">Đà Nẵng</option>
+											<option value="3">Huế</option>
+											<option value="4">Hồ Chí Minh</option>
+											<option value="5">Nha Trang</option>
+											<option value="6">Ninh Bình</option>
+											<option value="7">Thanh Hoá</option>
+											<option value="8">Quảng Trị</option>
+											<option value="9">Đà Lạt</option>
+											<option value="10">Phú Quốc</option>
+											<option value="11">Kon Tum</option>
+											<option value="12">Băc Ninh</option>
+											<option value="13">Sơn La</option>
+											<option value="14">Hà Giang</option>
+											<option value="15">Lạng Sơn</option>
+											<option value="16">Hải Phòng</option>
+											<option value="17">Phan Thiết</option>
 										</select>
 									</div>
 								</div>
@@ -389,20 +383,17 @@
 								<div class="row">
 									<div class="f-item one-half datepicker">
 										<label for="datepicker8">Khởi Hành</label>
-										<div class="datepicker-wrap">
-											<input type="text" placeholder="" id="datepicker8"
-												name="datepicker8" />
-										</div>
+										<div class="datepicker-wrap"><input type="text" placeholder="" id="datepicker8" name="datepicker8" /></div>
 									</div>
 									<div class="f-item one-half">
 										<label>Số Ngày Đi</label>
-										<select name="quantityDate">
-											<option value="0" selected="selected">Không</option>
-											<option value="1">1-2 </option>
-											<option value="5">3-6 Đêm</option>
-											<option value="9">7-10 Đêm</option>
-											<option value="12">10-14 Đêm</option>
-											<option value="14">Over 14 Đêm</option>
+										<select>
+											<option>Không</option>
+											<option>1-2 </option>
+											<option>3-6 Đêm</option>
+											<option>7-9 Đêm</option>
+											<option>10-14 Đêm</option>
+											<option>Over 14 Đêm</option>
 										</select>
 									</div>
 								</div>
@@ -547,7 +538,7 @@
 						</div>	
 						<!--//form rent a car-->
 					</div>
-					<input type="submit" value="Tìm Kiếm" class="gradient-button search-submit" id="search-submit" name=" "/>
+					<input type="submit" value="Tìm Kiếm" class="gradient-button search-submit" id="search-submit" />
 				</div>
 			</form>
 		</div>
@@ -555,431 +546,63 @@
 	<!--//search-->
 	
 	<!--main-->
-	<main class="main">
+	<main class="main">		
 		<div class="wrap">
 			<div class="row">
 				<div class="full-width">
 				
-					<!--latest offers-->
-					<header class="s-title">
-						<h2>Các Tour Giảm Giá Sốc</h2>
-					</header>
+					<!--deals-->
+					<jsp:useBean id="carDao" class="dao.CarDAO" scope="page"></jsp:useBean>
 					
-					<div class="offers">
+					<div class="deals cars">
 						<div class="row">
+							<!--deal-->
 							
-		                <jsp:useBean id="tourDao" class="dao.TourDAO" scope="session"></jsp:useBean>	
-						<c:forEach items="${tourDao.getListSockTour()}" var="item">
-							<article class="one-fourth promo">
-								
-								<div class="ribbon-small">- <f:formatNumber value="${(item.virtualPrice - item.realPrice)*100/item.virtualPrice }" minFractionDigits="0" maxFractionDigits="0"></f:formatNumber>%</div>
-								<figure><a href="#" title=""><img src="images/uploads/cruise1.jpg" alt="" /></a></figure>
+							<c:if test="${carDao.getListCars().size() >0 }">
+							
+								<c:forEach items="${carDao.getListCars() }" var="car">
+									<article class="one-fourth">
+								<figure><a href="#" title=""><img src="images/uploads/car13.jpg" alt="" /></a></figure>
 								<div class="details">
-									<h3>${item.title}</h3>
-									 <span class="price">Giá :	  <em style="text-decoration: line-through;"> <f:formatNumber value="${item.virtualPrice}" minFractionDigits="0" maxFractionDigits="0"></f:formatNumber> VND  </em> <em> <f:formatNumber value="${item.realPrice}" minFractionDigits="0" maxFractionDigits="0"></f:formatNumber>  VND | </em>  </span>
-									<div class="description">
-										 <span class="price"> ${item.timBegin } <em>${item.quatiDate } Ngày </em></span>
-									</div>
-									<a href="DetailTravel.jsp?idTour=${item.idTourDetail}" title="Book now" class="gradient-button"> Đặt Vé</a>
+									<h3>${car.nameCar }</h3> 
+									
+									<c:choose>
+										<c:when test="${car.gear == 1 }">
+											<span class="price price-more">Số sàn  <em style="color:red;"><f:formatNumber value="${car.price }" maxFractionDigits="0" minFractionDigits="0"></f:formatNumber> đ</em> </span>
+										</c:when>
+										<c:otherwise>
+											<span class="price price-more">Số tự động  <em style="color:red;"><f:formatNumber value="${car.price }" maxFractionDigits="0" minFractionDigits="0"></f:formatNumber> đ</em> </span>
+										</c:otherwise>
+									</c:choose>
+									
+									<a href="carDetail.jsp?id=${car.idCar }" title="Book now" class="gradient-button">Chi Tiết</a>
 								</div>
 							</article>
-						</c:forEach>
-
-						</div>
-					</div>
-					<!--//latest offers-->
-					
-					<header class="s-title">
-						<h2>Tour Nổi Tiếng Việt Nam</h2>
-					</header>
-					
-					<!--top destinations-->
-					<div class="destinations">
-						<div class="row">
-						<c:forEach items="${tourDao.getListHotTour()}" var="item">
+								</c:forEach>
+							</c:if>
+							
+							<%-- 
 							<article class="one-fourth">
-								<figure><a href="location.html" title=""><img src="images/uploads/slider4.jpg" alt="" /></a></figure>
+								<figure><a href="#" title=""><img src="images/uploads/car13.jpg" alt="" /></a></figure>
 								<div class="details">
-									<a href="DetailTravel.jsp?idTour=${item.idTourDetail}" title="View all" class="gradient-button">View all</a>
-									<h4>${item.title}</h4> 
-									<div class="ribbon">
-										<div class="half col-md-6 ">
-												<span class="col-md-6 date-tour">${item.timBegin }</span>
-												<span class=" col-md-3 day-tour ">${item.quatiDate } ngày</span>
-										</div>
-										<div class="half col-md-6">
-											<!-- <a href="flights.html" title="View all"> -->
-												<span class="col-md-6 price-tour1"><f:formatNumber value="${item.virtualPrice }" minFractionDigits="0" maxFractionDigits="0"></f:formatNumber> đ</span>
-												<span class="col-md-6 price-tour2"><f:formatNumber value="${item.realPrice }" minFractionDigits="0" maxFractionDigits="0"></f:formatNumber>đ</span>
-											<!-- </a> -->
-										</div>
-									</div>
-								</div>
-							</article>
-						</c:forEach>
-							<!--column-->
-							<%-- <article class="one-fourth">
-								<figure><a href="location.html" title=""><img src="images/uploads/slider4.jpg" alt="" /></a></figure>
-								<div class="details">
-									<a href="DetailTravel.html" title="View all" class="gradient-button">View all</a>
-									<h4>Động Thiên Đường - Cù Lao Chàm - Hội An</h4> 
-									<div class="ribbon">
-										<div class="half col-md-6 ">
-												<span class="col-md-6 date-tour">20/5/2017</span>
-												<span class=" col-md-3 day-tour ">5 ngày</span>
-										</div>
-										<div class="half col-md-6">
-											<!-- <a href="flights.html" title="View all"> -->
-												<span class="col-md-6 price-tour1">2,000,000 đ</span>
-												<span class="col-md-6 price-tour2">1,000,000 đ</span>
-											<!-- </a> -->
-										</div>
-									</div>
-								</div>
-							</article>
-							<!--//column-->
-							<!--column-->
-							<article class="one-fourth">
-								<figure><a href="location.html" title=""><img src="images/uploads/slider4.jpg" alt="" /></a></figure>
-								<div class="details">
-									<a href="DetailTravel.html" title="View all" class="gradient-button">View all</a>
-									<h4>Động Thiên Đường - Cù Lao Chàm - Hội An</h4> 
-									<!-- <span class="count">1529 Hotels</span> -->
-									<div class="ribbon">
-										<div class="half col-md-6 ">
-												<span class="col-md-6 date-tour">20/5/2017</span>
-												<span class=" col-md-3 day-tour ">5 ngày</span>
-										</div>
-										<div class="half col-md-6">
-											<!-- <a href="flights.html" title="View all"> -->
-												<span class="col-md-6 price-tour1">2,000,000 đ</span>
-												<span class="col-md-6 price-tour2">1,000,000 đ</span>
-											<!-- </a> -->
-										</div>
-									</div>
-								</div>
-							</article>
-							<!--//column-->
-							<!--column-->
-							<article class="one-fourth promo">
-							<div class="ribbon-small">- 10%</div>
-								<figure><a href="location.html" title=""><img src="images/uploads/slider4.jpg" alt="" /></a></figure>
-								<div class="details">
-									<a href="DetailTravel.html" title="View all" class="gradient-button">View all</a>
-									<h4>Động Thiên Đường - Cù Lao Chàm - Hội An</h4> 
-									<!-- <span class="count">1529 Hotels</span> -->
-									<div class="ribbon">
-										<div class="half col-md-6 ">
-												<span class="col-md-6 date-tour">20/5/2017</span>
-												<span class=" col-md-3 day-tour ">5 ngày</span>
-										</div>
-										<div class="half col-md-6">
-											<!-- <a href="flights.html" title="View all"> -->
-												<span class="col-md-6 price-tour1">2,000,000 đ</span>
-												<span class="col-md-6 price-tour2">1,000,000 đ</span>
-											<!-- </a> -->
-										</div>
-									</div>
-								</div>
-							</article>
-							<!--//column-->
-							<!--column-->
-							<article class="one-fourth">
-								<figure><a href="DetailTravel.html" title=""><img src="images/uploads/slider4.jpg" alt="" /></a></figure>
-								<div class="details">
-									<a href="DetailTravel.html" title="View all" class="gradient-button">View all</a>
-									<h4>Động Thiên Đường - Cù Lao Chàm - Hội An</h4> 
-									<!-- <span class="count">1529 Hotels</span> -->
-									<div class="ribbon">
-										<div class="half col-md-6 ">
-												<span class="col-md-6 date-tour">20/5/2017</span>
-												<span class=" col-md-3 day-tour ">5 ngày</span>
-										</div>
-										<div class="half col-md-6">
-											<!-- <a href="flights.html" title="View all"> -->
-												<span class="col-md-6 price-tour1">2,000,000 đ</span>
-												<span class="col-md-6 price-tour2">1,000,000 đ</span>
-											<!-- </a> -->
-										</div>
-									</div>
-								</div>
-							</article>
-							<!--//column-->
-							<!--column-->
-							<article class="one-fourth promo">
-								<div class="ribbon-small">- 40%</div>
-								<figure><a href="DetailTravel.html" title=""><img src="images/uploads/slider4.jpg" alt="" /></a></figure>
-								<div class="details">
-									<a href="DetailTravel.html" title="View all" class="gradient-button">View all</a>
-									<h4>Động Thiên Đường - Cù Lao Chàm - Hội An</h4> 
-									<!-- <span class="count">1529 Hotels</span> -->
-									<div class="ribbon">
-										<div class="half col-md-6 ">
-												<span class="col-md-6 date-tour">20/5/2017</span>
-												<span class=" col-md-3 day-tour ">5 ngày</span>
-										</div>
-										<div class="half col-md-6">
-											<!-- <a href="flights.html" title="View all"> -->
-												<span class="col-md-6 price-tour1">2,000,000 đ</span>
-												<span class="col-md-6 price-tour2">1,000,000 đ</span>
-											<!-- </a> -->
-										</div>
-									</div>
-								</div>
-							</article>
-							<!--//column-->
-							<!--column-->
-							<article class="one-fourth">
-								<figure><a href="location.html" title=""><img src="images/uploads/slider4.jpg" alt="" /></a></figure>
-								<div class="details">
-									<a href="location.html" title="View all" class="gradient-button">View all</a>
-									<h4>Động Thiên Đường - Cù Lao Chàm - Hội An</h4> 
-									<!-- <span class="count">1529 Hotels</span> -->
-									<div class="ribbon">
-										<div class="half col-md-6 ">
-												<span class="col-md-6 date-tour">20/5/2017</span>
-												<span class=" col-md-3 day-tour ">5 ngày</span>
-										</div>
-										<div class="half col-md-6">
-											<!-- <a href="flights.html" title="View all"> -->
-												<span class="col-md-6 price-tour1">2,000,000 đ</span>
-												<span class="col-md-6 price-tour2">1,000,000 đ</span>
-											<!-- </a> -->
-										</div>
-									</div>
-								</div>
-							</article>
-							<!--//column-->
-							<!--column-->
-							<article class="one-fourth">
-								<figure><a href="location.html" title=""><img src="images/uploads/slider4.jpg" alt="" /></a></figure>
-								<div class="details">
-									<a href="location.html" title="View all" class="gradient-button">View all</a>
-									<h4>Động Thiên Đường - Cù Lao Chàm - Hội An</h4> 
-									<!-- <span class="count">1529 Hotels</span> -->
-									<div class="ribbon">
-										<div class="half col-md-6 ">
-												<span class="col-md-6 date-tour">20/5/2017</span>
-												<span class=" col-md-3 day-tour ">5 ngày</span>
-										</div>
-										<div class="half col-md-6">
-											<!-- <a href="flights.html" title="View all"> -->
-												<span class="col-md-6 price-tour1">2,000,000 đ</span>
-												<span class="col-md-6 price-tour2">1,000,000 đ</span>
-											<!-- </a> -->
-										</div>
-									</div>
-								</div>
-							</article>
-							<!--//column-->
-							<!--column-->
-							<article class="one-fourth promo">
-								<div class="ribbon-small">- 50%</div>
-								<figure><a href="location.html" title=""><img src="images/uploads/slider4.jpg" alt="" /></a></figure>
-								<div class="details">
-									<a href="location.html" title="View all" class="gradient-button">View all</a>
-									<h4>Động Thiên Đường - Cù Lao Chàm - Hội An</h4> 
-									<!-- <span class="count">1529 Hotels</span> -->
-									<div class="ribbon">
-										<div class="half col-md-6 ">
-												<span class="col-md-6 date-tour">20/5/2017</span>
-												<span class=" col-md-3 day-tour ">5 ngày</span>
-										</div>
-										<div class="half col-md-6">
-											<!-- <a href="flights.html" title="View all"> -->
-												<span class="col-md-6 price-tour1">2,000,000 đ</span>
-												<span class="col-md-6 price-tour2">1,000,000 đ</span>
-											<!-- </a> -->
-										</div>
-									</div>
+									<h3>Toyouta Camry</h3> 
+									<span class="price price-more">Số sàn  <em style="color:red;">500.000đ</em> </span>
+									<a href="car_detail.html" title="Book now" class="gradient-button">Chi Tiết</a>
 								</div>
 							</article> --%>
-							<!--//column-->			 
+							
+							<!--//deal-->
+							 
 						</div>
-					</div>
-					<!--//top destinations-->
-
-					<header class="s-title">
-						<h2>Tour Giá Tốt</h2>
-					</header>
-
-					<!--top Gia Tot-->
-					<div class="destinations">
-						<div class="row">
-							<!--column-->
-							<article class="one-fourth">
-								<figure><a href="location.html" title=""><img src="images/uploads/slider4.jpg" alt="" /></a></figure>
-								<div class="details">
-									<a href="location.html" title="View all" class="gradient-button">View all</a>
-									<h4>Amsterdam</h4>
-									<span class="count">929 Hotels</span>
-									<div class="ribbon">
-										<div class="half hotel">
-											<a href="hotels.html" title="View all">
-												<span class="small">from</span>
-												<span class="price">&#36; 70</span>
-											</a>
-										</div>
-										<div class="half flight">
-											<a href="flights.html" title="View all">
-												<span class="small">from</span>
-												<span class="price">&#36; 150</span>
-											</a>
-										</div>
-									</div>
-								</div>
-							</article>
-							<!--//column-->
-							<!--column-->
-							<article class="one-fourth promo">
-								<div class="ribbon-small">- 50%</div>
-								<figure><a href="location.html" title=""><img src="images/uploads/slider4.jpg" alt="" /></a></figure>
-								<div class="details">
-									<a href="location.html" title="View all" class="gradient-button">View all</a>
-									<h4>Amsterdam</h4>
-									<span class="count">929 Hotels</span>
-									<div class="ribbon">
-										<div class="half hotel">
-											<a href="hotels.html" title="View all">
-												<span class="small">from</span>
-												<span class="price">&#36; 70</span>
-											</a>
-										</div>
-										<div class="half flight">
-											<a href="flights.html" title="View all">
-												<span class="small">from</span>
-												<span class="price">&#36; 150</span>
-											</a>
-										</div>
-									</div>
-								</div>
-							</article>
-							<!--//column-->
-							<!--column-->
-							<article class="one-fourth">
-								<figure><a href="location.html" title=""><img src="images/uploads/slider4.jpg" alt="" /></a></figure>
-								<div class="details">
-									<a href="location.html" title="View all" class="gradient-button">View all</a>
-									<h4>Amsterdam</h4>
-									<span class="count">929 Hotels</span>
-									<div class="ribbon">
-										<div class="half hotel">
-											<a href="hotels.html" title="View all">
-												<span class="small">from</span>
-												<span class="price">&#36; 70</span>
-											</a>
-										</div>
-										<div class="half flight">
-											<a href="flights.html" title="View all">
-												<span class="small">from</span>
-												<span class="price">&#36; 150</span>
-											</a>
-										</div>
-									</div>
-								</div>
-							</article>
-							<!--//column-->
-							<!--column-->
-							<article class="one-fourth">
-								<figure><a href="location.html" title=""><img src="images/uploads/slider4.jpg" alt="" /></a></figure>
-								<div class="details">
-									<a href="location.html" title="View all" class="gradient-button">View all</a>
-									<h4>Amsterdam</h4>
-									<span class="count">929 Hotels</span>
-									<div class="ribbon">
-										<div class="half hotel">
-											<a href="hotels.html" title="View all">
-												<span class="small">from</span>
-												<span class="price">&#36; 70</span>
-											</a>
-										</div>
-										<div class="half flight">
-											<a href="flights.html" title="View all">
-												<span class="small">from</span>
-												<span class="price">&#36; 150</span>
-											</a>
-										</div>
-									</div>
-								</div>
-							</article>
-							<!--//column-->
-						</div>
-					</div>
-					<!-- // Top gia tot
-					 -->
-					 <header class="s-title">
-						<h2>Vì Sao Chọn AngryCat Travel</h2>
-					</header>
-					<div class="">
-						<div class="row">
-								<div class="col-md-12 effect_fadeInUp hid visible animated fadeInUp listwhy">
-									<ul class="">
-										<li class="col-md-4">
-											<div class="col-md-1 col-md-offset-1"><i class="fa fa-color fa-3x fa-thumbs-o-up "></i></div>
-											<div class="col-md-10">
-												<h5>DỊCH VỤ KHÁCH HÀNG TỐT NHẤT</h5>
-												<span>Đội ngũ nhân viên tận tâm, chuyên nghiệp</span>
-											</div>
-										</li>
-
-										<li class="col-md-4">
-									
-											<div class="col-md-1 col-md-offset-1"><i class="fa fa-color fa-3x fa-credit-card" aria-hidden="true"></i></div>
-											<div class="col-md-10">
-												<h5>THANH TOÁN AN TOÀN VÀ LINH HOẠT</h5>
-												<span>Liên kết với các tổ chức tài chính</span>
-											</div>
-										</li>
-										<li class="col-md-4">
-											
-											<div class="col-md-1 col-md-offset-1"><i class="fa fa-color fa-3x fa-gift" aria-hidden="true"></i></div>
-											<div class="col-md-10">
-												<h5>LUÔN CÓ MỨC GIÁ TỐT NHẤT</h5>
-												<span>Bảo đảm giá tốt</span>
-											</div>
-										</li>
-										<li class="col-md-4">
-											
-											<div class="col-md-1 col-md-offset-1"><i class="fa fa-color fa-3x fa-briefcase" aria-hidden="true"></i></div>
-											<div class="col-md-10">
-												<h5>SẢN PHẨM ĐA DẠNG, CHẤT LƯỢNG</h5>
-												<span>Đạt chất lượng tốt nhất</span>
-											</div>
-										</li>
-
-										<li class="col-md-4">
-											
-											<div class="col-md-1 col-md-offset-1"><i class="fa fa-color fa-3x fa-desktop" aria-hidden="true"></i></div>
-											<div class="col-md-10">
-												<h5>ĐẶT TOUR DỄ DÀNG VÀ NHANH CHÓNG</h5>
-												<span>Đặt tour chỉ với 3 bước</span>
-											</div>
-										</li>
-										<li class="col-md-4">
-											
-											<div class="col-md-1 col-md-offset-1"><i class="fa fa-color fa-3x fa-phone-square" aria-hidden="true"></i></div>
-											<div class="col-md-10">
-												<h5>HỖ TRỢ 24/7</h5>
-												<span>Hotline &amp; Hỗ trợ trực tuyến</span>
-											</div>
-										</li>
-									</ul>
-								</div>
-						</div>
-					</div>
-
-				
-			
-					<!--info boxes-->
-				
-					<!--//info boxes-->
+					</div>	
+					<!--//deals-->
 				</div>
 			</div>
 		</div>
 	</main>
 	<!--//main-->
 	
-	<!--footer-->
+	 	<!--footer-->
 	<footer class="footer">
 		<div class="wrap">
 			<div class="row">
@@ -1030,21 +653,20 @@
 		</div>
 	</footer>
 	<!---footer-->
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="js/jquery.uniform.min.js"></script>
 	<script type="text/javascript" src="js/jquery.slimmenu.min.js"></script>
 	<script type="text/javascript" src="js/lightslider.min.js"></script>
 	<script type="text/javascript" src="js/scripts.js"></script>
-	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-	<!-- <script type="text/javascript" src="bootstrap/js/jquery.min.js"></script> -->
 	<script type="text/javascript">	
 		(function( $ ) {
 			$(document).ready(function(){
 				$('.form').hide();
-				$('#form1').show();
-				$('.f-item:nth-child(1)').addClass('active');
-				$('.f-item:nth-child(1) span').addClass('checked');		
+				$('#form6').show();
+				$('.f-item:nth-child(4)').addClass('active');
+				$('.f-item:nth-child(4) span').addClass('checked');		
 
 				$('#hero-gallery').lightSlider({
 					gallery:true,
@@ -1064,21 +686,5 @@
 			});
 		})(jQuery);
 	</script>
-	<script type="text/javascript">	
- 		$(document).ready(function(){
- 				$("#cruise").click(function(){
-             		 $('form').attr('action', 'serchTourAction');
-             	}); 
-             	$("#hotel").click(function(){
-             		 $('form').attr('action', 'search-tour.html');
-             	}); 
-             	$("#rentcar").click(function(){
-             		 $('form').attr('action', 'search-tour.html');
-             	}); 
-             	$("#flight").click(function(){
-             		 $('form').attr('action', 'search-tour.html');
-             	}); 
- 		});
- 	</script>
 </body>
 </html>

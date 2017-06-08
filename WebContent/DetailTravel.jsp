@@ -87,7 +87,7 @@
 					<li><a href="flights.html" title="Flights">Chuyến Bay</a></li>
 					<li><a href="flight_and_hotels.html" title="Flight + Hotel">Bay + Hotel</a></li>
 					<li><a href="cruises.html" title="Cruises">Chuyến Đi</a></li>
-					<li><a href="car_rentals.html" title="Car rental">Thuê Xe</a></li>
+					<li><a href="car.jsp" title="Car rental">Thuê Xe</a></li>
 					 <li><a href="contact.jsp" title="Contact">Liên Hệ</a></li>
 					<li><a href="blog.html" title="Blog">Chia Sẻ</a>
 						<ul>
@@ -183,6 +183,8 @@
 						</div>
 						<div class="detail-book col-md-10">
 							<div class=" box-content col-md-5 col-md-offset-1"> 
+							
+							
 							<c:set var="id" value="${param.idTour}"></c:set>
 							<c:out value=""></c:out>
 						<c:choose>
@@ -457,7 +459,35 @@
 						<!--post comment form-->
 						<article class="post-comment static-content">
 							<h3>Để Lại Bình Luận</h3>
-							<form class="row" id= "form" action="commentAction">
+							
+							<c:choose>
+								<c:when test="${sessionScope.email != null }">
+								<jsp:useBean id="user" class="dao.UserDAO" scope="page"></jsp:useBean>
+								    <c:set var="user" value="${user.getUserDetail(sessionScope.email) }"></c:set>
+										<form class="row" id= "form" action="commentAction">
+							<input type="hidden" name="typeComment" id="typeComment" value="main">
+							<input type="hidden" name="idMain" value ="" id="idMain">
+							<input type="hidden" name="idTour" value="${tour.idTour }">
+							<input type="hidden" name= "idTourDetail" value="${tour.idTourDetail }">
+								<div class="f-item full-width">
+									<label for="name">Họ và Tên</label>
+									<input type="text" placeholder="Phải Nhập Họ Tên" id="name" name="name" value="${user.fullName }" readonly="readonly"/>
+								</div>
+								<div class="f-item full-width">
+									<label for="eadress">E-mail</label>
+									<input type="email" placeholder="Phải nhập Email" id="email" name="email" value="${user.email }" readonly="readonly"/>
+								</div>
+								<div class="f-item full-width">
+									<label for="comment">Nội Dung</label>
+									<textarea id="comment" rows="10" cols="10" name="content"></textarea>
+								</div>
+								<div class="f-item full-width">
+									<input type="submit" value="Gửi Bình Luận" class="gradient-button"  />
+								</div>
+							</form>
+								</c:when>
+								<c:otherwise>
+									<form class="row" id= "form" action="commentAction">
 							<input type="hidden" name="typeComment" id="typeComment" value="main">
 							<input type="hidden" name="idMain" value ="" id="idMain">
 							<input type="hidden" name="idTour" value="${tour.idTour }">
@@ -478,6 +508,34 @@
 									<input type="submit" value="Gửi Bình Luận" class="gradient-button"  />
 								</div>
 							</form>
+								</c:otherwise>
+							</c:choose>
+							
+							<%-- <form class="row" id= "form" action="commentAction">
+							<input type="hidden" name="typeComment" id="typeComment" value="main">
+							<input type="hidden" name="idMain" value ="" id="idMain">
+							<input type="hidden" name="idTour" value="${tour.idTour }">
+							<input type="hidden" name= "idTourDetail" value="${tour.idTourDetail }">
+								<div class="f-item full-width">
+									<label for="name">Họ và Tên</label>
+									<input type="text" placeholder="Phải Nhập Họ Tên" id="name" name="name"/>
+								</div>
+								<div class="f-item full-width">
+									<label for="eadress">E-mail</label>
+									<input type="email" placeholder="Phải nhập Email" id="email" name="email"/>
+								</div>
+								<div class="f-item full-width">
+									<label for="comment">Nội Dung</label>
+									<textarea id="comment" rows="10" cols="10" name="content"></textarea>
+								</div>
+								<div class="f-item full-width">
+									<input type="submit" value="Gửi Bình Luận" class="gradient-button"  />
+								</div>
+							</form> --%>
+							
+							
+							
+							
 						</article>
 						<!--//post comment form-->
 					</div>

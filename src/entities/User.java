@@ -29,6 +29,9 @@ public class User {
 	private String password;
 	@OneToMany(mappedBy= "user")
 	private List<Order> listOrder = new ArrayList<>();
+	@OneToMany(mappedBy= "user")
+	private List<Blog> listBlogs = new ArrayList<>();
+	
 	public List<Comment> getListComments() {
 		return listComments;
 	}
@@ -40,6 +43,24 @@ public class User {
 	@OneToMany(mappedBy ="user")
 	private List<SubComment> lisSubComments = new ArrayList<>();
 	
+	public List<Blog> getListBlogs() {
+		return listBlogs;
+	}
+	public void setListBlogs(List<Blog> listBlogs) {
+		this.listBlogs = listBlogs;
+	}
+	public List<SubComment> getLisSubComments() {
+		return lisSubComments;
+	}
+	public void setLisSubComments(List<SubComment> lisSubComments) {
+		this.lisSubComments = lisSubComments;
+	}
+	public List<OrderCar> getListOrderCars() {
+		return listOrderCars;
+	}
+	public void setListOrderCars(List<OrderCar> listOrderCars) {
+		this.listOrderCars = listOrderCars;
+	}
 	public int getId() {
 		return id;
 	}
@@ -86,5 +107,10 @@ public class User {
 	private int phoneNumber;
 	@Column(name="ADDRESS")
 	private String address;
+	
+	@OneToMany(mappedBy = "user")
+	private List<OrderCar> listOrderCars = new ArrayList<>();
+	
+		
 	
 }

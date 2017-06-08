@@ -11,20 +11,32 @@ import dao.UserDAO;
 public class AuthenticationAction extends ActionSupport implements SessionAware {
 	
 	private Map<String, Object> sessionMap;
+	private String stateLogin;
 	private String email;
 	private String password;
+	public String getStateLogin() {
+		return stateLogin;
+	}
+
+	public void setStateLogin(String stateLogin) {
+		this.stateLogin = stateLogin;
+	}
+
 	public String login(){
 		// Check email is already stored in DB
 		if(sessionMap.containsKey("email") && sessionMap.get("email").equals(email)){
 			return SUCCESS;
 		}
 		// if no email stored in DB		
-		if(email != null && password !=null && new UserDAO().checkUser("hiuenngc01023@fpt.edu.vn", "ngochieu1992") == true){
+		if(email != null && password !=null && new UserDAO().checkUser(email, password) == true){
 			sessionMap.put("email", email);
 			return SUCCESS;
 		}
-		// return input when wrong Email or Password
-		return INPUT;
+		else{
+			stateLogin= "Bạn nhập sai email hoặc password!";
+			return INPUT;
+		}
+		
 	}
 	
 	public String logout(){

@@ -88,7 +88,7 @@
 					<li><a href="flights.html" title="Flights">Chuyến Bay</a></li>
 					<li><a href="flight_and_hotels.html" title="Flight + Hotel">Bay + Hotel</a></li>
 					<li><a href="cruises.html" title="Cruises">Chuyến Đi</a></li>
-					<li><a href="car_rentals.html" title="Car rental">Thuê Xe</a></li>
+					<li><a href="car.jsp" title="Car rental">Thuê Xe</a></li>
 					 <li><a href="contact.jsp" title="Contact">Liên Hệ</a></li>
 					<li><a href="blog.html" title="Blog">Chia Sẻ</a>
 						<ul>
@@ -618,182 +618,7 @@
 							</article>
 						</c:forEach>
 							<!--column-->
-							<%-- <article class="one-fourth">
-								<figure><a href="location.html" title=""><img src="images/uploads/slider4.jpg" alt="" /></a></figure>
-								<div class="details">
-									<a href="DetailTravel.html" title="View all" class="gradient-button">View all</a>
-									<h4>Động Thiên Đường - Cù Lao Chàm - Hội An</h4> 
-									<div class="ribbon">
-										<div class="half col-md-6 ">
-												<span class="col-md-6 date-tour">20/5/2017</span>
-												<span class=" col-md-3 day-tour ">5 ngày</span>
-										</div>
-										<div class="half col-md-6">
-											<!-- <a href="flights.html" title="View all"> -->
-												<span class="col-md-6 price-tour1">2,000,000 đ</span>
-												<span class="col-md-6 price-tour2">1,000,000 đ</span>
-											<!-- </a> -->
-										</div>
-									</div>
-								</div>
-							</article>
-							<!--//column-->
-							<!--column-->
-							<article class="one-fourth">
-								<figure><a href="location.html" title=""><img src="images/uploads/slider4.jpg" alt="" /></a></figure>
-								<div class="details">
-									<a href="DetailTravel.html" title="View all" class="gradient-button">View all</a>
-									<h4>Động Thiên Đường - Cù Lao Chàm - Hội An</h4> 
-									<!-- <span class="count">1529 Hotels</span> -->
-									<div class="ribbon">
-										<div class="half col-md-6 ">
-												<span class="col-md-6 date-tour">20/5/2017</span>
-												<span class=" col-md-3 day-tour ">5 ngày</span>
-										</div>
-										<div class="half col-md-6">
-											<!-- <a href="flights.html" title="View all"> -->
-												<span class="col-md-6 price-tour1">2,000,000 đ</span>
-												<span class="col-md-6 price-tour2">1,000,000 đ</span>
-											<!-- </a> -->
-										</div>
-									</div>
-								</div>
-							</article>
-							<!--//column-->
-							<!--column-->
-							<article class="one-fourth promo">
-							<div class="ribbon-small">- 10%</div>
-								<figure><a href="location.html" title=""><img src="images/uploads/slider4.jpg" alt="" /></a></figure>
-								<div class="details">
-									<a href="DetailTravel.html" title="View all" class="gradient-button">View all</a>
-									<h4>Động Thiên Đường - Cù Lao Chàm - Hội An</h4> 
-									<!-- <span class="count">1529 Hotels</span> -->
-									<div class="ribbon">
-										<div class="half col-md-6 ">
-												<span class="col-md-6 date-tour">20/5/2017</span>
-												<span class=" col-md-3 day-tour ">5 ngày</span>
-										</div>
-										<div class="half col-md-6">
-											<!-- <a href="flights.html" title="View all"> -->
-												<span class="col-md-6 price-tour1">2,000,000 đ</span>
-												<span class="col-md-6 price-tour2">1,000,000 đ</span>
-											<!-- </a> -->
-										</div>
-									</div>
-								</div>
-							</article>
-							<!--//column-->
-							<!--column-->
-							<article class="one-fourth">
-								<figure><a href="DetailTravel.html" title=""><img src="images/uploads/slider4.jpg" alt="" /></a></figure>
-								<div class="details">
-									<a href="DetailTravel.html" title="View all" class="gradient-button">View all</a>
-									<h4>Động Thiên Đường - Cù Lao Chàm - Hội An</h4> 
-									<!-- <span class="count">1529 Hotels</span> -->
-									<div class="ribbon">
-										<div class="half col-md-6 ">
-												<span class="col-md-6 date-tour">20/5/2017</span>
-												<span class=" col-md-3 day-tour ">5 ngày</span>
-										</div>
-										<div class="half col-md-6">
-											<!-- <a href="flights.html" title="View all"> -->
-												<span class="col-md-6 price-tour1">2,000,000 đ</span>
-												<span class="col-md-6 price-tour2">1,000,000 đ</span>
-											<!-- </a> -->
-										</div>
-									</div>
-								</div>
-							</article>
-							<!--//column-->
-							<!--column-->
-							<article class="one-fourth promo">
-								<div class="ribbon-small">- 40%</div>
-								<figure><a href="DetailTravel.html" title=""><img src="images/uploads/slider4.jpg" alt="" /></a></figure>
-								<div class="details">
-									<a href="DetailTravel.html" title="View all" class="gradient-button">View all</a>
-									<h4>Động Thiên Đường - Cù Lao Chàm - Hội An</h4> 
-									<!-- <span class="count">1529 Hotels</span> -->
-									<div class="ribbon">
-										<div class="half col-md-6 ">
-												<span class="col-md-6 date-tour">20/5/2017</span>
-												<span class=" col-md-3 day-tour ">5 ngày</span>
-										</div>
-										<div class="half col-md-6">
-											<!-- <a href="flights.html" title="View all"> -->
-												<span class="col-md-6 price-tour1">2,000,000 đ</span>
-												<span class="col-md-6 price-tour2">1,000,000 đ</span>
-											<!-- </a> -->
-										</div>
-									</div>
-								</div>
-							</article>
-							<!--//column-->
-							<!--column-->
-							<article class="one-fourth">
-								<figure><a href="location.html" title=""><img src="images/uploads/slider4.jpg" alt="" /></a></figure>
-								<div class="details">
-									<a href="location.html" title="View all" class="gradient-button">View all</a>
-									<h4>Động Thiên Đường - Cù Lao Chàm - Hội An</h4> 
-									<!-- <span class="count">1529 Hotels</span> -->
-									<div class="ribbon">
-										<div class="half col-md-6 ">
-												<span class="col-md-6 date-tour">20/5/2017</span>
-												<span class=" col-md-3 day-tour ">5 ngày</span>
-										</div>
-										<div class="half col-md-6">
-											<!-- <a href="flights.html" title="View all"> -->
-												<span class="col-md-6 price-tour1">2,000,000 đ</span>
-												<span class="col-md-6 price-tour2">1,000,000 đ</span>
-											<!-- </a> -->
-										</div>
-									</div>
-								</div>
-							</article>
-							<!--//column-->
-							<!--column-->
-							<article class="one-fourth">
-								<figure><a href="location.html" title=""><img src="images/uploads/slider4.jpg" alt="" /></a></figure>
-								<div class="details">
-									<a href="location.html" title="View all" class="gradient-button">View all</a>
-									<h4>Động Thiên Đường - Cù Lao Chàm - Hội An</h4> 
-									<!-- <span class="count">1529 Hotels</span> -->
-									<div class="ribbon">
-										<div class="half col-md-6 ">
-												<span class="col-md-6 date-tour">20/5/2017</span>
-												<span class=" col-md-3 day-tour ">5 ngày</span>
-										</div>
-										<div class="half col-md-6">
-											<!-- <a href="flights.html" title="View all"> -->
-												<span class="col-md-6 price-tour1">2,000,000 đ</span>
-												<span class="col-md-6 price-tour2">1,000,000 đ</span>
-											<!-- </a> -->
-										</div>
-									</div>
-								</div>
-							</article>
-							<!--//column-->
-							<!--column-->
-							<article class="one-fourth promo">
-								<div class="ribbon-small">- 50%</div>
-								<figure><a href="location.html" title=""><img src="images/uploads/slider4.jpg" alt="" /></a></figure>
-								<div class="details">
-									<a href="location.html" title="View all" class="gradient-button">View all</a>
-									<h4>Động Thiên Đường - Cù Lao Chàm - Hội An</h4> 
-									<!-- <span class="count">1529 Hotels</span> -->
-									<div class="ribbon">
-										<div class="half col-md-6 ">
-												<span class="col-md-6 date-tour">20/5/2017</span>
-												<span class=" col-md-3 day-tour ">5 ngày</span>
-										</div>
-										<div class="half col-md-6">
-											<!-- <a href="flights.html" title="View all"> -->
-												<span class="col-md-6 price-tour1">2,000,000 đ</span>
-												<span class="col-md-6 price-tour2">1,000,000 đ</span>
-											<!-- </a> -->
-										</div>
-									</div>
-								</div>
-							</article> --%>
+							
 							<!--//column-->			 
 						</div>
 					</div>
@@ -1034,8 +859,11 @@
 		<div class="lb-wrap">
 			<a href="#" class="close">x</a>
 			<div class="lb-content">
-				<form class="row" method="post" action="loginAction">
+				<form class="row" method="post" action="loginAction"  id="formLogin">
 					<h3>Đăng Nhập</h3>
+					<c:if test="${stateLogin != null }">
+						<h4>${stateLogin }</h4>
+					</c:if>
 					<div class="f-item full-width">
 						<label for="email">Email</label>
 						<input type="email" id="email" placeholder="Nhập Email của Bạn" name="email" />
@@ -1066,9 +894,33 @@
 	<script type="text/javascript" src="js/scripts.js"></script>
 	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 	<!-- <script type="text/javascript" src="bootstrap/js/jquery.min.js"></script> -->
+	
+
 	<script type="text/javascript">	
 		(function( $ ) {
 			$(document).ready(function(){
+				
+				// mới coppy
+				 $('#formLogin').submit(function(){
+				var email = $.trim($('#email').val());
+				var password = $.trim($('#password').val());
+				var flag = true;
+				if (email.length <= 0) {
+					$('#email').attr('placeholder','Bạn phải nhập email');
+					flag = false;
+					// debugger;
+				}else{
+					$('#email').attr('placeholder','');
+				}
+				if (password.length <= 0) {
+					$('#password').attr('placeholder','Bạn phải nhập mật khẩu');
+					flag = false;
+				}else{
+					$('#password').attr('placeholder','');
+				}
+				return flag;
+			}); 
+				// ket thuc
 				$('.form').hide();
 				$('#form1').show();
 				$('.f-item:nth-child(1)').addClass('active');

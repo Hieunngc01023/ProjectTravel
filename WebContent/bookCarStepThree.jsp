@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -83,8 +85,8 @@
 					<li><a href="flights.html" title="Flights">Chuyến Bay</a></li>
 					<li><a href="flight_and_hotels.html" title="Flight + Hotel">Bay + Hotel</a></li>
 					<li><a href="cruises.html" title="Cruises">Chuyến Đi</a></li>
-					<li><a href="car.jsp" title="Car rental">Thuê Xe</a></li>
-					 <li><a href="contact.jsp" title="Contact">Liên Hệ</a></li>
+					<li><a href="car_rentals.html" title="Car rental">Thuê Xe</a></li>
+					 <li><a href="contact.html" title="Contact">Liên Hệ</a></li>
 					<li><a href="blog.html" title="Blog">Chia Sẻ</a>
 						<ul>
 							<li><a href="blog_single.html" title="Single Post">Single Post</a>
@@ -154,19 +156,7 @@
 	<!--main-->
 	<main class="main">		
 		<div class="wrap">
-			<!--breadcrumbs-->
-			<nav class="breadcrumbs">
-				<!--crumbs-->
-				<ul>
-					<li><a href="#" title="Home">Home</a></li>
-					<li><a href="#" title="Hotels">Hotels</a></li>
-					<li><a href="#" title="United Kingdom">United Kingdom</a></li>
-					<li><a href="#" title="London">London</a></li>  
-					<li>Best ipsum hotel</li>                                       
-				</ul>
-				<!--//crumbs-->
-			</nav>
-			<!--//breadcrumbs-->
+		 
 			
 			<div class="row">
 				<!--three-fourth content-->
@@ -182,47 +172,85 @@
 							<h3>Thông tin Khách hàng</h3>
 							<div class="text-wrap">
 								<div class="output">
-									<c:choose>
-										<c:when test="${sessionScope.order != null }">
-										
-									<p>ID Booking:</p>
-									<p>${sessionScope.order.idOrder }</p>
-									<p>Họ và Tên:</p>
-									<p>${sessionScope.order.fullName }</p>
-									<p>E-mail: </p>
-									<p>${sessionScope.order.email }</p>
-									<p>Address:</p>
-									<p>${sessionScope.order.address }</p>
-					
-									<p>Phone: </p>
-									<p>${sessionScope.order.phone }</p>
-									<p>Số Người:</p>
-									<p> ${sessionScope.order.member }</p>
-										</c:when>
-										<c:otherwise>
-										
-									<p>ID Booking:</p>
-									<p>${idOrder }</p>
+								<c:choose>
+									<c:when test="${sessionScope.orderCar != null }">
+										<p>ID Booking:</p>
+									<p>${sessionScope.orderCar.idOrder }</p>
 									<p>Họ và Tên: </p>
-									<p>${fullName }</p>
+									<p>${sessionScope.orderCar.fullName }</p>
+									<p>E-mail: </p>
+									<p>${sessionScope.orderCar.email }</p>
+									<p>Address:</p>
+									<p>${sessionScope.orderCar.address }</p>
+									<p>Phone: </p>
+									<p>${sessionScope.orderCar.phone }</p>
+									</c:when>
+									<c:otherwise>
+										<p>ID Booking:</p>
+										<p>${idOrder }</p>
+										<p>Họ và Tên:</p>
+										<p> ${fullName }</p>
 									<p>E-mail: </p>
 									<p>${email }</p>
 									<p>Address:</p>
 									<p>${address }</p>
-					
 									<p>Phone: </p>
-									<p>${phone }</p>
-									<p>Số Người:</p>
-									<p> ${member }</p>
+									<p> ${phone }</p>
 									</c:otherwise>
-									</c:choose>
-									
+								</c:choose>
 								</div>
 							</div>
 						
 							<h3>Yêu Cầu Đặt Biệt</h3>
 							<div class="text-wrap">
 								<p>I would like to book a twin room with a definite sea view please. Thank you and kind regards, John Livingston</p>
+							</div>
+							<h3>Thông tin Đặt Xe</h3>
+							<div class="text-wrap">
+								<div class="output">
+								<c:choose>
+									<c:when test="${sessionScope.orderCar != null }">
+									<p>Thời Gian Lấy Xe:</p>
+									<p>${ sessionScope.orderCar.timePickUp}</p>
+									<p>Địa Điểm Lấy: </p>
+									<p>${ sessionScope.orderCar.placeRecieve}</p>
+									<p>Thời Gian Trả Xe:</p>
+									<p>${ sessionScope.orderCar.tiemDropOff}</p>
+									<p>Địa Điểm Trả: </p>
+									<p>${ sessionScope.orderCar.placeRender}</p>
+									<p>Thuê Người Lái: </p>
+									<c:choose>
+										<c:when test="${sessionScope.orderCar.stateDriver ==1 }">
+											<p>Có</p>
+										</c:when>
+										<c:otherwise>
+											<p>Không</p>
+										</c:otherwise>
+									</c:choose>							
+									</c:when>
+									<c:otherwise>
+										<p>Thời Gian Lấy Xe:</p>
+									<p> ${timePickUp }</p>
+									<p>Địa Điểm Lấy: </p>
+									<p> ${placeRecieve }</p>
+									<p>Thời Gian Trả Xe:</p>
+									<p>${tiemDropOff }</p>
+									<p>Địa Điểm Trả: </p>
+									<p>${placeRender}</p>
+									<p>Thuê Người Lái: </p>
+									<c:choose>
+										<c:when test="${stateDriver ==1 }">
+											<p>Có</p>
+										</c:when>
+										<c:otherwise>
+											<p>Không</p>
+										</c:otherwise>
+									</c:choose>	
+									</c:otherwise>
+								</c:choose>
+								<!-- Số 8-Tôn Thất Thuyết-Mỹ Đình-Hà Nội -->
+										 
+								</div>
 							</div>
 							
 							<h3>Thanh Toán</h3>
@@ -234,7 +262,6 @@
 							
 							<h3>Không Quên </h3>
 							<div class="text-wrap">
-								<p>You can change or cancel your booking via our online self service tool myBookYourTravel:
 								<p>Bạn có thể thay đổi hoặc huỷ đặt vé thông qua phần dịch vụ tài khoản của bạn:
 								<a href="my_account.html">Tài khoản của tôi</a></p>
 								<p><strong>Chúng tôi mong bạn sẽ có phút giây thư giãn bên </strong><i>chuyến đi BookTravel</i></p>
@@ -243,37 +270,56 @@
 					</form>
 				</div>
 				<!--//three-fourth content-->
-			<jsp:useBean id="tourDAO" class="dao.TourDAO" scope="page"></jsp:useBean>
-			<c:choose>
-				<c:when test="${sessionScope.order != null }">
-				    <c:set var="tour" value="${tourDAO.getTourDetail(sessionScope.order.idTourDetail)}"></c:set>  
+				<jsp:useBean id="carDAO" class="dao.CarDAO" scope="page"></jsp:useBean>	
+				<c:choose>
+				<c:when test="${sessionScope.orderCar != null }">
+				    <c:set var="car" value="${carDAO.getCarDetails(sessionScope.orderCar.idCar)}"></c:set>  
 				</c:when>
 				<c:otherwise>
-					<c:set var="tour" value="${tourDAO.getTourDetail(idTourDetail)}"></c:set>  
+					<c:set var="car" value="${carDAO.getCarDetails(idCar)}"></c:set>  
 				</c:otherwise>
 			</c:choose>
-			
+					
 				<!--right sidebar-->
-				
 				<aside class="one-fourth right-sidebar">
-						<!--Booking details-->
-						<article class="hotel-details booking-details">
-						<h1>${tour.title }	</h1>
+					<!--Booking details-->
+					<article class="hotel-details booking-details">
+						<h1>${car.nameCar }</h1>
 						<dl class="booking-info">
-							<dt>Mã Tour</dt>
-							<dd>${tour.idTourDetail }</dd>
-							<dt>Thời Gian</dt>
-							<dd>${tour.quatiDate }</dd>
-							<dt>Khởi Hành</dt>
-							<dd>${tour.timBegin }</dd>
-							<dt>Nơi Đón</dt>
-							<dd> ${tour.pickupPlace }</dd>
-							<dt>Số Chỗ Còn Nhận</dt>
-							<dd> ${tour.seatAvailable }</dd>
+							<dt>Mã Xe</dt>
+							<dd>${car.idCar }</dd>
+							<dt>Nhà Sản Xuất</dt>
+							<dd>${car.brand }</dd>
+							<dt>Số Ghế</dt>
+							<dd>${car.quanitySeat }</dd>
+							<dt>Hộp Số </dt>
+							<c:choose>
+								<c:when test="${car.gear ==1 }">
+									<dd> Số Sàn</dd>
+								</c:when>
+								<c:otherwise>
+									<dd> Số Tự Động</dd>
+								</c:otherwise>
+							</c:choose>
+							<dt>Nhiên Liệu </dt>
+							<c:choose>
+								<c:when test="${car.fuel ==1 }">
+									<dd> Xăng </dd>
+								</c:when>
+								<c:otherwise>
+									<dd> Dầu</dd>
+								</c:otherwise>
+							</c:choose>
 						</dl>
 						<div class="price">
-							<p class="total">Tổng Tiền:<f:formatNumber value="${totalPrice}" minFractionDigits="0" maxFractionDigits="0"></f:formatNumber> đ</p>
-							
+						<c:choose>
+				<c:when test="${sessionScope.orderCar != null }">
+					<p class="total">Tổng Tiền:<f:formatNumber value="${sessionScope.orderCar.totalPrice}" minFractionDigits="0" maxFractionDigits="0"></f:formatNumber> đ</p>
+				</c:when>
+				<c:otherwise>
+					<p class="total">Tổng Tiền:<f:formatNumber value="${totalPrice}" minFractionDigits="0" maxFractionDigits="0"></f:formatNumber> đ</p>
+				</c:otherwise>
+			</c:choose>
 						</div>
 					</article>
 					<!--//Booking details-->

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -227,22 +229,40 @@
 				<aside class="one-fourth right-sidebar">
 					<!--Booking details-->
 						<article class="hotel-details booking-details">
-						<h1>Động Thiên Đường - Cù Lao Chàm - Hội An	</h1>
+						
+						<h1>${sessionScope.orderCar.nameCar }	</h1>
 						<dl class="booking-info">
-							<dt>Mã Tour</dt>
-							<dd>NDSGN389-008-310517VJ-P</dd>
-							<dt>Thời Gian</dt>
-							<dd>5 ngày</dd>
-							<dt>Khởi Hành</dt>
-							<dd>14-11-12</dd>
-							<dt>Nơi Đón</dt>
-							<dd>Hà Nội</dd>
-							<dt>Số Chỗ Còn Nhận</dt>
-							<dd>3 chỗ</dd>
+							<dt>Mã Xe</dt>
+							<dd>${sessionScope.orderCar.idCar }</dd>
+							<dt>Nhà Sản Xuất</dt>
+							<dd>${sessionScope.orderCar.brand }</dd>
+							<dt>Số Ghế</dt>
+							<dd>${sessionScope.orderCar.quanitySeat }</dd>
+							<dt>Hộp Số </dt>
+							
+							<c:choose>
+								<c:when test="${sessionScope.orderCar.gear ==1 }">
+									<dd> Số Sàn</dd>
+								</c:when>
+								<c:otherwise>
+									<dd> Số Tự Động</dd>
+								</c:otherwise>
+							</c:choose>
+							
+							
+							<dt>Nhiên Liệu </dt>
+							<c:choose>
+								<c:when test="${sessionScope.orderCar.fuel ==1 }">
+									<dd> Xăng</dd>
+								</c:when>
+								<c:otherwise>
+									<dd>Dầu</dd>
+								</c:otherwise>
+							</c:choose>
+							
 						</dl>
 						<div class="price">
-							<p class="total">Tổng Tiền:  2,000,000đ</p>
-							
+							<p class="total">Tổng Tiền:  <f:formatNumber  value="${sessionScope.orderCar.totalPrice }" minFractionDigits="0" maxFractionDigits="0"></f:formatNumber> đ</p>
 						</div>
 					</article>
 					<!--//Booking details-->

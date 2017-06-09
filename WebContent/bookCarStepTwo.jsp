@@ -173,117 +173,98 @@
 			<div class="row">
 				<!--three-fourth content-->
 				<div class="three-fourth">
-					<form id="booking" method="post" action="booking" class="static-content booking">
+					<form id="booking" method="post" action="orderCarAction" class="static-content booking">
 						<fieldset>
-							<h2><span>03 </span>Xác Nhận</h2>
-							<div class="text-wrap">
-								<a href="#" class="gradient-button right print" title="Print booking" onclick="printpage()">In Tour</a>
-								<p>Tour của bạn đã được xác nhận , Cảm ơn bạn đã tới BookTravel</p>
-							</div>
-							
-							<h3>Thông tin Khách hàng</h3>
-							<div class="text-wrap">
-								<div class="output">
-									<c:choose>
-										<c:when test="${sessionScope.order != null }">
-										
-									<p>ID Booking:</p>
-									<p>${sessionScope.order.idOrder }</p>
-									<p>Họ và Tên:</p>
-									<p>${sessionScope.order.fullName }</p>
-									<p>E-mail: </p>
-									<p>${sessionScope.order.email }</p>
-									<p>Address:</p>
-									<p>${sessionScope.order.address }</p>
-					
-									<p>Phone: </p>
-									<p>${sessionScope.order.phone }</p>
-									<p>Số Người:</p>
-									<p> ${sessionScope.order.member }</p>
-										</c:when>
-										<c:otherwise>
-										
-									<p>ID Booking:</p>
-									<p>${idOrder }</p>
-									<p>Họ và Tên: </p>
-									<p>${fullName }</p>
-									<p>E-mail: </p>
-									<p>${email }</p>
-									<p>Address:</p>
-									<p>${address }</p>
-					
-									<p>Phone: </p>
-									<p>${phone }</p>
-									<p>Số Người:</p>
-									<p> ${member }</p>
-									</c:otherwise>
-									</c:choose>
-									
+							<h2><span>02 </span>Thanh Toán</h2>
+							<div class="row">
+								<div class="f-item one-half">
+									<label>Loại Thẻ</label>
+									<select>
+										<option selected>Chọn Loại Thẻ</option>
+										<option>Thẻ Nội Địa</option>
+										<option>Visa</option>
+									</select>
+								</div>
+								<div class="f-item one-half">
+									<label for="card_number">Số Thẻ</label>
+									<input type="number" placeholder="Nhập mã thẻ mặt trước thẻ" id="card_number" name="card_number" />
 								</div>
 							</div>
-						
-							<h3>Yêu Cầu Đặt Biệt</h3>
-							<div class="text-wrap">
-								<p>I would like to book a twin room with a definite sea view please. Thank you and kind regards, John Livingston</p>
+							
+							<div class="row">
+								<div class="f-item one-third">
+									<label for="card_holder">Tên Của Thẻ</label>
+									<input type="text" id="card_holder" placeholder="Nhập tên thẻ" name="card_holder" />
+								</div>
+								<div class="f-item one-third datepicker">
+									<label for="expiration_date">Ngày Hạn </label>
+									<div class="datepicker-wrap"><input type="text" id="expiration_date" name="expiration_date" /></div>
+								</div>
+								<div class="f-item one-third">
+									<label for="cv2_number">Số  CV2 </label>
+									<input type="number" id="cv2_number" placeholder="Nhập 3 số cuối sau thẻ" name="cv2_number" />
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="f-item full-width checkbox">
+									<input type="checkbox" name="check" id="check" value="ch1" />
+									<label>Tôi đã đọc và đồng ý <a href="#">Điều Kiện Đặt Tour</a>.</label>
+								</div>
 							</div>
 							
-							<h3>Thanh Toán</h3>
-							<div class="text-wrap">
-								
-								<p><strong class="dark">BookTravel chấp nhận hình thức thanh toán :</strong></p>
-								<p>Visa,Thẻ ngân hàng nội địa, Tiền mặt , Chuyển khoản</p>
-							</div>
-							
-							<h3>Không Quên </h3>
-							<div class="text-wrap">
-								<p>You can change or cancel your booking via our online self service tool myBookYourTravel:
-								<p>Bạn có thể thay đổi hoặc huỷ đặt vé thông qua phần dịch vụ tài khoản của bạn:
-								<a href="my_account.html">Tài khoản của tôi</a></p>
-								<p><strong>Chúng tôi mong bạn sẽ có phút giây thư giãn bên </strong><i>chuyến đi BookTravel</i></p>
+							<div class="row">
+								<div class="full-width">
+								<%-- 	<input type="hidden" name= "order" value=" ${sessionScope.order }"/> --%>
+									<input type="hidden" name="checkCash" value="onlineReturn"/>
+									<input type="submit" class="gradient-button" value="Chuyển khoản" id="next-step" />
+								</div>
 							</div>
 						</fieldset>
 					</form>
 				</div>
 				<!--//three-fourth content-->
-			<jsp:useBean id="tourDAO" class="dao.TourDAO" scope="page"></jsp:useBean>
-			<c:choose>
-				<c:when test="${sessionScope.order != null }">
-				    <c:set var="tour" value="${tourDAO.getTourDetail(sessionScope.order.idTourDetail)}"></c:set>  
-				</c:when>
-				<c:otherwise>
-					<c:set var="tour" value="${tourDAO.getTourDetail(idTourDetail)}"></c:set>  
-				</c:otherwise>
-			</c:choose>
-			
+				<jsp:useBean id="carDAO" class="dao.CarDAO"></jsp:useBean>
+				<c:set var="id" value="${sessionScope.orderCar.idCar }"></c:set>
+			<c:set var="car" value="${carDAO.getCarDetails(id) }"></c:set>
 				<!--right sidebar-->
-				
 				<aside class="one-fourth right-sidebar">
-						<!--Booking details-->
+					<!--Booking details-->
 						<article class="hotel-details booking-details">
-						<h1>${tour.title }	</h1>
+					
+						<h1> ${ car.nameCar}	</h1>
 						<dl class="booking-info">
-							<dt>Mã Tour</dt>
-							<dd>${tour.idTourDetail }</dd>
-							<dt>Thời Gian</dt>
-							<dd>${tour.quatiDate }</dd>
-							<dt>Khởi Hành</dt>
-							<dd>${tour.timBegin }</dd>
-							<dt>Nơi Đón</dt>
-							<dd> ${tour.pickupPlace }</dd>
-							<dt>Số Chỗ Còn Nhận</dt>
-							<dd> ${tour.seatAvailable }</dd>
+							<dt>Mã Xe</dt>
+							<dd> ${sessionScope.orderCar.idCar }</dd>
+							<dt>Nhà Sản Xuất</dt>
+							<dd>${car.brand }</dd>
+							<dt>Số Ghế</dt>
+							<dd>${car.quanitySeat }</dd>
+							<dt>Hộp Số </dt>
+							
+							<c:choose>
+								<c:when test="${car.gear ==1 }">
+									<dd> Số Sàn</dd>
+								</c:when>
+								<c:otherwise>
+									<dd> Số Tự Động</dd>
+								</c:otherwise>
+							</c:choose>
+							
+							
+							<dt>Nhiên Liệu </dt>
+							<c:choose>
+								<c:when test="${car.fuel ==1 }">
+									<dd> Xăng</dd>
+								</c:when>
+								<c:otherwise>
+									<dd>Dầu</dd>
+								</c:otherwise>
+							</c:choose>
+							
 						</dl>
 						<div class="price">
-						<c:choose>
-				<c:when test="${sessionScope.order != null }">
-					<p class="total">Tổng Tiền:<f:formatNumber value="${sessionScope.order.totalPrice}" minFractionDigits="0" maxFractionDigits="0"></f:formatNumber> đ</p>
-				</c:when>
-				<c:otherwise>
-					<p class="total">Tổng Tiền:<f:formatNumber value="${totalPrice}" minFractionDigits="0" maxFractionDigits="0"></f:formatNumber> đ</p>
-				</c:otherwise>
-			</c:choose>
-							
-							
+							<p class="total">Tổng Tiền:  <f:formatNumber  value="${sessionScope.orderCar.totalPrice }" minFractionDigits="0" maxFractionDigits="0"></f:formatNumber> đ</p>
 						</div>
 					</article>
 					<!--//Booking details-->
@@ -303,7 +284,7 @@
 	</main>
 	<!--//main-->
 	
-<!--footer-->
+	<!--footer-->
 	<footer class="footer">
 		<div class="wrap">
 			<div class="row">
@@ -360,9 +341,5 @@
 	<script type="text/javascript" src="js/jquery.uniform.min.js"></script>
 	<script type="text/javascript" src="js/jquery.slimmenu.min.js"></script>
 	<script type="text/javascript" src="js/scripts.js"></script>
-	<script type="text/javascript">
-		function printpage()
-			{window.print()}
-	</script>
 </body>
 </html>

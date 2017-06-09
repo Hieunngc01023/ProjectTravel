@@ -11,7 +11,7 @@
 	<meta name="description" content="Book Your Travel - Online Booking HTML Template">
 	<meta name="author" content="themeenergy.com">
 	
-	<title>Book Your Travel - Booking</title>
+	<title>Book Your Travel - Page</title>
 	
 	<link rel="stylesheet" href="css/style.css" />
 	<link rel="stylesheet" href="css/theme-turqoise.css" id="template-color" />
@@ -36,7 +36,7 @@
 	</div>
 	<!--- //loading animation -->
 	
-	<!--header-->
+		<!--header-->
 	<header class="header">
 		<div class="wrap">
 			<!--logo-->
@@ -85,8 +85,8 @@
 					<li><a href="flights.html" title="Flights">Chuyến Bay</a></li>
 					<li><a href="flight_and_hotels.html" title="Flight + Hotel">Bay + Hotel</a></li>
 					<li><a href="cruises.html" title="Cruises">Chuyến Đi</a></li>
-					<li><a href="car.jsp" title="Car rental">Thuê Xe</a></li>
-					 <li><a href="contact.jsp" title="Contact">Liên Hệ</a></li>
+					<li><a href="car_rentals.html" title="Car rental">Thuê Xe</a></li>
+					 <li><a href="contact.html" title="Contact">Liên Hệ</a></li>
 					<li><a href="blog.html" title="Blog">Chia Sẻ</a>
 						<ul>
 							<li><a href="blog_single.html" title="Single Post">Single Post</a>
@@ -160,11 +160,8 @@
 			<nav class="breadcrumbs">
 				<!--crumbs-->
 				<ul>
-					<li><a href="#" title="Home">Home</a></li>
-					<li><a href="#" title="Hotels">Hotels</a></li>
-					<li><a href="#" title="United Kingdom">United Kingdom</a></li>
-					<li><a href="#" title="London">London</a></li>  
-					<li>Best ipsum hotel</li>                                       
+					<li><a href="index.html" title="Home">Tìm Kiếm</a></li> 
+					<li>Ô tô camry toyota</li>                                       
 				</ul>
 				<!--//crumbs-->
 			</nav>
@@ -173,137 +170,126 @@
 			<div class="row">
 				<!--three-fourth content-->
 				<div class="three-fourth">
-					<form id="booking" method="post" action="booking" class="static-content booking">
-						<fieldset>
-							<h2><span>03 </span>Xác Nhận</h2>
-							<div class="text-wrap">
-								<a href="#" class="gradient-button right print" title="Print booking" onclick="printpage()">In Tour</a>
-								<p>Tour của bạn đã được xác nhận , Cảm ơn bạn đã tới BookTravel</p>
-							</div>
-							
-							<h3>Thông tin Khách hàng</h3>
-							<div class="text-wrap">
-								<div class="output">
+					<div class="row deals  results">
+							<c:set var="cars" value="${setCar }"></c:set>
+							<c:choose>
+								<c:when test="${cars.size() ==0 }">
+									<h1>Không tìm thấy Car bạn yêu cầu:</h1>
+								</c:when>
+								<c:otherwise>
+									<c:forEach items="${cars }" var="car">
+									
+										<article class="one-fourth">
+								<figure><a href="#" title=""><img src="images/uploads/car13.jpg" alt="" /></a></figure>
+								<div class="details">
+									<h3>${car.nameCar }</h3> 
+									
 									<c:choose>
-										<c:when test="${sessionScope.order != null }">
-										
-									<p>ID Booking:</p>
-									<p>${sessionScope.order.idOrder }</p>
-									<p>Họ và Tên:</p>
-									<p>${sessionScope.order.fullName }</p>
-									<p>E-mail: </p>
-									<p>${sessionScope.order.email }</p>
-									<p>Address:</p>
-									<p>${sessionScope.order.address }</p>
-					
-									<p>Phone: </p>
-									<p>${sessionScope.order.phone }</p>
-									<p>Số Người:</p>
-									<p> ${sessionScope.order.member }</p>
+										<c:when test="${car.gear == 1 }">
+											<span class="price price-more">Số sàn  <em style="color:red;"><f:formatNumber value="${car.price }" maxFractionDigits="0" minFractionDigits="0"></f:formatNumber> đ</em> </span>
 										</c:when>
 										<c:otherwise>
-										
-									<p>ID Booking:</p>
-									<p>${idOrder }</p>
-									<p>Họ và Tên: </p>
-									<p>${fullName }</p>
-									<p>E-mail: </p>
-									<p>${email }</p>
-									<p>Address:</p>
-									<p>${address }</p>
-					
-									<p>Phone: </p>
-									<p>${phone }</p>
-									<p>Số Người:</p>
-									<p> ${member }</p>
-									</c:otherwise>
+											<span class="price price-more">Số tự động  <em style="color:red;"><f:formatNumber value="${car.price }" maxFractionDigits="0" minFractionDigits="0"></f:formatNumber> đ</em> </span>
+										</c:otherwise>
 									</c:choose>
 									
+									<a href="carDetail.jsp?id=${car.idCar }" title="Book now" class="gradient-button">Chi Tiết</a>
 								</div>
-							</div>
-						
-							<h3>Yêu Cầu Đặt Biệt</h3>
-							<div class="text-wrap">
-								<p>I would like to book a twin room with a definite sea view please. Thank you and kind regards, John Livingston</p>
-							</div>
+							</article>
+									</c:forEach>
+								</c:otherwise>
+							</c:choose>
+							<c:if test=""></c:if>
+					
+						 <!--deal-->
+							<!-- <article class="one-fourth">
+								<figure><a href="#" title=""><img src="images/uploads/car13.jpg" alt="" /></a></figure>
+								<div class="details">
+									<h3>Toyota Camry</h3> 
+									<span class="price price-more">Số sàn  <em style="color:red;">500.000đ</em> </span>
+									<a href="car_detail.html" title="Book now" class="gradient-button">Chi Tiết</a>
+								</div>
+							</article>
+							//deal
+							deal
+							<article class="one-fourth">
+								<figure><a href="#" title=""><img src="images/uploads/car13.jpg" alt="" /></a></figure>
+								<div class="details">
+									<h3>Toyouta Camry</h3> 
+									<span class="price price-more">Số sàn  <em style="color:red;">500.000đ</em> </span>
+									<a href="car_detail.html" title="Book now" class="gradient-button">Chi Tiết</a>
+								</div>
+							</article>
+							//deal
+							deal
+							<article class="one-fourth">
+								<figure><a href="#" title=""><img src="images/uploads/car13.jpg" alt="" /></a></figure>
+								<div class="details">
+									<h3>Toyouta Camry</h3> 
+									<span class="price price-more">Số sàn  <em style="color:red;">500.000đ</em> </span>
+									<a href="car_detail.html" title="Book now" class="gradient-button">Chi Tiết</a>
+								</div>
+							</article>
+							//deal
+							deal
+							<article class="one-fourth">
+								<figure><a href="#" title=""><img src="images/uploads/car13.jpg" alt="" /></a></figure>
+								<div class="details">
+									<h3>Toyouta Camry</h3> 
+									<span class="price price-more">Số sàn  <em style="color:red;">500.000đ</em> </span>
+									<a href="car_detail.html" title="Book now" class="gradient-button">Chi Tiết</a>
+								</div>
+							</article> -->
+							<!--//deal-->
 							
-							<h3>Thanh Toán</h3>
-							<div class="text-wrap">
-								
-								<p><strong class="dark">BookTravel chấp nhận hình thức thanh toán :</strong></p>
-								<p>Visa,Thẻ ngân hàng nội địa, Tiền mặt , Chuyển khoản</p>
-							</div>
+						<div class="bottom-nav">
+							<!--back up button-->
+							<a href="#" class="scroll-to-top" title="Back up">Lên Trên</a> 
+							<!--//back up button-->
 							
-							<h3>Không Quên </h3>
-							<div class="text-wrap">
-								<p>You can change or cancel your booking via our online self service tool myBookYourTravel:
-								<p>Bạn có thể thay đổi hoặc huỷ đặt vé thông qua phần dịch vụ tài khoản của bạn:
-								<a href="my_account.html">Tài khoản của tôi</a></p>
-								<p><strong>Chúng tôi mong bạn sẽ có phút giây thư giãn bên </strong><i>chuyến đi BookTravel</i></p>
-							</div>
-						</fieldset>
-					</form>
+
+						</div>
+						<!--//bottom navigation-->
+					</div>
 				</div>
 				<!--//three-fourth content-->
-			<jsp:useBean id="tourDAO" class="dao.TourDAO" scope="page"></jsp:useBean>
-			<c:choose>
-				<c:when test="${sessionScope.order != null }">
-				    <c:set var="tour" value="${tourDAO.getTourDetail(sessionScope.order.idTourDetail)}"></c:set>  
-				</c:when>
-				<c:otherwise>
-					<c:set var="tour" value="${tourDAO.getTourDetail(idTourDetail)}"></c:set>  
-				</c:otherwise>
-			</c:choose>
-			
-				<!--right sidebar-->
 				
+				<!--sidebar-->
 				<aside class="one-fourth right-sidebar">
-						<!--Booking details-->
-						<article class="hotel-details booking-details">
-						<h1>${tour.title }	</h1>
-						<dl class="booking-info">
-							<dt>Mã Tour</dt>
-							<dd>${tour.idTourDetail }</dd>
-							<dt>Thời Gian</dt>
-							<dd>${tour.quatiDate }</dd>
-							<dt>Khởi Hành</dt>
-							<dd>${tour.timBegin }</dd>
-							<dt>Nơi Đón</dt>
-							<dd> ${tour.pickupPlace }</dd>
-							<dt>Số Chỗ Còn Nhận</dt>
-							<dd> ${tour.seatAvailable }</dd>
-						</dl>
-						<div class="price">
-						<c:choose>
-				<c:when test="${sessionScope.order != null }">
-					<p class="total">Tổng Tiền:<f:formatNumber value="${sessionScope.order.totalPrice}" minFractionDigits="0" maxFractionDigits="0"></f:formatNumber> đ</p>
-				</c:when>
-				<c:otherwise>
-					<p class="total">Tổng Tiền:<f:formatNumber value="${totalPrice}" minFractionDigits="0" maxFractionDigits="0"></f:formatNumber> đ</p>
-				</c:otherwise>
-			</c:choose>
-							
-							
-						</div>
-					</article>
-					<!--//Booking details-->
-					
-					<!--Need Help Booking?-->
+						<!--Need Help Booking?-->
 					<article class="widget">
 						<h4>Bạn Cần Trợ Giúp?</h4>
 						<p>Hãy gọi tới số dưới đây , Nhân viên của chúng tôi sẽ cung cấp các thông tin cho bạn nhanh nhất và dịch vu tốt nhất, Cảm ơn bạn đã tới <a href="#">BookTravel</a></p>
 						<p class="number" style="color: #858585;font-size: 18px;">0989-999-888</p>
 					</article>
 					<!--//Need Help Booking?-->
+					
+					<!--Why Book with us?-->
+					<article class="widget">
+						<h4>Tại Sao Chọn BookTravel ?</h4>
+						<h5>DỊCH VỤ KHÁCH HÀNG TỐT NHẤT</h5>
+						<p>Đội ngũ nhân viên tận tâm, chuyên nghiệp</p>
+						<h5>THANH TOÁN AN TOÀN VÀ LINH HOẠT</h5>
+						<p>Liên kết với các tổ chức tài chính</p>
+						<h5>LUÔN CÓ MỨC GIÁ TỐT NHẤT</h5>
+						<p>Bảo đảm giá tốt</p>
+						<h5>SẢN PHẨM ĐA DẠNG, CHẤT LƯỢNG</h5>
+						<p>Đạt chất lượng tốt nhất</p>
+						<h5>ĐẶT TOUR DỄ DÀNG VÀ NHANH CHÓNG</h5>
+						<p>Đặt tour chỉ với 3 bước</p>
+						<h5>HỖ TRỢ 24/7</h5>
+						<p>Hotline & Hỗ trợ trực tuyến</p>
+					</article>
+					<!--//Why Book with us?-->
 				</aside>
-				<!--//right sidebar-->
+				<!--//sidebar-->
 			</div>
 			<!--//main content-->
 		</div>
 	</main>
 	<!--//main-->
 	
-<!--footer-->
+	<!--footer-->
 	<footer class="footer">
 		<div class="wrap">
 			<div class="row">
@@ -312,7 +298,7 @@
 					<h6>Book Travel</h6>
 					<p>Số 8-Tôn Thất Thuyết - Hà Nội </p>
 					<p><em>P:</em> Tư Vấn 24/7: 0989-999-888</p>
-					<p><em>E:</em> <a href="#" title="booking@mail.com">booktravel@mail.com</a></p>
+					<p><em>E:</em> <a href="#" title="booking@mail.com">Angrycat@mail.com</a></p>
 				</article>
 				<!--//column-->
 				<!--column-->
@@ -354,15 +340,11 @@
 		</div>
 	</footer>
 	<!---footer-->
-
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="js/jquery.uniform.min.js"></script>
 	<script type="text/javascript" src="js/jquery.slimmenu.min.js"></script>
 	<script type="text/javascript" src="js/scripts.js"></script>
-	<script type="text/javascript">
-		function printpage()
-			{window.print()}
-	</script>
 </body>
 </html>

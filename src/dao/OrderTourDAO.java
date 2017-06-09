@@ -90,6 +90,7 @@ public class OrderTourDAO {
 					orderEntity.setTimeCreated(new Date());
 					orderEntity.setUser(userEntity);
 					session.save(orderEntity);
+					
 				    session.getTransaction().commit();
 				    
 			} catch (Exception e) {				

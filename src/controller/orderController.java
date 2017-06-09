@@ -13,7 +13,6 @@ import dao.OrderTourDAO;
 
 public class orderController extends ActionSupport implements SessionAware {
 	private Map<String, Object> sessionOrder;
-	public static int check =0;
 	private String checkCash;
 	private String fullName;
 	private int phone;
@@ -24,17 +23,8 @@ public class orderController extends ActionSupport implements SessionAware {
 	private String idTourDetail;
 	private String idOrder;
 	private int totalPrice;
-//	private OrderModel order;
-	
 	
 
-//	public OrderModel getOrder() {
-//		return order;
-//	}
-//
-//	public void setOrder(OrderModel order) {
-//		this.order = order;
-//	}
 
 	public String getIdOrder() {
 		return idOrder;
@@ -159,7 +149,7 @@ public class orderController extends ActionSupport implements SessionAware {
 //				order.setStateGetMoney(1);				
 //				 enoughSeat =	new OrderTourDAO().executeOrder(order);
 			case "onlineReturn":
-				OrderModel or = (OrderModel) sessionOrder.get("order");
+				OrderModel or = (OrderModel) sessionOrder.get("orderCar");
 				or.setModelPayment(3);
 				or.setStateGetMoney(1);						
 				enoughSeat =	new OrderTourDAO().executeOrder(or);

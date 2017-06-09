@@ -84,6 +84,7 @@ public class SerachTourDAO {
 					query.setParameter(0, subDate);
 					query.setParameter(1, addDate);
 					List<Object[]> listTour = query.list();
+					if(listTour.size() >0){
 					for(Object[] tourSearch : listTour){
 						TourModel tour = new TourModel();
 						tour.setIdTourDetail((String) tourSearch[0]);
@@ -93,7 +94,7 @@ public class SerachTourDAO {
 						tour.setTimBegin((Date) tourSearch[4]);		
 						setTours.add(tour);
 					}
-					
+					}
 					
 				} catch (Exception e) {
 					System.out.println("Error date: "+e.getMessage());

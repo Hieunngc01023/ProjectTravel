@@ -244,7 +244,7 @@
 							<div class="row">
 								<div class="f-item full-width">
 									<label>Ghi Chú Yêu Cầu Đặc Biệt:</label>
-									<textarea rows="7" cols="7"></textarea>
+									<textarea rows="7" cols="7" name="note"></textarea>
 								</div>
 							</div>
 							<h2><span>02 </span>Thông Tin Đặt Xe</h2>
@@ -258,7 +258,7 @@
 										<label for="getCar">Địa Điểm Lấy Xe </label>
 										<div class="f-item radio-cash">
 											<label for="checkAddress1">Tại BookTravel</label>
-											<input type="radio" checked id="checkAddress1" name="placeRecieve">
+											<input type="radio" checked id="checkAddress1" name="placeRecieve" >
 										</div>
 										<div class="f-item radio-cash">
 											<label for="checkAddress2">Tại Nhà Riêng</label>
@@ -267,7 +267,7 @@
 									</div>
 									<div class="f-item one-half">
 										
-										<input  type="text" id="getCar"  placeholder="Nhập số nhà ,đường,phường" readonly name="getCar"  value="Số 8-Tôn Thất Thuyết-Mỹ Đình-Hà Nội"/>
+										<input  type="text" id="getCar"  placeholder="Nhập số nhà ,đường,phường" readonly name=placeRecieve  value="hn"/>
 										<p style="display: none;" class="info" id="carInfo"></p>
 									</div>
 								</div>
@@ -288,9 +288,16 @@
 											<input type="radio" id="checkAddress4" name="placeRender">
 										</div>
 									</div>
+									<div class="full-width">
+											<div class="one-half">
+												<input type="checkbox"  onclick="$(this).val(this.checked ? 1 : 0)" id="driver" name="stateDriver">
+												<label for="driver">Thuê người lái xe 300,000đ/ngày</label>
+											</div>
+										</div>
+									
 									<div class="f-item one-half">
 										
-										<input type="text" id="returnCar"  placeholder="Nhập số nhà ,đường,phường" readonly name="returnCar"  value="Số 8-Tôn Thất Thuyết-Mỹ Đình-Hà Nội"/>
+										<input type="text" id="returnCar"  placeholder="Nhập số nhà ,đường,phường" readonly name="placeRender"  value="hn"/>
 										<p style="display: none;" class="info" id="carInfo2"></p>
 									</div>
 								</div>
@@ -339,6 +346,7 @@
 									 		<jsp:useBean id="carDAO" class="dao.CarDAO"></jsp:useBean>
 			<c:set var="id" value="${param.id }"></c:set>
 			<c:set var="car" value="${carDAO.getCarDetails(id) }"></c:set>
+										<input type="hidden" value="${car.price }" name="priceCar">
 										<input type="hidden" value="${car.idCar }" name="idCar">
 									 
 									<input type="submit" onclick=" return checkdate()"   class="gradient-button" value="Đặt Tour" id="next-step" />

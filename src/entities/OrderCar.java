@@ -27,6 +27,27 @@ public class OrderCar {
 	@Column(name = "TIMEDROPOFF", nullable = false)
 	private Date timeDropOff;
 	
+	@Temporal(TemporalType.DATE)
+	private Date timeCreated;
+	@Column(name = "MODEL_PAYMENT", nullable= false)
+	private int modelPayment;
+	
+	public Date getTimeCreated() {
+		return timeCreated;
+	}
+
+	public void setTimeCreated(Date timeCreated) {
+		this.timeCreated = timeCreated;
+	}
+
+	public int getModelPayment() {
+		return modelPayment;
+	}
+
+	public void setModelPayment(int modelPayment) {
+		this.modelPayment = modelPayment;
+	}
+
 	public String getIdOrder() {
 		return idOrder;
 	}
@@ -98,6 +119,17 @@ public class OrderCar {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
+	@Column(name="QUANTITY", nullable= false)
+	private int quanOrder;
+
+	public int getQuanOrder() {
+		return quanOrder;
+	}
+
+	public void setQuanOrder(int quanOrder) {
+		this.quanOrder = quanOrder;
+	}
 
 	@Column(name = "PLACE_RECIEVE", nullable = false)
 	private String placeRecieve;
@@ -113,10 +145,20 @@ public class OrderCar {
 	@Column(name = "NOTE")
 	private String note;
 	
+	@Column(name = "STATE_GETMONEY", nullable = false)
+	private int stateGetMoney;
 	@ManyToOne
 	private Car car;
 	
 	
+	public int getStateGetMoney() {
+		return stateGetMoney;
+	}
+
+	public void setStateGetMoney(int stateGetMoney) {
+		this.stateGetMoney = stateGetMoney;
+	}
+
 	public String getNote() {
 		return note;
 	}

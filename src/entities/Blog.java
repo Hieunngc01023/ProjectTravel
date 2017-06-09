@@ -12,7 +12,10 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-@Table(name="TABLE")
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@Table(name="TABLE_BLOG")
 @Entity
 public class Blog {
 	@Column(name= "ID")

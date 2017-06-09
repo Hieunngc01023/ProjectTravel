@@ -1,10 +1,15 @@
 package controller;
+import dao.*;
 
 import java.util.Map;
+
+import model.OrderCarModel;
 
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
+
+import entities.Order;
 
 public class OrderCarAction extends ActionSupport implements SessionAware{
 	private Map<String, Object> sessionOrderCar;
@@ -18,7 +23,43 @@ public class OrderCarAction extends ActionSupport implements SessionAware{
 	private String placeRender;
 	private int stateDriver;
 	private int idCar;
+	private String note;
 	private String idOrder;
+	private int priceCar;
+	public int getPriceCar() {
+		return priceCar;
+	}
+
+	public void setPriceCar(int priceCar) {
+		this.priceCar = priceCar;
+	}
+
+	private int quantityRentCar;
+	private String checkCash;
+	public String getNote() {
+		return note;
+	}
+
+	public int getQuantityRentCar() {
+		return quantityRentCar;
+	}
+
+	public void setQuantityRentCar(int quantityRentCar) {
+		this.quantityRentCar = quantityRentCar;
+	}
+
+	public String getCheckCash() {
+		return checkCash;
+	}
+
+	public void setCheckCash(String checkCash) {
+		this.checkCash = checkCash;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
+	}
+
 	private int totalPrice;
 	
 	
@@ -46,13 +87,7 @@ public class OrderCarAction extends ActionSupport implements SessionAware{
 		this.idCar = idCar;
 	}
 
-	public Map<String, Object> getSessionOrderCar() {
-		return sessionOrderCar;
-	}
-
-	public void setSessionOrderCar(Map<String, Object> sessionOrderCar) {
-		this.sessionOrderCar = sessionOrderCar;
-	}
+	
 
 	public String getEmail() {
 		return email;
@@ -134,9 +169,59 @@ public class OrderCarAction extends ActionSupport implements SessionAware{
 	
 	@Override
 	public String execute() throws Exception {
+			OrderCarModel order = new OrderCarModel();
+			order.setAddress(address);
+			order.setEmail(email);
+			order.setFullName(fullName);
+			order.setIdCar(idCar);
+			order.setNote(note);
+			order.setPhone(phone);
+			order.setTiemDropOff(tiemDropOff);
+			order.setTimePickUp(timePickUp);
+			order.setPlaceRecieve(placeRecieve);
+			order.setPlaceRender(placeRender);
+			order.setStateDriver(stateDriver);
+			order.setQuantityRentCar(1);
+			String typePayment = checkCash;
 			
-
-		return super.execute();
+			boolean enoughCar = false;
+			
+			switch (typePayment) {
+			case "tienmat":
+				if(sessionOrderCar.get("orderCar") != null)
+					sessionOrderCar.remove("orderCar");
+				order.setModelPayment(1);
+				order.setStateGetMoney(0);
+				enoughCar = new OrderCarDAO().executeCarOrder(order);				
+				break;
+			case "chuyenkhoan":
+				if(sessionOrderCar.get("orderCar") != null)
+					sessionOrderCar.remove("orderCar");
+				order.setModelPayment(2);
+				order.setStateGetMoney(0);
+				enoughCar = new OrderCarDAO().executeCarOrder(order);	
+				break;
+			case "online":			
+				order.setModelPayment(3);
+				order.setStateGetMoney(1);
+				order.setTotalPrice(new OrderCarDAO().getPrice(order.getTimePickUp(), order.getTiemDropOff(), order.getPlaceRecieve(), order.getPlaceRender(), order.getStateDriver(), priceCar));
+				sessionOrderCar.put("orderCar", order);				
+				return "step3";
+			case "onlineReturn" :
+				OrderCarModel orderCar = (OrderCarModel) sessionOrderCar.get("orderCar");
+				orderCar.setModelPayment(3);
+				orderCar.setStateGetMoney(1);	
+				enoughCar =  new OrderCarDAO().executeCarOrder(orderCar);
+				orderCar.setIdOrder(OrderCarDAO.idOrderNew);
+				orderCar.setTotalPrice(OrderCarDAO.totalPrice);
+				sessionOrderCar.put("orderCar", orderCar);
+				break;
+			}
+			this.idOrder = OrderCarDAO.idOrderNew;
+			this.totalPrice = OrderCarDAO.totalPrice;
+			if(enoughCar == true)
+				return SUCCESS;
+		return ERROR;
 	}
 	
 

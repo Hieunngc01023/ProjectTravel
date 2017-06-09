@@ -37,11 +37,16 @@
         	<result name="success">DetailTravel.jsp</result>
         	<result name="error">error.html</result>
        	</action> 
-       	<action name="orderCarAction" class="OrderCarAction">
-       		<result name="success"></result>
+       	
+       	<action name="orderCarAction" class="controller.OrderCarAction">
+       		<result name="success"> bookCarStepThree.jsp</result>
        		<result name="error">error.html</result>
-       		<result name="step3"></result>
+       		<result name="step3">bookCarStepTwo.jsp</result>
        	</action>  
+       	<action name="searchCarAction" class="controller.SearchCarController">
+       		<result name="success">searchCar.jsp</result>
+       		<result name="error">error.html</result>
+       	</action>
         	
     </package>
 </struts>

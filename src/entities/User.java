@@ -32,6 +32,25 @@ public class User {
 	@OneToMany(mappedBy= "user")
 	private List<Blog> listBlogs = new ArrayList<>();
 	
+	@OneToMany(mappedBy = "user")
+	private List<CommentBlog> listCommentBlog = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "user")
+	private List<SubCommentBlog> listSubCommentBLog = new ArrayList<>();
+	
+	
+	public List<CommentBlog> getListCommentBlog() {
+		return listCommentBlog;
+	}
+	public void setListCommentBlog(List<CommentBlog> listCommentBlog) {
+		this.listCommentBlog = listCommentBlog;
+	}
+	public List<SubCommentBlog> getListSubCommentBLog() {
+		return listSubCommentBLog;
+	}
+	public void setListSubCommentBLog(List<SubCommentBlog> listSubCommentBLog) {
+		this.listSubCommentBLog = listSubCommentBLog;
+	}
 	public List<Comment> getListComments() {
 		return listComments;
 	}

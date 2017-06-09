@@ -28,49 +28,27 @@ public class TestC extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 		
-		Car car = new Car();
-		car.setBrand("Toyota");
-		car.setContent("Ok fine");
-		car.setFuel(2);
-		car.setGear(1);
-		car.setImageTitle("image");
-		car.setNameCar("Toyota fortuner");
-		car.setPrice(1000000);
-		car.setQuanitySeat(7);
-		car.setQuantityCar(10);
+		Blog blog = new Blog();
+		blog.setContent("Content");
+		blog.setTitle("HaLong- Mua nang ha.");
+		blog.setImageTitle("image");
+		blog.setTimeCreated(new Date());
 		
-		Car car2 = new Car();
-		car2.setBrand("Toyota camry");
-		car2.setContent("Ok fine");
-		car2.setFuel(2);
-		car2.setGear(1);
-		car2.setImageTitle("image");
-		car2.setNameCar("Toyota fortuner");
-		car2.setPrice(800000);
-		car2.setQuanitySeat(4);
-		car2.setQuantityCar(8);
-
-		Car car3 = new Car();
-		car3.setBrand("Honda Acula");
-		car3.setContent("Ok fine");
-		car3.setFuel(2);
-		car3.setGear(2);
-		car3.setImageTitle("image");
-		car3.setNameCar("Toyota fortuner");
-		car3.setPrice(1200000);
-		car3.setQuanitySeat(4);
-		car3.setQuantityCar(6);
+		Blog blog2 = new Blog();
+		blog2.setContent("Content");
+		blog2.setTitle("Quang binh- Than Thuong.");
+		blog2.setImageTitle("image");
+		blog2.setTimeCreated(new Date());
+		
 		
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		try {
 			session.beginTransaction();
-			session.save(car);
-			session.save(car2);
-			session.save(car3);
-					
+			User user = (User) session.get(User.class, 1);
+			blog.setUser(user);
+			session.save(blog);
+			session.save(blog2);
 			session.getTransaction().commit();
-
-			
 			
 		} catch (HibernateException e) {
 			e.printStackTrace();

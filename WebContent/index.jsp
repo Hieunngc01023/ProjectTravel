@@ -50,9 +50,22 @@
 			<div class="ribbon">
 				<nav>
 					<ul class="profile-nav">
-						<li class="active"><a href="#" title="My Account">Tài Khoản</a></li>
+					
+					
+						<c:choose>
+							<c:when test="${sessionScope.email != null }">
+								 <li class="active"><a href="my_account.html" title="Settings">Tài Khoản</a></li>
+						          <li class="active"><a href="logOut.jsp" title="register">Đăng Xuất</a></li> 
+							</c:when>
+							<c:otherwise>
+								<li  class="active"><a href="login.jsp" title="Login">Đăng Nhập</a></li>
+							</c:otherwise>
+						</c:choose>
+						
+					
+						<!-- <li class="active"><a href="#" title="My Account">Tài Khoản</a></li>
 						<li><a href="login.jsp" title="Login">Đăng Nhập</a></li>
-						<li><a href="my_account.html" title="Settings">Cài Đặt</a></li>
+						<li><a href="my_account.html" title="Settings">Cài Đặt</a></li> -->
 					</ul>
 					<ul class="lang-nav">
 						<li class="active"><a href="#" title="VietName">VietNamese</a></li>
@@ -90,7 +103,7 @@
 					<li><a href="cruises.html" title="Cruises">Chuyến Đi</a></li>
 					<li><a href="car.jsp" title="Car rental">Thuê Xe</a></li>
 					 <li><a href="contact.jsp" title="Contact">Liên Hệ</a></li>
-					<li><a href="blog.html" title="Blog">Chia Sẻ</a>
+					<li><a href="blog.jsp" title="Blog">Chia Sẻ</a>
 						<ul>
 							<li><a href="blog_single.html" title="Single Post">Single Post</a>
 						</ul>
@@ -195,8 +208,8 @@
 								<label for="cruise">Chuyến Đi</label>
 							</div>
 							<div class="f-item one-half">
-								<input type="radio" name="radio" id="rent_a_car" value="form6" />
-								<label for="rent_a_car">Thuê Xe</label>
+								<input type="radio" name="radio" id="rentcar" value="form6" />
+								<label for="rentcar">Thuê Xe</label>
 							</div>
 						</div>
 					</div>
@@ -430,7 +443,43 @@
 							<!--//column-->
 						</div>	
 						<!--//form cruise-->	
-						<!--form rent a car-->
+												<!--form rent a car-->
+						<div class="form row" id="form6">
+							<!--column-->
+							<div class="column one-half">
+								<h5><span>02</span> Chọn Tên xe ?</h5>
+								<div class="row">
+									<div class="f-item full-width">
+										<label for="destination7">Tìm Kiếm Xe</label>
+										<input type="text" placeholder="Tìm Xe Bạn Muốn Thuê" id="destination7" name="title"  />
+									</div>
+									 
+								</div>
+							</div>
+							<!--//column-->
+							
+							<!--column-->
+							<div class="column one-half">
+								<h5><span>03</span>  Kiểu Xe ?</h5>
+								<div class="row">
+									<div class="f-item full-width">
+										<label for="spinner2">Hãng Xe:</label>
+										<select name="brand">
+											<option value="HonDa"> HonDa </option>
+											<option value="Toyota"> Toyota </option>
+											<option value="SamSung"> SamSung </option>
+											<Option value="SamCo"> SamCo</option>
+											<Option value="HuynDai"> HuynDai</option>
+											<Option value="Mecedes"> Mecedes</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<!--//column-->
+						</div>	
+						<!--//form rent a car-->
+						
+						
 						<div class="form row" id="form6">
 							<!--column-->
 							<div class="column one-third">
@@ -1073,7 +1122,7 @@
              		 $('form').attr('action', 'search-tour.html');
              	}); 
              	$("#rentcar").click(function(){
-             		 $('form').attr('action', 'search-tour.html');
+             		 $('form').attr('action', 'searchCarAction');
              	}); 
              	$("#flight").click(function(){
              		 $('form').attr('action', 'search-tour.html');

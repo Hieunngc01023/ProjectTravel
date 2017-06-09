@@ -12,6 +12,7 @@ public class tourSearchController extends ActionSupport{
 	private String dropOffPlace;
 	private String datepicker8;
 	private int quantityDate;
+	
 	private Set<TourModel> setTours;
 	
 	public String getPickUpPlace() {

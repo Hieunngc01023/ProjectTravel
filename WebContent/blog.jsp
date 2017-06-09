@@ -180,8 +180,9 @@
 						<header class="entry-header">
 							<h2><a href="blogDetail.jsp?id=${blog.idBlog }">${blog.title }</a></h2>
 							<p class="entry-meta">
-								<span class="date">Ngày: ${blog.timeCreated }</span> 
-								<span class="comments"><a href="#">4 Bình luận</a></span>
+								<span class="date">Ngày: ${blog.timeCreated }</span>
+								<jsp:useBean id="cmtBlogDAO" class="dao.CommentBlogDAO"></jsp:useBean> 
+								<span class="comments"><a href="#">${cmtBlogDAO.getTotalComment(blog.idBlog) } Bình luận</a></span>
 							</p>
 						</header>
 						<div class="entry-featured"><a href="#"><figure><img src="images/uploads/cruise1.jpg" alt="" /></figure></a></div>

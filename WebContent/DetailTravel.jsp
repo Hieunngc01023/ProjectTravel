@@ -186,7 +186,6 @@
 							
 							
 							<c:set var="id" value="${param.idTour}"></c:set>
-							<c:out value=""></c:out>
 						<c:choose>
 							<c:when test="${idTourDetail != null }">
 								<c:set var="tour" value="${tourDAO.getTourDetail(idTourDetail)}"></c:set>
@@ -510,32 +509,7 @@
 							</form>
 								</c:otherwise>
 							</c:choose>
-							
-							<%-- <form class="row" id= "form" action="commentAction">
-							<input type="hidden" name="typeComment" id="typeComment" value="main">
-							<input type="hidden" name="idMain" value ="" id="idMain">
-							<input type="hidden" name="idTour" value="${tour.idTour }">
-							<input type="hidden" name= "idTourDetail" value="${tour.idTourDetail }">
-								<div class="f-item full-width">
-									<label for="name">Họ và Tên</label>
-									<input type="text" placeholder="Phải Nhập Họ Tên" id="name" name="name"/>
-								</div>
-								<div class="f-item full-width">
-									<label for="eadress">E-mail</label>
-									<input type="email" placeholder="Phải nhập Email" id="email" name="email"/>
-								</div>
-								<div class="f-item full-width">
-									<label for="comment">Nội Dung</label>
-									<textarea id="comment" rows="10" cols="10" name="content"></textarea>
-								</div>
-								<div class="f-item full-width">
-									<input type="submit" value="Gửi Bình Luận" class="gradient-button"  />
-								</div>
-							</form> --%>
-							
-							
-							
-							
+			
 						</article>
 						<!--//post comment form-->
 					</div>

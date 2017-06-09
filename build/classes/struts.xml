@@ -47,6 +47,10 @@
        		<result name="success">searchCar.jsp</result>
        		<result name="error">error.html</result>
        	</action>
+       	<action name="commentBlogAction" class="controller.CommentBLogController">
+       		<result name="success">blogDetail.jsp</result>
+       		<result name="error">error.html</result>
+       	</action>
         	
     </package>
 </struts>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -154,124 +156,149 @@
 	<!--main-->
 	<main class="main">		
 		<div class="wrap">
-		
+			<c:set var="id" value="${param.id }"></c:set>			
+			<jsp:useBean id="blogDAO" class="dao.BlogDAO" scope="page"></jsp:useBean>
+			<c:choose>
+				<c:when test="${idBlog != null }">
+					<c:set var="blog" value="${blogDAO.getDetailBlog(idBlog) }"></c:set>
+				</c:when>
+				<c:otherwise>
+					<c:set var="blog" value="${blogDAO.getDetailBlog(id) }"></c:set>
+				</c:otherwise>
+			</c:choose>
 			
 			<div class="row">
 				<!--three-fourth content-->
 				<div class="three-fourth">
+					
+				
+				
 					<!--post-->
-					<article class="static-content post">
+				<article class="static-content post">
 						<header class="entry-header">
-							<h1>Fringilla Mollis Tellus Porta Euismod Nullam</h1>
+							<h1>${blog.title }</h1>
 							<p class="entry-meta">
-								<span class="date">Ngày:20/10/2017</span> 
+								<span class="date">Ngày: ${blog.timeCreated }</span> 
 								<span class="comments"><a href="#">4 Bình Luận</a></span>
 							</p>
 						</header>
 						<div class="entry-featured"><figure><img src="images/uploads/cruise3.jpg" alt="" /></figure></div>
 						<div class="entry-content">
-							<h2>This is a heading h2</h2>
-							<p><strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</strong></p>
-							<p>Laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-							
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-							<h3>This is a heading h3</h3>
-							<ul>
-								<li>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</li>
-								<li>Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</li>
-								<li>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</li>
-								<li>Sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. </li>	   
-							</ul>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <a href="#">this is a link</a>. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-							<h4>This is a heading h4</h4>
-							<figure class="left_pic"><img src="images/uploads/cruise2.jpg" alt="" width="350" /></figure>
-							<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-							<div class="clear"></div>
-							<p></p>
-							<h4>This is a heading h4</h4>
-							<figure class="right_pic"><img src="images/uploads/cruise4.jpg" alt="" width="350" /></figure>
-							<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+							<p> ${blog.content }</p>
 						</div>
-					</article>
+					</article> 
 					<!--//post-->
 					
 						<!--comments-->
+						
+					<jsp:useBean id="cmtBlog" class="dao.CommentBlogDAO"></jsp:useBean>
 					<div class="comments">
-						<h2>4 comments</h2>	
+						<h2>${cmtBlog.getTotalComment(id) } comments</h2>	
 						<!--single comment-->
-						<div class="comment depth-0">
+						<c:forEach items="${cmtBlog.getListComments(id) }" var="comment">
+							<c:if test="${cmtBlog.getListComments(id).size() >0 }">															
+								<div class="comment depth-0">
 							<div class="third">
 								<figure><img alt="avatar" src="images/uploads/avatar.jpg" /></figure>
 								<address>
-									<span>Admin</span><br/>
-									22.3.2016
+									<span>${comment.nameUser }</span><br />
+									${comment.dateComment }
 								</address>
 							</div>
-							<div class="comment-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nisi elit, feugiat vestibulum laoreet at, auctor sit amet velit. Vivamus in consequat magna. Sed ipsum diam, volutpat sed consectetur in, tristique nec justo. Nullam egestas consectetur odio, a gravida odio lobortis vitae.</div>
-							<a href="#" class="reply">Reply</a>
+							<div class="comment-content">${comment.content }</div>
+							<a href="#form" class="reply" onclick="callfunction(${comment.idComment}, 'sub')">Reply</a>
 						</div>
-						<!--//single comment-->
-						
-						<!--single comment-->
-						<div class="comment depth-0">
+							<c:if test="${cmtBlog.getListSubComment(id).size() > 0 }">
+								<c:forEach items="${cmtBlog.getListSubComment(comment.idComment)}" var="sub">
+									<div class="comment depth-1">
 							<div class="third">
 								<figure><img alt="avatar" src="images/uploads/avatar.jpg" /></figure>
 								<address>
-									<span>Admin</span><br />
-									22.3.2016
+									<span> ${sub.nameUser }</span><br />
+									 ${sub.dateComment}
 								</address>
 							</div>
-							<div class="comment-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nisi elit, feugiat vestibulum laoreet at, auctor sit amet velit. Vivamus in consequat magna. Sed ipsum diam, volutpat sed consectetur in, tristique nec justo. Nullam egestas consectetur odio, a gravida odio lobortis vitae.</div>
-							<a href="#" class="reply">Reply</a>
+							<div class="comment-content">${sub.content }</div>
 						</div>
+
+							</c:forEach>
+								
+							</c:if>
+								
+							</c:if>
+						</c:forEach>
+						
+						
+						
+						
+						
+						
+						
 						<!--//single comment-->
 						
-						<!--single comment-->
-						<div class="comment depth-1">
-							<div class="third">
-								<figure><img alt="avatar" src="images/uploads/avatar.jpg" /></figure>
-								<address>
-									<span>Admin</span><br />
-									22.3.2016
-								</address>
-							</div>
-							<div class="comment-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nisi elit, feugiat vestibulum laoreet at, auctor sit amet velit. Vivamus in consequat magna. Sed ipsum diam, volutpat sed consectetur in, tristique nec justo. Nullam egestas consectetur odio, a gravida odio lobortis vitae.</div>
-							<!-- <a href="#" class="reply">Reply</a> -->
-						</div>
-						<!--//single comment-->
 						
-						<!--single comment-->
-						<div class="comment depth-1">
-							<div class="third">
-								<figure><img alt="avatar" src="images/uploads/avatar.jpg" /></figure>
-								<address>
-									<span>Admin</span><br />
-									22.3.2016
-								</address>
-							</div>
-							<div class="comment-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nisi elit, feugiat vestibulum laoreet at, auctor sit amet velit. Vivamus in consequat magna. Sed ipsum diam, volutpat sed consectetur in, tristique nec justo. Nullam egestas consectetur odio, a gravida odio lobortis vitae.</div>
-							<!-- <a href="#" class="reply">Reply</a> -->
-						</div>
-						<!--//single comment-->
-						
-						<!--single comment-->
-						<div class="comment depth-0">
-							<div class="third">
-								<figure><img alt="avatar" src="images/uploads/avatar.jpg" /></figure>
-								<address>
-									<span>Admin</span><br />
-									22.3.2016
-								</address>
-							</div>
-							<div class="comment-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nisi elit, feugiat vestibulum laoreet at, auctor sit amet velit. Vivamus in consequat magna. Sed ipsum diam, volutpat sed consectetur in, tristique nec justo. Nullam egestas consectetur odio, a gravida odio lobortis vitae.</div>
-							<a href="#" class="reply">Reply</a>
-						</div>
-						<!--//single comment-->
-						
+						<script type="text/javascript">
+								function callfunction(a, b){
+									document.getElementById("typeComment").value = b;
+									document.getElementById("idMain").value = a;
+								}
+							</script>
 						<!--post comment form-->
 						<article class="post-comment static-content">
+							<h3>Để Lại Bình Luận</h3>
+							
+							<c:choose>
+								<c:when test="${sessionScope.email != null }">
+								<jsp:useBean id="user" class="dao.UserDAO" scope="page"></jsp:useBean>
+								    <c:set var="user" value="${user.getUserDetail(sessionScope.email) }"></c:set>
+										<form class="row" id= "form" action="commentBlogAction">
+							<input type="hidden" name="typeComment" id="typeComment" value="main">
+							<input type="hidden" name="idMain" value ="" id="idMain">
+							<input type="hidden" name="idBlog" value="${blog.idBlog }">
+								<div class="f-item full-width">
+									<label for="name">Họ và Tên</label>
+									<input type="text" placeholder="Phải Nhập Họ Tên" id="name" name="name" value="${user.fullName }" readonly="readonly"/>
+								</div>
+								<div class="f-item full-width">
+									<label for="eadress">E-mail</label>
+									<input type="email" placeholder="Phải nhập Email" id="email" name="email" value="${user.email }" readonly="readonly"/>
+								</div>
+								<div class="f-item full-width">
+									<label for="comment">Nội Dung</label>
+									<textarea id="comment" rows="10" cols="10" name="content"></textarea>
+								</div>
+								<div class="f-item full-width">
+									<input type="submit" value="Gửi Bình Luận" class="gradient-button"  />
+								</div>
+							</form>
+								</c:when>
+								<c:otherwise>
+									<form class="row" id= "form" action="commentAction">
+							<input type="hidden" name="typeComment" id="typeComment" value="main">
+							<input type="hidden" name="idMain" value ="" id="idMain">
+							<input type="hidden" name="idBlog" value="${blog.idBlog }">
+								<div class="f-item full-width">
+									<label for="name">Họ và Tên</label>
+									<input type="text" placeholder="Phải Nhập Họ Tên" id="name" name="name"/>
+								</div>
+								<div class="f-item full-width">
+									<label for="eadress">E-mail</label>
+									<input type="email" placeholder="Phải nhập Email" id="email" name="email"/>
+								</div>
+								<div class="f-item full-width">
+									<label for="comment">Nội Dung</label>
+									<textarea id="comment" rows="10" cols="10" name="content"></textarea>
+								</div>
+								<div class="f-item full-width">
+									<input type="submit" value="Gửi Bình Luận" class="gradient-button"  />
+								</div>
+							</form>
+								</c:otherwise>
+							</c:choose>
+			
+						</article>
+						
+						<%-- <article class="post-comment static-content">
 							<h3>Để Lại Bình Luận</h3>
 							<form class="row">
 								<div class="f-item full-width">
@@ -290,7 +317,7 @@
 									<input type="submit" value="Gửi Bình Luận" class="gradient-button" />
 								</div>
 							</form>
-						</article>
+						</article> --%>
 						<!--//post comment form-->
 					</div>
 					<!--//comments-->

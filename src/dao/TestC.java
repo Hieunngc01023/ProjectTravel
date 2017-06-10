@@ -35,7 +35,6 @@ public class TestC extends ActionSupport {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		try {
 			session.beginTransaction();
-			System.out.println(new CommentBlogDAO().getTotalComment(1));
 			session.getTransaction().commit();
 			
 		} catch (HibernateException e) {

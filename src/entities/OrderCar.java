@@ -24,6 +24,7 @@ public class OrderCar {
 	@Column(name = "TIMEPICKUP", nullable = false)
 	private Date timePickUp;
 	
+	@Temporal(TemporalType.DATE)
 	@Column(name = "TIMEDROPOFF", nullable = false)
 	private Date timeDropOff;
 	

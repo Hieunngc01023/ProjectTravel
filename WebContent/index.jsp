@@ -54,7 +54,7 @@
 					
 						<c:choose>
 							<c:when test="${sessionScope.email != null }">
-								 <li class="active"><a href="my_account.html" title="Settings">Tài Khoản</a></li>
+								 <li class="active"><a href="myAccount.jsp" title="Settings">Tài Khoản</a></li>
 						          <li class="active"><a href="logOut.jsp" title="register">Đăng Xuất</a></li> 
 							</c:when>
 							<c:otherwise>

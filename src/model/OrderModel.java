@@ -7,6 +7,7 @@ public class OrderModel {
 	private String fullName;
 	private int phone;
 	private int member;
+
 	
 	public String getIdOrder() {
 		return idOrder;
@@ -26,6 +27,7 @@ public class OrderModel {
 	private String idTourDetail;
 	private int idUser;
 	private int modelPayment;
+	
 	public int getModelPayment() {
 		return modelPayment;
 	}

@@ -142,6 +142,7 @@ public class orderController extends ActionSupport implements SessionAware {
 			case "online":
 				order.setModelPayment(3);
 				order.setStateGetMoney(1);	
+				order.setTotalPrice(new OrderTourDAO().getPriceofStep2(idTourDetail, member));
 				sessionOrder.put("order", order);				
 				return "step3";	
 				

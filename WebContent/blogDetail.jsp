@@ -159,8 +159,9 @@
 			<c:set var="id" value="${param.id }"></c:set>			
 			<jsp:useBean id="blogDAO" class="dao.BlogDAO" scope="page"></jsp:useBean>
 			<c:choose>
-				<c:when test="${idBlog != null }">
+				<c:when test="${idBlog >0 }">
 					<c:set var="blog" value="${blogDAO.getDetailBlog(idBlog) }"></c:set>
+					<c:set var="id" value="${idBlog }"></c:set>
 				</c:when>
 				<c:otherwise>
 					<c:set var="blog" value="${blogDAO.getDetailBlog(id) }"></c:set>
@@ -178,8 +179,10 @@
 						<header class="entry-header">
 							<h1>${blog.title }</h1>
 							<p class="entry-meta">
+							<jsp:useBean id="cmtBlog" class="dao.CommentBlogDAO"></jsp:useBean>
+							
 								<span class="date">Ngày: ${blog.timeCreated }</span> 
-								<span class="comments"><a href="#">4 Bình Luận</a></span>
+								<span class="comments"><a href="#">${cmtBlog.getTotalComment(blog.idBlog) } Bình Luận</a></span>
 							</p>
 						</header>
 						<div class="entry-featured"><figure><img src="images/uploads/cruise3.jpg" alt="" /></figure></div>
@@ -191,9 +194,8 @@
 					
 						<!--comments-->
 						
-					<jsp:useBean id="cmtBlog" class="dao.CommentBlogDAO"></jsp:useBean>
 					<div class="comments">
-						<h2>${cmtBlog.getTotalComment(id) } comments</h2>	
+						<h2> ${ cmtBlog.getTotalComment(id) } comments</h2>	
 						<!--single comment-->
 						<c:forEach items="${cmtBlog.getListComments(id) }" var="comment">
 							<c:if test="${cmtBlog.getListComments(id).size() >0 }">															
@@ -206,6 +208,7 @@
 								</address>
 							</div>
 							<div class="comment-content">${comment.content }</div>
+							
 							<a href="#form" class="reply" onclick="callfunction(${comment.idComment}, 'sub')">Reply</a>
 						</div>
 							<c:if test="${cmtBlog.getListSubComment(id).size() > 0 }">
@@ -228,12 +231,7 @@
 							</c:if>
 						</c:forEach>
 						
-						
-						
-						
-						
-						
-						
+		
 						<!--//single comment-->
 						
 						
@@ -273,7 +271,7 @@
 							</form>
 								</c:when>
 								<c:otherwise>
-									<form class="row" id= "form" action="commentAction">
+									<form class="row" id= "form" action="commentBlogAction">
 							<input type="hidden" name="typeComment" id="typeComment" value="main">
 							<input type="hidden" name="idMain" value ="" id="idMain">
 							<input type="hidden" name="idBlog" value="${blog.idBlog }">
@@ -298,27 +296,7 @@
 			
 						</article>
 						
-						<%-- <article class="post-comment static-content">
-							<h3>Để Lại Bình Luận</h3>
-							<form class="row">
-								<div class="f-item full-width">
-									<label for="name">Họ và Tên</label>
-									<input type="text" placeholder="Phải Nhập Họ Tên" id="name" />
-								</div>
-								<div class="f-item full-width">
-									<label for="eadress">E-mail</label>
-									<input type="email" placeholder="Phải nhập Email" id="eadress" />
-								</div>
-								<div class="f-item full-width">
-									<label for="comment">Nội Dung</label>
-									<textarea id="comment" rows="10" cols="10"></textarea>
-								</div>
-								<div class="f-item full-width">
-									<input type="submit" value="Gửi Bình Luận" class="gradient-button" />
-								</div>
-							</form>
-						</article> --%>
-						<!--//post comment form-->
+						
 					</div>
 					<!--//comments-->
 					

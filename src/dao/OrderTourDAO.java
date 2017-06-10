@@ -30,6 +30,23 @@ public class OrderTourDAO {
 		return price;	
 		}
 		
+		public int getPriceofStep2( String idTourDetail, int member){
+			int price = 0;
+			Session session = HibernateUtil.sessionFactory.openSession();
+			try {
+				session.beginTransaction();
+				TourDetail tour = (TourDetail) session.get(TourDetail.class, idTourDetail );
+				price = getPriceAfterSale(tour.getRealPrice(), tour.getSale1(), tour.getSale2(), member);
+				session.getTransaction().commit();
+			} catch (Exception e) {
+				session.getTransaction().rollback();
+			}
+			finally{
+				session.close();
+			}
+			return price;
+		}
+		
 		public boolean  executeOrder(OrderModel order){
 			Session session = HibernateUtil.sessionFactory.openSession();
 			try {

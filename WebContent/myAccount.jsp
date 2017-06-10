@@ -11,7 +11,7 @@
 	<meta name="description" content="Book Your Travel - Online Booking HTML Template">
 	<meta name="author" content="themeenergy.com">
 	
-	<title>Book Your Travel - Booking</title>
+	<title>Book Your Travel - My account</title>
 	
 	<link rel="stylesheet" href="css/style.css" />
 	<link rel="stylesheet" href="css/theme-turqoise.css" id="template-color" />
@@ -28,7 +28,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
+<body class="myaccount">
 	<!--- loading animation -->
 	<div class="loading">
 		<div class="ball"></div>
@@ -85,8 +85,8 @@
 					<li><a href="flights.html" title="Flights">Chuyến Bay</a></li>
 					<li><a href="flight_and_hotels.html" title="Flight + Hotel">Bay + Hotel</a></li>
 					<li><a href="cruises.html" title="Cruises">Chuyến Đi</a></li>
-					<li><a href="car.jsp" title="Car rental">Thuê Xe</a></li>
-					 <li><a href="contact.jsp" title="Contact">Liên Hệ</a></li>
+					<li><a href="car_rentals.html" title="Car rental">Thuê Xe</a></li>
+					 <li><a href="contact.html" title="Contact">Liên Hệ</a></li>
 					<li><a href="blog.html" title="Blog">Chia Sẻ</a>
 						<ul>
 							<li><a href="blog_single.html" title="Single Post">Single Post</a>
@@ -160,98 +160,235 @@
 			<nav class="breadcrumbs">
 				<!--crumbs-->
 				<ul>
-					<li><a href="#" title="Home">Home</a></li>
-					<li><a href="#" title="Hotels">Hotels</a></li>
-					<li><a href="#" title="United Kingdom">United Kingdom</a></li>
-					<li><a href="#" title="London">London</a></li>  
-					<li>Best ipsum hotel</li>                                       
+					<li><a href="#" title="Home">Trang Chủ</a></li>
+					<li><a href="#" title="My Account">Tài Khoản</a></li>                                    
 				</ul>
 				<!--//crumbs-->
 			</nav>
 			<!--//breadcrumbs-->
-			
+
 			<div class="row">
 				<!--three-fourth content-->
-				<div class="three-fourth">
-					<form id="booking" method="post" action="orderAction" class="static-content booking">
-						<fieldset>
-							<h2><span>02 </span>Thanh Toán</h2>
-							<div class="row">
-								<div class="f-item one-half">
-									<label>Loại Thẻ</label>
-									<select>
-										<option selected>Chọn Loại Thẻ</option>
-										<option>Thẻ Nội Địa</option>
-										<option>Visa</option>
-									</select>
-								</div>
-								<div class="f-item one-half">
-									<label for="card_number">Số Thẻ</label>
-									<input type="number" placeholder="Nhập mã thẻ mặt trước thẻ" id="card_number" name="card_number" />
-								</div>
-							</div>
-							
-							<div class="row">
-								<div class="f-item one-third">
-									<label for="card_holder">Tên Của Thẻ</label>
-									<input type="text" id="card_holder" placeholder="Nhập tên thẻ" name="card_holder" />
-								</div>
-								<div class="f-item one-third datepicker">
-									<label for="expiration_date">Ngày Hạn </label>
-									<div class="datepicker-wrap"><input type="text" id="expiration_date" name="expiration_date" /></div>
-								</div>
-								<div class="f-item one-third">
-									<label for="cv2_number">Số  CV2 </label>
-									<input type="number" id="cv2_number" placeholder="Nhập 3 số cuối sau thẻ" name="cv2_number" />
-								</div>
-							</div>
-
-							<div class="row">
-								<div class="f-item full-width checkbox">
-									<input type="checkbox" name="check" id="check" value="ch1" />
-									<label>Tôi đã đọc và đồng ý <a href="#">Điều Kiện Đặt Tour</a>.</label>
-								</div>
-							</div>
-							
-							<div class="row">
-								<div class="full-width">
-								<%-- 	<input type="hidden" name= "order" value=" ${sessionScope.order }"/> --%>
-									<input type="hidden" name="checkCash" value="onlineReturn"/>
-									<input type="submit" class="gradient-button" value="Chuyển khoản" id="next-step" />
-								</div>
-							</div>
-						</fieldset>
-					</form>
-				</div>
-				<!--//three-fourth content-->
+				<section class="three-fourth">
 				
-				<!--right sidebar-->
-				<aside class="one-fourth right-sidebar">
-					<!--Booking details-->
-						<article class="hotel-details booking-details">
-						<jsp:useBean id="tourDAO" class="dao.TourDAO"></jsp:useBean>
-						<c:set var="tourDetail"  value="${tourDAO.getTourDetail(sessionScope.order.idTourDetail) }"></c:set>
+					<h1>Tài Khoản</h1>
 					
-						<h1>${tourDetail.title }</h1>
-						<dl class="booking-info">
-							<dt>Mã Tour</dt>
-							<dd>${tourDetail.idTour }</dd>
-							<dt>Thời Gian</dt>
-							<dd>${tourDetail.quatiDate } Ngày</dd>
-							<dt>Khởi Hành</dt>
-							<dd>${tourDetail.timBegin }</dd>
-							<dt>Nơi Đón</dt>
-							<dd>${tourDetail.pickupPlace }</dd>
-							<dt>Số Chỗ Còn Nhận</dt>
-							<dd>${tourDetail.seatAvailable }</dd>
-						</dl>
-						<div class="price">
-							<p class="total"><f:formatNumber value="${sessionScope.order.totalPrice }" minFractionDigits="0" maxFractionDigits="0"></f:formatNumber></p>
+					<!--inner navigation-->
+					<nav class="inner-nav">
+						<ul>
+							<li><a href="#MyBookings" title="My Bookings">Thông Tin Đặt Hàng</a></li>
+							<!-- <li><a href="#MyReviews" title="My Reviews">My Reviews</a></li> -->
+							<li><a href="#MySettings" title="Settings">Thông Tin Cá Nhân</a></li>
+						</ul>
+					</nav>
+					<!--//inner navigation-->
+						<jsp:useBean id="orderHistor" class="dao.HistoryUserDAO"></jsp:useBean>
+					<!--My Bookings-->
+					<section id="MyBookings" class="tab-content">
+						<!--booking-->
+						<c:if test="${orderHistor.getListtourHistor(sessionScope.email).size() == 0 and orderHistor.getListOrderCarHistory(sessionScope.email).size() ==0 }">
+							<h1 style="margin-left: 100px">Chưa từng đặt hàng:</h1>
+						</c:if>
+						
+						<c:if test="${orderHistor.getListtourHistor(sessionScope.email).size() >0 }">
+						<c:forEach items="${orderHistor.getListtourHistor(sessionScope.email) }" var="order">
+								<article class="bookings">
+							<h2><a href="#">${order.title }</a></h2>
+							<div class="b-info">
+								<table>
+									<tr>
+										<th>ID Order</th>
+										<td>${order.idOrder }</td>
+									</tr>
+									<tr>
+										<th>Thời Gian</th>
+										<td> ${order.quantityDate } ngày</td>
+									</tr>
+									<tr>
+										<th>Khởi Hành</th>
+										<td>${order.timeBegin }</td>
+									</tr>
+									<tr>
+										<th>Nơi Đón</th>
+										<td>${order.placePickup }</td>
+									</tr>
+									<tr>
+										<th>Số người</th>
+										<td>${order.quantityOrder }</td>
+									</tr>
+									<tr>
+										<th>Tổng Giá:</th>
+										<td><strong><f:formatNumber value="${order.totalPrice }" maxFractionDigits="0" minFractionDigits="0"></f:formatNumber> đ</strong></td>
+									</tr>
+								</table>
+							</div>
 							
-						</div>
-					</article>
-					<!--//Booking details-->
+						</article>
+						</c:forEach>
+							
+						</c:if>
+						
+						
+						<!--//booking-->
+						<c:if test="${orderHistor.getListOrderCarHistory(sessionScope.email).size() >0 }">
+						
+							<c:forEach items="${orderHistor.getListOrderCarHistory(sessionScope.email) }" var="order">
+								<article class="bookings">
+							<h2><a href="#">${order.nameCar }</a></h2>
+							<div class="b-info">
+								<table>
+									<tr>
+										<th>ID Order</th>
+										<td>${order.idOrder }</td>
+									</tr>
+									<!-- <tr>
+										<th>Số Ghê</th>
+										<td>4</td>
+									</tr> -->
+									<tr>
+										<th>Thời Gian Lấy Xe</th>
+										<td>${order.timePickUp }</td>
+									</tr>
+									<tr>
+										<th>Địa Điểm Lấy Xe</th>
+										<td>${order.placeRecieve }</td>
+									</tr>
+									<tr>
+										<th>Thời Gian Trả Xe</th>
+										<td>${order.tiemDropOff }</td>
+									</tr>
+									<tr>
+										<th>Địa Điểm Trả Xe</th>
+										<td>${order.placeRender }</td>
+									</tr>
+									<tr>
+										<th>Thuê Lái Xe</th>
+										<c:choose>
+											<c:when test="${order.stateDriver == 1 }">
+												<td>Có</td>
+											</c:when>
+											<c:otherwise>
+												<td>Không</td>
+											</c:otherwise>
+										</c:choose>
+										
+									</tr>
+									<tr>
+										<th>Total Price:</th>
+										<td><strong> <f:formatNumber value="${order.totalPrice }" maxFractionDigits="0" minFractionDigits="0"></f:formatNumber> đ</strong></td>
+									</tr>
+								</table>
+							</div>
+							
+							 
+						</article>
+							
+							</c:forEach>
+						</c:if>
+						
+						<!--booking-->
+						
+						<!--//booking-->
+						 
+					</section>
+					<!--//My Bookings-->
 					
+					
+					 
+					
+					<!--MySettings-->
+				<c:set var="user" value="${orderHistor.getUser(sessionScope.email) }"></c:set>
+					<section id="MySettings" class="tab-content">
+						<article class="mysettings">
+							<h2>Thông Tin Cá Nhân</h2>
+							<table>
+								<tr>
+									<th>Họ và Tên:</th>
+									<td>${user.fullName }
+										<!--edit fields-->
+										<div class="edit_field" id="field1">
+											<label for="new_name">Nhập Tên Mới:</label>
+											<input type="text" id="new_name"/>
+											<input type="submit" value="Lưu" class="gradient-button" id="submit1"/>
+											<a href="#">Huỷ</a>
+										</div>
+										<!--//edit fields-->
+									</td>
+									<td><a href="#field1" class="gradient-button edit">Sửa</a></td>
+								</tr>
+								<tr>
+									<th>Phone:</th>
+									<c:choose>
+										<c:when test="${user.phoneNumber == 0 }">
+											<td>
+										</c:when>
+										<c:otherwise>
+											<td>${user.phoneNumber }
+										</c:otherwise>
+									</c:choose>
+									
+										<!--edit fields-->
+										<div class="edit_field" id="field2">
+											<label for="new_phone">Nhập số mới:</label>
+											<input type="text" id="new_phone"/>
+											<input type="submit" value="Lưu" class="gradient-button" id="submit2"/>
+											<a href="#">Huỷ</a>
+										</div>
+										<!--//edit fields-->
+									</td>
+									<td><a href="#field2" class="gradient-button edit">Sửa</a></td>
+								</tr>
+								<tr>
+									<th>E-mail : </th>
+									<td>${user.email }
+										<!--edit fields-->
+										<div class="edit_field" id="field3">
+											<label for="new_email">Nhập Email Mới:</label>
+											<input type="text" id="new_email"/>
+											<input type="submit" value="Lưu" class="gradient-button" id="submit3"/>
+											<a href="#">Huỷ</a>
+										</div>
+										<!--//edit fields-->
+									</td>
+									<td><a href="#field3" class="gradient-button edit">Sửa</a></td>
+								</tr>
+								<tr>
+									<th>Mật Khẩu: </th>
+									<td>${user.password }
+										<!--edit fields-->
+										<div class="edit_field" id="field4">
+											<label for="new_password">Nhập mật khẩu mới:</label>
+											<input type="password" id="new_password"/>
+											<input type="submit" value="Lưu" class="gradient-button" id="submit4"/>
+											<a href="#">Huỷ</a>
+										</div>
+										<!--//edit fields-->
+									</td>
+									<td><a href="#field4" class="gradient-button edit">Sửa</a></td>
+								</tr>
+								<tr>
+									<th>Địa Chỉ:</th>
+									<td>${user.address }
+										<!--edit fields-->
+										<div class="edit_field" id="field5">
+											<label for="new_address">Nhập địa chỉ mới:</label>
+											<input type="text" id="new_address"/>
+											<input type="submit" value="Lưu" class="gradient-button" id="submit5"/>
+											<a href="#">Huỷ</a>
+										</div>
+										<!--//edit fields-->
+									</td>
+									<td><a href="#field5" class="gradient-button edit">Sửa</a></td>
+								</tr>
+							</table>
+
+						</article>
+					</section>
+					<!--//MySettings-->
+				</section>
+				<!--//three-fourth content-->
+				<!--sidebar-->
+				<aside class="one-fourth right-sidebar">	
 					<!--Need Help Booking?-->
 					<article class="widget">
 						<h4>Bạn Cần Trợ Giúp?</h4>
@@ -259,8 +396,27 @@
 						<p class="number" style="color: #858585;font-size: 18px;">0989-999-888</p>
 					</article>
 					<!--//Need Help Booking?-->
+					
+					<!--Why Book with us?-->
+					<article class="widget">
+						<h4>Tại Sao Chọn BookTravel ?</h4>
+						<h5>DỊCH VỤ KHÁCH HÀNG TỐT NHẤT</h5>
+						<p>Đội ngũ nhân viên tận tâm, chuyên nghiệp</p>
+						<h5>THANH TOÁN AN TOÀN VÀ LINH HOẠT</h5>
+						<p>Liên kết với các tổ chức tài chính</p>
+						<h5>LUÔN CÓ MỨC GIÁ TỐT NHẤT</h5>
+						<p>Bảo đảm giá tốt</p>
+						<h5>SẢN PHẨM ĐA DẠNG, CHẤT LƯỢNG</h5>
+						<p>Đạt chất lượng tốt nhất</p>
+						<h5>ĐẶT TOUR DỄ DÀNG VÀ NHANH CHÓNG</h5>
+						<p>Đặt tour chỉ với 3 bước</p>
+						<h5>HỖ TRỢ 24/7</h5>
+						<p>Hotline & Hỗ trợ trực tuyến</p>
+					</article>
+					<!--//Why Book with us?-->
+					
 				</aside>
-				<!--//right sidebar-->
+				<!--//sidebar-->
 			</div>
 			<!--//main content-->
 		</div>
@@ -318,7 +474,7 @@
 		</div>
 	</footer>
 	<!---footer-->
-
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="js/jquery.uniform.min.js"></script>

@@ -267,7 +267,7 @@
 									</div>
 									<div class="f-item one-half">
 										
-										<input  type="text" id="getCar"  placeholder="Nhập số nhà ,đường,phường" readonly name=placeRecieve  value="hn"/>
+										<input  type="text" id="getCar"  placeholder="Nhập số nhà ,đường,phường" readonly name=placeRecieve  value="Số 8-Tôn Thất Thuyết-Mỹ Đình-Hà Nội"/>
 										<p style="display: none;" class="info" id="carInfo"></p>
 									</div>
 								</div>
@@ -297,7 +297,7 @@
 									
 									<div class="f-item one-half">
 										
-										<input type="text" id="returnCar"  placeholder="Nhập số nhà ,đường,phường" readonly name="placeRender"  value="hn"/>
+										<input type="text" id="returnCar"  placeholder="Nhập số nhà ,đường,phường" readonly name="placeRender"  value="Số 8-Tôn Thất Thuyết-Mỹ Đình-Hà Nội"/>
 										<p style="display: none;" class="info" id="carInfo2"></p>
 									</div>
 								</div>

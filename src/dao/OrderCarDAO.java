@@ -65,8 +65,8 @@ public class OrderCarDAO {
 			else {
 			      String idOLDOrder = listOrder.get(listOrder.size()-1).getIdOrder();
 			      int supString = Integer.valueOf(idOLDOrder.substring(5, idOLDOrder.indexOf("btvCar")));
-			      supString = supString +2;
-			      idOrder = "Order"+supString+"btvCar"+random.nextInt();					      
+			      int newString = supString +2;
+			      idOrder = "Order"+newString+"btvCar"+random.nextInt();					      
 			}
 			
 			// saveOrder
@@ -119,9 +119,9 @@ public class OrderCarDAO {
 			}
 			price = days*priceCar;
 			
-			if(placeRecieve.equals("on, hn"))
+			if(placeRecieve.equals("on, Số 8-Tôn Thất Thuyết-Mỹ Đình-Hà Nội"))
 				price += 100000;
-			if(placeRender.equals("on, hn"))
+			if(placeRender.equals("on, Số 8-Tôn Thất Thuyết-Mỹ Đình-Hà Nội"))
 				price += 100000;
 			if(stateDriver == 1)
 				price += 300000;

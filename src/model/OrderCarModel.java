@@ -16,9 +16,16 @@ public class OrderCarModel {
 	private String tiemDropOff;
 	private String placeRecieve;
 	private int quantityRentCar;
+	private String nameCar;
 	
 	
 	
+	public String getNameCar() {
+		return nameCar;
+	}
+	public void setNameCar(String nameCar) {
+		this.nameCar = nameCar;
+	}
 	public int getQuantityRentCar() {
 		return quantityRentCar;
 	}

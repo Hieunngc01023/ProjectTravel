@@ -308,8 +308,11 @@
 										<!--edit fields-->
 										<div class="edit_field" id="field1">
 											<label for="new_name">Nhập Tên Mới:</label>
-											<input type="text" id="new_name"/>
+											<form action="updateNameAction" method="post">
+											<input type="hidden" name="idUser" value="${user.id }">
+											<input type="text" id="new_name" name="fullname"/>
 											<input type="submit" value="Lưu" class="gradient-button" id="submit1"/>
+											</form>
 											<a href="#">Huỷ</a>
 										</div>
 										<!--//edit fields-->
@@ -330,8 +333,11 @@
 										<!--edit fields-->
 										<div class="edit_field" id="field2">
 											<label for="new_phone">Nhập số mới:</label>
-											<input type="text" id="new_phone"/>
+											<form action="updatePhoneAction" method="post">
+											<input type="hidden" name="idUser" value="${user.id }">
+											<input type="text" id="new_phone" name="phone"/>
 											<input type="submit" value="Lưu" class="gradient-button" id="submit2"/>
+											</form>
 											<a href="#">Huỷ</a>
 										</div>
 										<!--//edit fields-->
@@ -344,13 +350,13 @@
 										<!--edit fields-->
 										<div class="edit_field" id="field3">
 											<label for="new_email">Nhập Email Mới:</label>
-											<input type="text" id="new_email"/>
-											<input type="submit" value="Lưu" class="gradient-button" id="submit3"/>
+											<input type="text" id="new_email" readonly="readonly"/>
+											<!-- <input type="submit" value="Lưu" class="gradient-button" id="submit3"/> -->
 											<a href="#">Huỷ</a>
 										</div>
 										<!--//edit fields-->
 									</td>
-									<td><a href="#field3" class="gradient-button edit">Sửa</a></td>
+									<td><a href="#field3" class="gradient-button edit">Sửa</a></td> 
 								</tr>
 								<tr>
 									<th>Mật Khẩu: </th>
@@ -358,8 +364,11 @@
 										<!--edit fields-->
 										<div class="edit_field" id="field4">
 											<label for="new_password">Nhập mật khẩu mới:</label>
-											<input type="password" id="new_password"/>
+											<form action="updatePasswordAction" method="post">
+											<input type="hidden" name="idUser" value="${user.id }">
+											<input type="password" id="new_password" name="password"/>											
 											<input type="submit" value="Lưu" class="gradient-button" id="submit4"/>
+											</form>
 											<a href="#">Huỷ</a>
 										</div>
 										<!--//edit fields-->
@@ -372,8 +381,11 @@
 										<!--edit fields-->
 										<div class="edit_field" id="field5">
 											<label for="new_address">Nhập địa chỉ mới:</label>
-											<input type="text" id="new_address"/>
+											<form action="updateAddressAction" method="post">
+											<input type="hidden" name="idUser" value="${user.id }">
+											<input type="text" id="new_address" name="address"/>
 											<input type="submit" value="Lưu" class="gradient-button" id="submit5"/>
+											</form>
 											<a href="#">Huỷ</a>
 										</div>
 										<!--//edit fields-->

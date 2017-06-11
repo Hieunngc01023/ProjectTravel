@@ -51,6 +51,18 @@
        		<result name="success">blogDetail.jsp</result>
        		<result name="error">error.html</result>
        	</action>
+       	<action name="updateNameAction" class= "controller.UpdateUserController" method="updateName">
+       		<result name="success">myAccount.jsp</result>
+       	</action>
+       	<action name="updatePasswordAction" class= "controller.UpdateUserController" method="updatePassword">
+       		<result name="success">myAccount.jsp</result>
+       	</action>
+       	<action name="updatePhoneAction" class= "controller.UpdateUserController" method="updatePhone">
+       		<result name="success">myAccount.jsp</result>
+       	</action>
+       	<action name="updateAddressAction" class= "controller.UpdateUserController" method="updateAddress">
+       		<result name="success">myAccount.jsp</result>
+       	</action>
         	
     </package>
 </struts>

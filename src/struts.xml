@@ -63,6 +63,14 @@
        	<action name="updateAddressAction" class= "controller.UpdateUserController" method="updateAddress">
        		<result name="success">myAccount.jsp</result>
        	</action>
+       	<action name="updateCategory" class="adminController.CategoryController" method="update">
+       		<result name="success">/admin/indexCategory.jsp</result>
+       		<result name="error">error.html</result>
+       	</action>
+       	<action name="addCategory" class="adminController.CategoryController" method="addNew">
+       		<result name="success">/admin/indexCategory.jsp</result>
+       		<result name="error">error.html</result>
+       	</action>
         	
     </package>
 </struts>

@@ -288,20 +288,18 @@
 											<input type="radio" id="checkAddress4" name="placeRender">
 										</div>
 									</div>
-									<div class="full-width">
+									<div class="f-item one-half">
+												<input type="text" id="returnCar"  placeholder="Nhập số nhà ,đường,phường" readonly name="placeRender"  value="Số 8-Tôn Thất Thuyết-Mỹ Đình-Hà Nội"/>
+												<p style="display: none;" class="info" id="carInfo2"></p>
+											</div>
+							
+								</div>
+										<div class="full-width">
 											<div class="one-half">
 												<input type="checkbox"  onclick="$(this).val(this.checked ? 1 : 0)" id="driver" name="stateDriver">
 												<label for="driver">Thuê người lái xe 300,000đ/ngày</label>
 											</div>
 										</div>
-									
-									<div class="f-item one-half">
-										
-										<input type="text" id="returnCar"  placeholder="Nhập số nhà ,đường,phường" readonly name="placeRender"  value="Số 8-Tôn Thất Thuyết-Mỹ Đình-Hà Nội"/>
-										<p style="display: none;" class="info" id="carInfo2"></p>
-									</div>
-								</div>
-
 							</div>
 							<h2><span>03 </span>Xin Quý Khách Chọn Hình Thức Thanh Toán </h2>
 							<div class="row full-width">

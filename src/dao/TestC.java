@@ -35,15 +35,9 @@ public class TestC extends ActionSupport {
 		try {
 
 			session.beginTransaction();
-			adminModel.TourModel tour = new adminModel.TourModel();
-			tour.setContent("this is tour");
-			tour.setImageTitle("image");
-			tour.setPlaceDropOff("Vinh Yen");
-			tour.setPlacePickUp("Ha Noi");
-			tour.setTitle("Ha Noi- Cao bang- Vinh Yen");
-			new TourDAO().addNewTour("category1btv444", tour);
-			session.getTransaction().commit();
+		System.out.println(((Category)session.get(Category.class, "category5btv346")).getDesCategory());
 			
+			session.getTransaction().commit();			
 		} catch (HibernateException e) {
 			e.printStackTrace();
 			System.out.println("Error: "+e.getMessage());

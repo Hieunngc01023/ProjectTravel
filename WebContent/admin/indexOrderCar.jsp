@@ -1,24 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    <%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>BookTravel | Category</title>
+  <title>BookTravel | Dashboard</title>
   <%@ include file="fileCss.jsp" %>
-  <!-- {{Setup Ckeditor and ckfinder}} -->
-
-  <script src=" plugins/ckeditor/ckeditor/ckeditor.js " type="text/javascript"></script>
-  <script src="plugins/ckeditor/ckfinder/ckfinder.js" type="text/javascript"></script>
-  <script type="text/javascript">
-    var baseURL = "/";
-  </script>
-  <script src="plugins/ckeditor/func_ckfinder.js " type="text/javascript"></script>
-
-  <!-- {{end Set up CKEDITOR}} -->
-
-  
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -316,7 +307,7 @@
       </form>
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
-    <%@ include file="header.jsp" %>
+      <%@ include file="header.jsp" %>
     </section>
     <!-- /.sidebar -->
   </aside>
@@ -326,8 +317,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Dashboard
-        <small>Control panel</small>
+        Tour
+        <small>table</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -337,98 +328,126 @@
 
     <!-- Main content -->
     <section class="content">
-      <div hidden="" class="alert alert-danger alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                check loi nha
-      </div>
-      
-      
-      <form action="addNewCarActionAdmin" method="post" id="form-tourDetail" class=" form" enctype="multipart/form-data" >
+     <div class="box-body table-responsive no-padding">
+           <div class="row">
+           <form action="#" method="get" >
+            <div   class="col-md-3 form-group">
+              <select class="form-control" name="cate">
+                <option value="2">Tất Cả Trạng Thái</option>
+                <option   value="1">Thanh Toán</option>
+                <option   value="0">Chưa Thanh Toán </option>
+              </select>
+            </div> 
+            <div class="col-md-5 form-group">
+              <div class="col-md-10 relative">
+                <input type="text" name="keyword" class="form-control" placeholder="Finding here...." value="">
+                <button type="submit" class="add-on-input btn btn-sm btn-success">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>  
 
-        <div class="col-sm-6">
-            <div class="form-group col-sm-8 col-sm-offset-1">
-              <label for="name">Tên xe </label>
-              <input type="text" class="form-control" name="nameCar" id="name" placeholder="Nhập tên xe" required  >
-            </div>
-            <div class="form-group col-sm-8 col-sm-offset-1">
-              <label for="price">Giá xe / Ngày</label>
-              <input type="number" class="form-control" name="price" id="price" placeholder="Nhập giá xe thuê 1 ngày" required>
-            </div>
-            <div class="form-group col-sm-8 col-sm-offset-1">
-              <label for="quantityCar">Số lượng xe</label>
-              <input type="number" class="form-control" name="quantityCar" id="quantityCar"  placeholder="Nhập số lượng xe"  required>
-            </div>
-            <div class="form-group col-sm-8 col-sm-offset-1">
-              <label for="imageTitle"> Ảnh đại diện Xe</label>
-              <img id="target-avatar" src="" width="152" alt="">
-              <input type="file" onchange="readURL(this)" name="imageTitle" id="imageTitle"  class="form-control" required>
-            </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="form-group col-sm-8 col-sm-offset-2">
-              <label class="brand">Nhãn Hiệu
-              </label>
-              <select class="form-control" name="brand" id="brand" required>
-                <option value="">Chọn Nhãn Hiệu Xe</option>
-                <option value="HonDa"> HonDa </option>
-                <option value="Toyota"> Toyota </option>
-                <option value="SamSung"> SamSung </option>
-                <Option value="SamCo"> SamCo</option>
-                <Option value="HuynDai"> HuynDai</option>
-                <Option value="Mecedes"> Mecedes</option>
-              </select>
+            </form>
           </div>
-           <div class="form-group col-sm-8 col-sm-offset-2">
-              <label class="seat">Số Ghế
-              </label>
-              <select class="form-control" name="quanitySeat" id="seat" required>
-                <option value="">Chọn Số Ghế</option>
-                <option value="4"> 4 </option>
-                <option value="7"> 7 </option>
-                <option value="16"> 16 </option>
-                <Option value="32"> 32</option>
-                <Option value="50"> 50</option>
-              </select>
-          </div>
-            <div class="form-group col-sm-8 col-sm-offset-2">
-              <label class="fuel">Nhiên Liệu Xe
-              </label>
-              <select class="form-control" name="fuel" id="fuel" required>
-                <option value="">Chọn Nhiên Liệu</option>
-                <option value="1"> Xăng  </option>
-                <option value="2"> Dầu Diesel </option>
+
+        <table class="table table-hover">
+          <tbody>
+            <tr>
+              <th>ID OrderCar</th>
+              <th>Tên Xe</th>
+              <th>Người đặt</th>
+              <th>Thời gian và địa điểm lấy</th>
+              <th>Thời gian và địa điểm trả</th>
+              <th>Số lượng xe </th>
+              <th>Tổng Tiền</th>
+              <th>Loại Thanh toán</th>
+              <th>Trạng thái thanh toán</th>
+              <th>Thuê Lái Xe</th>
+              <th>Ghi chú</th>
+              <th>Ngày tạo order</th>
+              <th>
                 
-              </select>
-          </div>
-           <div class="form-group col-sm-8 col-sm-offset-2">
-              <label class="gear">Hộp Số
-              </label>
-              <select class="form-control" name="gear" id="gear" required>
-                <option value="">Chọn Loại Hộp Số</option>
-                <option value="1"> Số Sàn </option>
-                <option value="2"> Số Tự Động </option>
-              </select>
-          </div>
-           
-        </div> 
-        <div class="col-xs-9 col-xs-offset-1">
-          <div class="form-group ">
-              <label for="content">Một số hình ảnh</label>
-               <textarea id="content" class="form-control" required name="content" rows="10"></textarea>
-          </div>
-
-        </div>
-      <div class="form-group col-sm-7  col-sm-offset-5">
-        <button type="submit" class="btn btn-md btn-success">
-          <i class="fa fa-save"></i> Save
-        </button>
-        <a href="#" class="btn btn-md btn-danger">
-          <i class="fa fa-remove"></i> Cancel
-        </a>
+              </th>
+            </tr>
+             <jsp:useBean id="orderCar" class="adminDAO.OrderCarDAO" scope="page"></jsp:useBean>
+			<c:if test="${orderCar.getListOrderCar().size() >0 }">
+				<c:forEach items="${orderCar.getListOrderCar() }" var="order">
+					<tr>
+              <td>${order.idOrder }</td>
+              <td> ${order.nameCar }
+              </td>
+              <td>${order.nameUser }</td>
+              <td>
+                <p>${order.timePickUp }</p>
+                <p>${order.placeRecieve }</p>
+              </td>
+              <td>
+                <p>${order.timeDropOff }</p>
+                <p>${order.placeRender }</p>
+              </td>
+              <td>1 xe</td>
+              <td><f:formatNumber value="${order.price }" maxFractionDigits="0" minFractionDigits="0"></f:formatNumber> đ</td>
+              <c:choose>
+              	<c:when test="${order.modelPayment ==1 }">
+              		<td>Trực Tiếp</td>
+              	</c:when>
+              	<c:when test="${order.modelPayment ==2 }">
+              		<td>Chuyển Khoản</td>
+              	</c:when>
+              	<c:otherwise>
+              		<td>Online</td>
+              	</c:otherwise>
+              </c:choose>
+              <c:choose>
+              	<c:when test="${order.stateGetMoney == 0 }">
+              		<td>Chưa Thanh Toán</td>
+              	</c:when>
+              	<c:when test="${order.stateGetMoney == 1 }">
+              		<td>Đã Thanh Toán</td>
+              	</c:when>
+              	<c:otherwise>
+              		<td>Hủy</td>
+              	</c:otherwise>
+              </c:choose>
+              <c:choose>
+              	<c:when test="${order.stateDriver == 0 }">
+              		<td>Không</td>
+              	</c:when>
+              	<c:otherwise>
+              		<td>Có</td>
+              	</c:otherwise>
+              </c:choose>
+              <td>${order.note }</td>
+              <td>${order.timeCreated }</td>
+              <td>
+                <a href="updateOrderCar.jsp?idOrder=${order.idOrder }&nameCar=${order.nameCar }" class="btn btn-info btn-xs">
+                  <i class="fa fa-pencil"></i> Update
+                </a> 
+                <s:url value="deleteOrderCarAdmin" var="delete" >
+                	<s:param name="idOrder">${order.idOrder }</s:param>
+                </s:url>
+                <a href="${delete }" class="btn btn-danger btn-xs">
+                  <i class="fa fa-trash"></i> delete
+                </a> 
+                <s:url value="cancelOrderCarAdmin" var="cancel" >
+                	<s:param name="idOrder">${order.idOrder }</s:param>
+                </s:url>
+                <a href="${cancel }" class="btn btn-warning btn-xs">
+                  <i class="fa fa-close"></i> Cancel
+                </a> 
+              </td>
+               
+            </tr>
+				
+				</c:forEach>
+			</c:if>
+            
+            
+             
+          </tbody>
+        </table>
       </div>
 
-
-    </form>
     </section>
     <!-- /.content -->
   </div>
@@ -638,29 +657,5 @@
 
 <!-- jQuery 2.2.3 -->
 <%@ include file="fileJS.jsp" %>
-<script type="text/javascript">
-  ckeditor("content");
-   $( document ).ready(function() {
-       
-    });
-   
-</script>
-<script type="text/javascript"> 
-  
-  function readURL(input) {
-    var url = input.value;
-    var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
-    if (input.files && input.files[0]&& (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $('#target-avatar').attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-    }else{
-         $('#target-avatar').attr('src', '');
-    }
-  }
-
-</script>
 </body>
 </html>

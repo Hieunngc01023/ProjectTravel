@@ -173,19 +173,7 @@
 			</nav>
 			<!--//breadcrumbs-->
 			<jsp:useBean id="tourDAO" class="dao.TourDAO" scope="page"></jsp:useBean>
-			<div class="row">
-				<!--hotel three-fourth content-->
-				<section class="three-fourth">
-					<!--gallery-->
-					<div class="gallery col-md-10">
-						<div class="col-md-10 " >
-							<img src="images/uploads/cruise1.jpg" alt="" />
-						</div>
-						<div class="detail-book col-md-10">
-							<div class=" box-content col-md-5 col-md-offset-1"> 
-							
-							
-							<c:set var="id" value="${param.idTour}"></c:set>
+			<c:set var="id" value="${param.idTour}"></c:set>
 						<c:choose>
 							<c:when test="${idTourDetail != null }">
 								<c:set var="tour" value="${tourDAO.getTourDetail(idTourDetail)}"></c:set>
@@ -194,6 +182,19 @@
 								<c:set var="tour" value="${tourDAO.getTourDetail(id)}"></c:set>  
 							</c:otherwise>
 						</c:choose>
+			<div class="row">
+				<!--hotel three-fourth content-->
+				<section class="three-fourth">
+					<!--gallery-->
+					<div class="gallery col-md-10">
+						<div class="col-md-10 " >
+							<img src="admin/admin-assets/img/${tour.imageTitle }" alt="" />
+						</div>
+						<div class="detail-book col-md-10">
+							<div class=" box-content col-md-5 col-md-offset-1"> 
+							
+							
+							
 						
 								<p>Mã tour:<b>${tour.idTourDetail}</b></p>
 								<p>Thời gian: <b>${tour.quatiDate} Ngày</b></p>

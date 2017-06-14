@@ -17,7 +17,7 @@ public class TourDAO {
 		int distance = 0;
 		try {
 			
-		  distance = (int) Math.abs((end.getTime() - begin.getTime())/86400000);		   
+		  distance =  (int)(end.getTime() - begin.getTime())/86400000;		   
 		} catch (Exception e) {
 		    e.printStackTrace();
 		}

@@ -10,6 +10,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
 import util.HibernateUtil;
+import adminDAO.CarDAO;
 import adminDAO.CategoryDAO;
 import adminDAO.TourDAO;
 
@@ -35,10 +36,8 @@ public class TestC extends ActionSupport {
 		try {
 
 			session.beginTransaction();
-			User user = (User) session.get(User.class, 1);
-			Tour tour = (Tour) session.get(Tour.class, "tour1btv303");
-			Comment comment = new Comment();
-			comment.setUser(user);
+		
+			System.out.println("so luong: "+new CarDAO().getListCars().size());
 			
 			session.getTransaction().commit();			
 		} catch (HibernateException e) {

@@ -111,6 +111,28 @@
        		<result name="success">/admin/indexUser.jsp</result>
        		<result name="error">error.html</result>
        	</action>
+       	<action name="addNewCarActionAdmin" class="adminController.CarAdminController" method="addNewCar">
+       		<result name="success">/admin/indexCar.jsp</result>
+       		<result name="error">error.html</result>
+       	</action>
+       	<action name="upDateCarActionAdmin" class="adminController.CarAdminController" method="updateCar">
+       		<result name="success">/admin/indexCar.jsp</result>
+       		<result name="error">error.html</result>
+       	</action>
+       	<action name="updateStateOrderCarAdmin" class="adminController.OrderCarAdminController" method="updateState">
+       		<result name="success">/admin/indexOrderCar.jsp</result>
+       		<result name="error">error.html</result>
+       	</action>
+       	<action name="deleteOrderCarAdmin" class="adminController.OrderCarAdminController" method="deleteOrder">
+       		<result name="success">/admin/indexOrderCar.jsp</result>
+       		<result name="error">error.html</result>
+       	</action>
+       	<action name="cancelOrderCarAdmin" class="adminController.OrderCarAdminController" method="cancel">
+       		<result name="success">/admin/indexOrderCar.jsp</result>
+       		<result name="error">error.html</result>
+       	</action>
+       
+       	
         	
     </package>
 </struts>

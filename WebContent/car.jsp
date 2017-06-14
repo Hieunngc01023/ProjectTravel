@@ -562,7 +562,7 @@
 							
 								<c:forEach items="${carDao.getListCars() }" var="car">
 									<article class="one-fourth">
-								<figure><a href="#" title=""><img src="images/uploads/car13.jpg" alt="" /></a></figure>
+								<figure><a href="#" title=""><img src="admin/admin-assets/img/${car.imageTitle }" alt="" /></a></figure>
 								<div class="details">
 									<h3>${car.nameCar }</h3> 
 									

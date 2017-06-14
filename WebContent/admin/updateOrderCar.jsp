@@ -1,24 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>BookTravel | Category</title>
-  <%@ include file="fileCss.jsp" %>
-  <!-- {{Setup Ckeditor and ckfinder}} -->
-
-  <script src=" plugins/ckeditor/ckeditor/ckeditor.js " type="text/javascript"></script>
-  <script src="plugins/ckeditor/ckfinder/ckfinder.js" type="text/javascript"></script>
-  <script type="text/javascript">
-    var baseURL = "/";
-  </script>
-  <script src="plugins/ckeditor/func_ckfinder.js " type="text/javascript"></script>
-
-  <!-- {{end Set up CKEDITOR}} -->
-
-  
+ <%@ include file="fileCss.jsp" %>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -336,89 +325,30 @@
     </section>
 
     <!-- Main content -->
-    <section class="content">
-      <div hidden="" class="alert alert-danger alert-dismissible">
+   	<section class="content">
+      <div  hidden="" class="alert alert-danger alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                 check loi nha
       </div>
-      
-      
-      <form action="addNewCarActionAdmin" method="post" id="form-tourDetail" class=" form" enctype="multipart/form-data" >
-
-        <div class="col-sm-6">
-            <div class="form-group col-sm-8 col-sm-offset-1">
-              <label for="name">Tên xe </label>
-              <input type="text" class="form-control" name="nameCar" id="name" placeholder="Nhập tên xe" required  >
-            </div>
-            <div class="form-group col-sm-8 col-sm-offset-1">
-              <label for="price">Giá xe / Ngày</label>
-              <input type="number" class="form-control" name="price" id="price" placeholder="Nhập giá xe thuê 1 ngày" required>
-            </div>
-            <div class="form-group col-sm-8 col-sm-offset-1">
-              <label for="quantityCar">Số lượng xe</label>
-              <input type="number" class="form-control" name="quantityCar" id="quantityCar"  placeholder="Nhập số lượng xe"  required>
-            </div>
-            <div class="form-group col-sm-8 col-sm-offset-1">
-              <label for="imageTitle"> Ảnh đại diện Xe</label>
-              <img id="target-avatar" src="" width="152" alt="">
-              <input type="file" onchange="readURL(this)" name="imageTitle" id="imageTitle"  class="form-control" required>
-            </div>
+      <form action="updateStateOrderCarAdmin" method="post" id="form-category" class="col-sm-6 col-sm-offset-3 form" novalidate>
+        <div class="form-group">
+          <label for="name">Tên Car</label>
+          <input type="text" class="form-control" value="${param.nameCar }" id="name" name="name" readonly="" >
         </div>
-        <div class="col-sm-6">
-          <div class="form-group col-sm-8 col-sm-offset-2">
-              <label class="brand">Nhãn Hiệu
-              </label>
-              <select class="form-control" name="brand" id="brand" required>
-                <option value="">Chọn Nhãn Hiệu Xe</option>
-                <option value="HonDa"> HonDa </option>
-                <option value="Toyota"> Toyota </option>
-                <option value="SamSung"> SamSung </option>
-                <Option value="SamCo"> SamCo</option>
-                <Option value="HuynDai"> HuynDai</option>
-                <Option value="Mecedes"> Mecedes</option>
-              </select>
+          <div class="form-group  ">
+            <label for="">Thanh Toán</label>
+            <div class="radio-list " >
+            	<label class="radio-inline">
+            		<input type="radio" name="stateGetMoney" id="optionsRadios5" value="0" checked="">
+            		Chưa Thanh Toán
+            	</label>
+            	<label class="radio-inline">
+            		<input type="radio" name="stateGetMoney" id="optionsRadios4" value="1" >
+            		Đã Thanh Toán
+            	</label>
+            </div>
           </div>
-           <div class="form-group col-sm-8 col-sm-offset-2">
-              <label class="seat">Số Ghế
-              </label>
-              <select class="form-control" name="quanitySeat" id="seat" required>
-                <option value="">Chọn Số Ghế</option>
-                <option value="4"> 4 </option>
-                <option value="7"> 7 </option>
-                <option value="16"> 16 </option>
-                <Option value="32"> 32</option>
-                <Option value="50"> 50</option>
-              </select>
-          </div>
-            <div class="form-group col-sm-8 col-sm-offset-2">
-              <label class="fuel">Nhiên Liệu Xe
-              </label>
-              <select class="form-control" name="fuel" id="fuel" required>
-                <option value="">Chọn Nhiên Liệu</option>
-                <option value="1"> Xăng  </option>
-                <option value="2"> Dầu Diesel </option>
-                
-              </select>
-          </div>
-           <div class="form-group col-sm-8 col-sm-offset-2">
-              <label class="gear">Hộp Số
-              </label>
-              <select class="form-control" name="gear" id="gear" required>
-                <option value="">Chọn Loại Hộp Số</option>
-                <option value="1"> Số Sàn </option>
-                <option value="2"> Số Tự Động </option>
-              </select>
-          </div>
-           
-        </div> 
-        <div class="col-xs-9 col-xs-offset-1">
-          <div class="form-group ">
-              <label for="content">Một số hình ảnh</label>
-               <textarea id="content" class="form-control" required name="content" rows="10"></textarea>
-          </div>
-
-        </div>
-      <div class="form-group col-sm-7  col-sm-offset-5">
+      <div class="form-group text-center">
         <button type="submit" class="btn btn-md btn-success">
           <i class="fa fa-save"></i> Save
         </button>
@@ -426,7 +356,7 @@
           <i class="fa fa-remove"></i> Cancel
         </a>
       </div>
-
+	<input type="hidden" name="idOrder" value="${param.idOrder }">
 
     </form>
     </section>
@@ -639,28 +569,22 @@
 <!-- jQuery 2.2.3 -->
 <%@ include file="fileJS.jsp" %>
 <script type="text/javascript">
-  ckeditor("content");
    $( document ).ready(function() {
-       
-    });
-   
-</script>
-<script type="text/javascript"> 
-  
-  function readURL(input) {
-    var url = input.value;
-    var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
-    if (input.files && input.files[0]&& (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $('#target-avatar').attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]);
-    }else{
-         $('#target-avatar').attr('src', '');
-    }
-  }
-
+      $('#form-category').submit(function(){
+        var name    = $.trim($('#name').val());
+        var flag = true;
+          // Username
+         if (name.length <= 0){
+             $('#name').attr("placeholder", "Bạn chưa nhập tên danh mục");
+                flag = false;
+                   // debugger;
+                   }
+              else{
+                $('#name').attr("placeholder", "");
+              }
+          return flag;
+        });
+  });
 </script>
 </body>
 </html>

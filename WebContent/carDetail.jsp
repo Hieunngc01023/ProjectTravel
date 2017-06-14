@@ -182,7 +182,7 @@
 					<!--gallery-->
 					<div class="gallery col-md-10">
 						<div class="col-md-10 " >
-							<img src="images/uploads/car13.jpg" alt="" />
+							<img src="admin/admin-assets/img/${car.imageTitle }" alt="" />
 					<!-- 		<ul id="image-gallery" class="cS-hidden">
 								<li data-thumb="images/uploads/car24.jpg"> 
 									<img src="images/uploads/car24.jpg" alt="" />

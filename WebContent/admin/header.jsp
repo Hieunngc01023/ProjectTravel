@@ -72,7 +72,7 @@
 		</span>
 	</a>
 		<ul class="treeview-menu">
-			<li class="active"><a href="indexCar.html"><i
+			<li class="active"><a href="indexCar.jsp"><i
 					class="fa fa-circle-o"></i> Danh sách Car</a></li>
 			<li><a href="createCar.jsp"><i class="fa fa-circle-o"></i>
 					Thêm mới Car</a></li>
@@ -84,10 +84,9 @@
 		</span>
 	</a>
 		<ul class="treeview-menu">
-			<li class="active"><a href="indexOrderCar.html"><i
+			<li class="active"><a href="indexOrderCar.jsp"><i
 					class="fa fa-circle-o"></i> Danh sách OrderCar</a></li>
-			<li><a href="createOrderCar.html"><i class="fa fa-circle-o"></i>
-					Thêm mới OrderCar</a></li>
+			
 		</ul></li>
 
 

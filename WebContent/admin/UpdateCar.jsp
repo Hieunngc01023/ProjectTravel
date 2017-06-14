@@ -343,24 +343,24 @@
       </div>
       
       
-      <form action="addNewCarActionAdmin" method="post" id="form-tourDetail" class=" form" enctype="multipart/form-data" >
+      <form action="upDateCarActionAdmin" method="post" id="form-tourDetail" class=" form" enctype="multipart/form-data" >
 
         <div class="col-sm-6">
             <div class="form-group col-sm-8 col-sm-offset-1">
-              <label for="name">Tên xe </label>
-              <input type="text" class="form-control" name="nameCar" id="name" placeholder="Nhập tên xe" required  >
+              <label for="name">Tên xe </label> 
+              <input type="text" class="form-control" name="nameCar" id="name" placeholder="Nhập tên xe" required value="${param.nameCar }"  >
             </div>
             <div class="form-group col-sm-8 col-sm-offset-1">
               <label for="price">Giá xe / Ngày</label>
-              <input type="number" class="form-control" name="price" id="price" placeholder="Nhập giá xe thuê 1 ngày" required>
+              <input type="number" class="form-control" value="${param.price }" name="price" id="price" placeholder="Nhập giá xe thuê 1 ngày" required>
             </div>
             <div class="form-group col-sm-8 col-sm-offset-1">
               <label for="quantityCar">Số lượng xe</label>
-              <input type="number" class="form-control" name="quantityCar" id="quantityCar"  placeholder="Nhập số lượng xe"  required>
+              <input type="number" class="form-control" value="${param.quantityCar }" name="quantityCar" id="quantityCar"  placeholder="Nhập số lượng xe"  required>
             </div>
             <div class="form-group col-sm-8 col-sm-offset-1">
               <label for="imageTitle"> Ảnh đại diện Xe</label>
-              <img id="target-avatar" src="" width="152" alt="">
+              <img id="target-avatar" src="admin-assets/img/${param.imageTitle }" width="152" alt="">
               <input type="file" onchange="readURL(this)" name="imageTitle" id="imageTitle"  class="form-control" required>
             </div>
         </div>
@@ -369,7 +369,7 @@
               <label class="brand">Nhãn Hiệu
               </label>
               <select class="form-control" name="brand" id="brand" required>
-                <option value="">Chọn Nhãn Hiệu Xe</option>
+                <option value="${param.brand }">Chọn Nhãn Hiệu Xe</option>
                 <option value="HonDa"> HonDa </option>
                 <option value="Toyota"> Toyota </option>
                 <option value="SamSung"> SamSung </option>
@@ -382,7 +382,7 @@
               <label class="seat">Số Ghế
               </label>
               <select class="form-control" name="quanitySeat" id="seat" required>
-                <option value="">Chọn Số Ghế</option>
+                <option value="${param.quanitySeat }">Chọn Số Ghế</option>
                 <option value="4"> 4 </option>
                 <option value="7"> 7 </option>
                 <option value="16"> 16 </option>
@@ -394,7 +394,7 @@
               <label class="fuel">Nhiên Liệu Xe
               </label>
               <select class="form-control" name="fuel" id="fuel" required>
-                <option value="">Chọn Nhiên Liệu</option>
+                <option value="${param.fuel }">Chọn Nhiên Liệu</option>
                 <option value="1"> Xăng  </option>
                 <option value="2"> Dầu Diesel </option>
                 
@@ -404,7 +404,7 @@
               <label class="gear">Hộp Số
               </label>
               <select class="form-control" name="gear" id="gear" required>
-                <option value="">Chọn Loại Hộp Số</option>
+                <option value="${param.gear }">Chọn Loại Hộp Số</option>
                 <option value="1"> Số Sàn </option>
                 <option value="2"> Số Tự Động </option>
               </select>
@@ -414,15 +414,16 @@
         <div class="col-xs-9 col-xs-offset-1">
           <div class="form-group ">
               <label for="content">Một số hình ảnh</label>
-               <textarea id="content" class="form-control" required name="content" rows="10"></textarea>
+               <textarea id="content" class="form-control" required name="content" rows="10" > ${param.content}</textarea>
           </div>
 
         </div>
+        <input type="hidden" value="${param.idCar }" name="idCar">
       <div class="form-group col-sm-7  col-sm-offset-5">
         <button type="submit" class="btn btn-md btn-success">
-          <i class="fa fa-save"></i> Save
+          <i class="fa fa-save"></i> Update
         </button>
-        <a href="#" class="btn btn-md btn-danger">
+        <a href="indexCar.jsp" class="btn btn-md btn-danger">
           <i class="fa fa-remove"></i> Cancel
         </a>
       </div>

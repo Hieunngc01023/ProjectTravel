@@ -8,6 +8,7 @@ import org.hibernate.classic.Session;
 
 import util.HibernateUtil;
 import entities.Order;
+import entities.TourDetail;
 import adminModel.*;
 public class OrderDAO {
 	
@@ -52,6 +53,8 @@ public class OrderDAO {
 		try {
 			session.beginTransaction();
 				Order order = (Order) session.get(Order.class, idOrder);
+				TourDetail tourDetail = (TourDetail) session.get(TourDetail.class, order.getTour().getIdTourDeTail());
+				tourDetail.setQuantitySeat(tourDetail.getQuantitySeat() + order.getQuanOrder());
 				session.delete(order);
 			session.getTransaction().commit();
 		} catch (Exception e) {

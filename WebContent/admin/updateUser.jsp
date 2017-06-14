@@ -341,34 +341,37 @@
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                 check loi nha
       </div>
-      <form action="addUserAdmin" method="post" id="form-user" class=" form" >
+      <form action="updateUserAdmin" method="post" id="form-user" class=" form" >
         <div class="col-sm-6">
           <div class="form-group col-sm-8 col-sm-offset-2">
             <label for="fullName">Họ và Tên</label>
-            <input type="text" class="form-control"  name="fullName" id="fullName"  placeholder="Nhập Họ và Tên"  required>
+            <input type="text" class="form-control" value="${param.fullName }"  name="fullName" id="fullName"  placeholder="Nhập Họ và Tên"  required>
           </div>
           <div class="form-group col-sm-8 col-sm-offset-2">
             <label for="email">Email</label>
-            <input type="email" class="form-control"  name="email" id="email"  placeholder="Nhập Email của bạn"  required>
+            <input type="email" class="form-control" readonly value="${param.email }"  name="email" id="email"  placeholder="Nhập Email của bạn"  required>
           </div>
           <div class="form-group col-sm-8 col-sm-offset-2">
             <label for="phone">Phone</label>
-            <input type="number" class="form-control"  name="phoneNumber" id="phone"  placeholder="Nhập Số Điện Thoại"  required>
+            <input type="number" class="form-control" value="${param.phoneNumber }"  name="phoneNumber" id="phone"  placeholder="Nhập Số Điện Thoại"  required>
           </div>
         </div>
            
         <div class="col-sm-6">
         	<div class="form-group col-sm-8 col-sm-offset-2">
         		<label for="address">Address</label>
-        		<input type="text" class="form-control"  name="address" id="address"  placeholder="Nhập số nhà,đường phường,quận"  required>
+        		<input type="text" class="form-control" value="${param.address }"  name="address" id="address"  placeholder="Nhập số nhà,đường phường,quận"  required>
         	</div>
         	<div class="form-group col-sm-8 col-sm-offset-2">
-        		<label for="password">Mật Khẩu</label>
-        		<input type="password" class="form-control"  name="password" id="password"   required>
+        		<label for="password">Thay Đổi Mật Khẩu
+						 <input type="checkbox" id="ChangePassword" name="changePassword" >
+        		</label>
+        		<input type="hidden" value="${param.id }" name="id">
+        		<input type="password" class="form-control password" style="display: none;"   name="password" id="password"  placeholder="Nhập mật khẩu"  >
         	</div>
-        	<div class="form-group col-sm-8 col-sm-offset-2">
+        	<div class="form-group col-sm-8 col-sm-offset-2 password" style="display: none;">
         		<label for="cfpassword">Nhập Lại Mật Khẩu</label>
-        		<input type="password" class="form-control"  name="cfpassword" id="cfpassword"  required>
+        		<input type="password" class="form-control "    name="cfpassword" id="cfpassword" placeholder="Nhập lại mật khẩu" >
         	</div>
         </div>
       
@@ -610,8 +613,18 @@
          	 return flag;
 
          });
+
+         $("#ChangePassword").change(function () {
+                if($(this).is(":checked"))
+                {
+                     
+                    $(".password").slideDown();
+                }else {
+                    $(".password").slideUp();
+                }
+           });
     }); 
-   $("#form-user").validate();
+   // $("#form-user").validate();
 </script>
  
 </body>

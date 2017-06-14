@@ -331,7 +331,7 @@
                 check loi nha
       </div>
       <form action="updateOrderTourAdminAction" method="post" id="form-category" class="col-sm-6 col-sm-offset-3 form" novalidate>
-      <input type="hidden" name="idOrder" value=" ${param.idOrder }">
+      <input type="hidden" name="idOrder" value="${param.idOrder }">
         <div class="form-group">
           <label for="name">Tên Tour</label>
           <input type="text" class="form-control" value=" ${param.tourName }" id="name" name="name" readonly="readonly" >

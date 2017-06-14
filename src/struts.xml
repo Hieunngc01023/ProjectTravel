@@ -17,7 +17,7 @@
         	<result name="error">error.html</result>
         	<result name="step3">bookingstepTwo.jsp</result>
         </action>
-        
+       
         <action name="serchTourAction" class="controller.tourSearchController">
         	<result name="success">searchTour.jsp</result>
         	<result name="error">error.html</result>
@@ -97,6 +97,18 @@
        	</action>
        	<action name="updateOrderTourAdminAction" class="adminController.OrderTourContrller" method="updateStateMoney">
        		<result name="success">/admin/indexOrderTour.jsp</result>
+       		<result name="error">error.html</result>
+       	</action>
+       	<action name="deleteOrderAdmin" class="adminController.OrderTourContrller" method="deleteOrder">
+       		<result name="success">/admin/indexOrderTour.jsp</result>
+       		<result name="error">error.html</result>
+       	</action>
+       	<action name="updateUserAdmin" class="adminController.UserAdminController" method="updateUser">
+       		<result name="success">/admin/indexUser.jsp</result>
+       		<result name="error">error.html</result>
+       	</action>
+       	<action name="addUserAdmin" class="adminController.UserAdminController" method="addUser">
+       		<result name="success">/admin/indexUser.jsp</result>
        		<result name="error">error.html</result>
        	</action>
         	

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    <%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -376,7 +377,11 @@
                 <a href="updateOrderTour.jsp?idOrder=${order.idOrder }&tourName=${order.tourName}" class="btn btn-info btn-xs">
                   <i class="fa fa-pencil"></i> Update
                 </a> 
-                 <a href="" class="btn btn-danger btn-xs">
+                	<s:url var="delete" action="deleteOrderAdmin">
+                		<s:param name="idOrder" >${order.idOrder }</s:param>
+                	</s:url>
+                	
+                 <a href="${delete }" class="btn btn-danger btn-xs">
                   <i class="fa fa-trash"></i> Delete
                 </a> 
               </td>

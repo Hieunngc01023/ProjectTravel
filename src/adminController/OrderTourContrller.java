@@ -29,5 +29,16 @@ public class OrderTourContrller extends ActionSupport{
 				return ERROR;
 			}
 	}
+	public String deleteOrder(){
+		boolean flag = new OrderDAO().deleteOrder(idOrder);
+		if(flag == true)
+			return
+					SUCCESS;
+			else {
+				return ERROR;
+			}
+		
+		
+	}
 
 }

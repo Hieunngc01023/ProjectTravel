@@ -19,6 +19,7 @@ public class OrderModel {
 	public void setModelPayment(int modelPayment) {
 		this.modelPayment = modelPayment;
 	}
+	
 	private int stateMoney;
 	private String tourName;
 	

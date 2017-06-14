@@ -1,0 +1,833 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>BookTravel | Category</title>
+<%@ include file="fileCss.jsp"%>
+<!-- {{Setup Ckeditor and ckfinder}} -->
+
+<script src=" plugins/ckeditor/ckeditor/ckeditor.js "
+	type="text/javascript"></script>
+<script src="plugins/ckeditor/ckfinder/ckfinder.js"
+	type="text/javascript"></script>
+<script type="text/javascript">
+	var baseURL = "/";
+</script>
+<script src="plugins/ckeditor/func_ckfinder.js " type="text/javascript"></script>
+
+<!-- {{end Set up CKEDITOR}} -->
+
+
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper">
+
+		<header class="main-header"> <!-- Logo --> <a
+			href="index2.html" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
+			<span class="logo-mini"><b>A</b>LT</span> <!-- logo for regular state and mobile devices -->
+			<span class="logo-lg"><b>Admin</b>LTE</span>
+		</a> <!-- Header Navbar: style can be found in header.less --> <nav
+			class="navbar navbar-static-top"> <!-- Sidebar toggle button-->
+		<a href="#" class="sidebar-toggle" data-toggle="offcanvas"
+			role="button"> <span class="sr-only">Toggle navigation</span>
+		</a>
+
+		<div class="navbar-custom-menu">
+			<ul class="nav navbar-nav">
+				<!-- Messages: style can be found in dropdown.less-->
+				<li class="dropdown messages-menu"><a href="#"
+					class="dropdown-toggle" data-toggle="dropdown"> <i
+						class="fa fa-envelope-o"></i> <span class="label label-success">4</span>
+				</a>
+					<ul class="dropdown-menu">
+						<li class="header">You have 4 messages</li>
+						<li>
+							<!-- inner menu: contains the actual data -->
+							<ul class="menu">
+								<li>
+									<!-- start message --> <a href="#">
+										<div class="pull-left">
+											<img src="admin-assets/img/user2-160x160.jpg"
+												class="img-circle" alt="User Image">
+										</div>
+										<h4>
+											Support Team <small><i class="fa fa-clock-o"></i> 5
+												mins</small>
+										</h4>
+										<p>Why not buy a new awesome theme?</p>
+								</a>
+								</li>
+								<!-- end message -->
+								<li><a href="#">
+										<div class="pull-left">
+											<img src="admin-assets/img/user3-128x128.jpg"
+												class="img-circle" alt="User Image">
+										</div>
+										<h4>
+											AdminLTE Design Team <small><i class="fa fa-clock-o"></i>
+												2 hours</small>
+										</h4>
+										<p>Why not buy a new awesome theme?</p>
+								</a></li>
+								<li><a href="#">
+										<div class="pull-left">
+											<img src="admin-assets/img/user4-128x128.jpg"
+												class="img-circle" alt="User Image">
+										</div>
+										<h4>
+											Developers <small><i class="fa fa-clock-o"></i> Today</small>
+										</h4>
+										<p>Why not buy a new awesome theme?</p>
+								</a></li>
+								<li><a href="#">
+										<div class="pull-left">
+											<img src="admin-assets/img/user3-128x128.jpg"
+												class="img-circle" alt="User Image">
+										</div>
+										<h4>
+											Sales Department <small><i class="fa fa-clock-o"></i>
+												Yesterday</small>
+										</h4>
+										<p>Why not buy a new awesome theme?</p>
+								</a></li>
+								<li><a href="#">
+										<div class="pull-left">
+											<img src="admin-assets/img/user4-128x128.jpg"
+												class="img-circle" alt="User Image">
+										</div>
+										<h4>
+											Reviewers <small><i class="fa fa-clock-o"></i> 2 days</small>
+										</h4>
+										<p>Why not buy a new awesome theme?</p>
+								</a></li>
+							</ul>
+						</li>
+						<li class="footer"><a href="#">See All Messages</a></li>
+					</ul></li>
+				<!-- Notifications: style can be found in dropdown.less -->
+				<li class="dropdown notifications-menu"><a href="#"
+					class="dropdown-toggle" data-toggle="dropdown"> <i
+						class="fa fa-bell-o"></i> <span class="label label-warning">10</span>
+				</a>
+					<ul class="dropdown-menu">
+						<li class="header">You have 10 notifications</li>
+						<li>
+							<!-- inner menu: contains the actual data -->
+							<ul class="menu">
+								<li><a href="#"> <i class="fa fa-users text-aqua"></i>
+										5 new members joined today
+								</a></li>
+								<li><a href="#"> <i class="fa fa-warning text-yellow"></i>
+										Very long description here that may not fit into the page and
+										may cause design problems
+								</a></li>
+								<li><a href="#"> <i class="fa fa-users text-red"></i> 5
+										new members joined
+								</a></li>
+								<li><a href="#"> <i
+										class="fa fa-shopping-cart text-green"></i> 25 sales made
+								</a></li>
+								<li><a href="#"> <i class="fa fa-user text-red"></i>
+										You changed your username
+								</a></li>
+							</ul>
+						</li>
+						<li class="footer"><a href="#">View all</a></li>
+					</ul></li>
+				<!-- Tasks: style can be found in dropdown.less -->
+				<li class="dropdown tasks-menu"><a href="#"
+					class="dropdown-toggle" data-toggle="dropdown"> <i
+						class="fa fa-flag-o"></i> <span class="label label-danger">9</span>
+				</a>
+					<ul class="dropdown-menu">
+						<li class="header">You have 9 tasks</li>
+						<li>
+							<!-- inner menu: contains the actual data -->
+							<ul class="menu">
+								<li>
+									<!-- Task item --> <a href="#">
+										<h3>
+											Design some buttons <small class="pull-right">20%</small>
+										</h3>
+										<div class="progress xs">
+											<div class="progress-bar progress-bar-aqua"
+												style="width: 20%" role="progressbar" aria-valuenow="20"
+												aria-valuemin="0" aria-valuemax="100">
+												<span class="sr-only">20% Complete</span>
+											</div>
+										</div>
+								</a>
+								</li>
+								<!-- end task item -->
+								<li>
+									<!-- Task item --> <a href="#">
+										<h3>
+											Create a nice theme <small class="pull-right">40%</small>
+										</h3>
+										<div class="progress xs">
+											<div class="progress-bar progress-bar-green"
+												style="width: 40%" role="progressbar" aria-valuenow="20"
+												aria-valuemin="0" aria-valuemax="100">
+												<span class="sr-only">40% Complete</span>
+											</div>
+										</div>
+								</a>
+								</li>
+								<!-- end task item -->
+								<li>
+									<!-- Task item --> <a href="#">
+										<h3>
+											Some task I need to do <small class="pull-right">60%</small>
+										</h3>
+										<div class="progress xs">
+											<div class="progress-bar progress-bar-red" style="width: 60%"
+												role="progressbar" aria-valuenow="20" aria-valuemin="0"
+												aria-valuemax="100">
+												<span class="sr-only">60% Complete</span>
+											</div>
+										</div>
+								</a>
+								</li>
+								<!-- end task item -->
+								<li>
+									<!-- Task item --> <a href="#">
+										<h3>
+											Make beautiful transitions <small class="pull-right">80%</small>
+										</h3>
+										<div class="progress xs">
+											<div class="progress-bar progress-bar-yellow"
+												style="width: 80%" role="progressbar" aria-valuenow="20"
+												aria-valuemin="0" aria-valuemax="100">
+												<span class="sr-only">80% Complete</span>
+											</div>
+										</div>
+								</a>
+								</li>
+								<!-- end task item -->
+							</ul>
+						</li>
+						<li class="footer"><a href="#">View all tasks</a></li>
+					</ul></li>
+				<!-- User Account: style can be found in dropdown.less -->
+				<li class="dropdown user user-menu"><a href="#"
+					class="dropdown-toggle" data-toggle="dropdown"> <img
+						src="admin-assets/img/user2-160x160.jpg" class="user-image"
+						alt="User Image"> <span class="hidden-xs">Alexander
+							Pierce</span>
+				</a>
+					<ul class="dropdown-menu">
+						<!-- User image -->
+						<li class="user-header"><img
+							src="admin-assets/img/user2-160x160.jpg" class="img-circle"
+							alt="User Image">
+
+							<p>
+								Alexander Pierce - Web Developer <small>Member since
+									Nov. 2012</small>
+							</p></li>
+						<!-- Menu Body -->
+						<li class="user-body">
+							<div class="row">
+								<div class="col-xs-4 text-center">
+									<a href="#">Followers</a>
+								</div>
+								<div class="col-xs-4 text-center">
+									<a href="#">Sales</a>
+								</div>
+								<div class="col-xs-4 text-center">
+									<a href="#">Friends</a>
+								</div>
+							</div> <!-- /.row -->
+						</li>
+						<!-- Menu Footer-->
+						<li class="user-footer">
+							<div class="pull-left">
+								<a href="#" class="btn btn-default btn-flat">Profile</a>
+							</div>
+							<div class="pull-right">
+								<a href="#" class="btn btn-default btn-flat">Sign out</a>
+							</div>
+						</li>
+					</ul></li>
+				<!-- Control Sidebar Toggle Button -->
+				<li><a href="#" data-toggle="control-sidebar"><i
+						class="fa fa-gears"></i></a></li>
+			</ul>
+		</div>
+		</nav> </header>
+		<!-- Left side column. contains the logo and sidebar -->
+		<aside class="main-sidebar"> <!-- sidebar: style can be found in sidebar.less -->
+		<section class="sidebar"> <!-- Sidebar user panel -->
+		<div class="user-panel">
+			<div class="pull-left image">
+				<img src="admin-assets/img/user2-160x160.jpg" class="img-circle"
+					alt="User Image">
+			</div>
+			<div class="pull-left info">
+				<p>Alexander Pierce</p>
+				<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+			</div>
+		</div>
+		<!-- search form -->
+		<form action="#" method="get" class="sidebar-form">
+			<div class="input-group">
+				<input type="text" name="q" class="form-control"
+					placeholder="Search..."> <span class="input-group-btn">
+					<button type="submit" name="search" id="search-btn"
+						class="btn btn-flat">
+						<i class="fa fa-search"></i>
+					</button>
+				</span>
+			</div>
+		</form>
+		<!-- /.search form --> <!-- sidebar menu: : style can be found in sidebar.less -->
+		<%@ include file="header.jsp"%> </section> <!-- /.sidebar -->
+		</aside>
+
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+			<h1>
+				Dashboard <small>Control panel</small>
+			</h1>
+			<ol class="breadcrumb">
+				<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+				<li class="active">Dashboard</li>
+			</ol>
+			</section>
+
+			<!-- Main content -->
+			<section class="content">
+			<div hidden="" class="alert alert-danger alert-dismissible">
+				<button type="button" class="close" data-dismiss="alert"
+					aria-hidden="true">×</button>
+				check loi nha
+			</div>
+
+
+
+			<div class="row">
+				<form action="updateTour" method="post" id="form-category"
+					class=" form" novalidate enctype="multipart/form-data">
+					<div class="form-group col-sm-6 col-sm-offset-3">
+						<label for="title">Tên Tour</label> <input type="text"
+							class="form-control" name="title" id="title"
+							placeholder="Nhập Tên Tour" value="${param.title }">
+					</div>
+					<div class="form-group col-sm-6 col-sm-offset-3">
+						<label class="control-label col-md-3">Category </label> <select
+							class="form-control" name="idCategory" id="category">
+							<jsp:useBean id="cate" class="adminDAO.CategoryDAO" scope="page"></jsp:useBean>
+							<c:forEach items="${cate.getListCategory() }" var="category">
+								<option value="${category.idCategory }">
+									${category.nameCategory }</option>
+							</c:forEach>
+						</select> <span class="text-danger" id="categoryError"></span>
+					</div>
+					<div class="form-group col-sm-6 col-sm-offset-3 ">
+						<label for="placePickup">Địa điểm đón </label> <input type="text"
+							class="form-control" name="placePickup" id="placePickup"
+							placeholder="Nhập địa điểm đón" value="${param.placePickUp }">
+					</div>
+					<div class="form-group col-sm-6 col-sm-offset-3">
+						<label for="placeDrop">Địa điểm đến</label> <input type="text"
+							class="form-control" name="placeDrop" id="placeDrop"
+							placeholder="Nhập địa điểm đến" value="${param.placeDropOff }">
+					</div>
+
+					<div class="form-group col-sm-6 col-sm-offset-3">
+						<label for="imageTitle"> Ảnh đại diện tour</label>
+						<!-- <img id="target-avatar" src="" width="152" alt=""> -->
+						<img src="admin-assets/img/${param.imageTitle }" width="152"
+							alt="User Image" id="target-avatar"> <input type="file"
+							onchange="readURL(this)" name="imageTitle" id="imageTitle"
+							class="form-control"> <span class="text-danger"
+							id="imageError"></span>
+					</div>
+					<div class="form-group col-md-11 col-sm-offset-1">
+						<label for="content">Lịch Trình</label>
+						<!-- <div class="col-md-12"> -->
+						<textarea id="content" class="form-control" name="content"
+							rows="10">${param.content }</textarea>
+						<span class="text-danger" id="contentError"></span>
+						<!-- </div> -->
+					</div>
+
+					<input type="hidden" name="idTour" value="${param.id }">
+					<div class="form-group col-sm-7  col-sm-offset-5">
+						<button type="submit" class="btn btn-md btn-success">
+							<i class="fa fa-save"></i> Save
+						</button>
+						<a href="#" class="btn btn-md btn-danger"> <i
+							class="fa fa-remove"></i> Cancel
+						</a>
+					</div>
+
+
+				</form>
+			</div>
+			
+		<!-- Comment -->
+		<jsp:useBean id="commentDAO" class="dao.CommentDAO" scope="page"></jsp:useBean>
+		<c:forEach items="${commentDAO.getListComments(param.id) }" var="comment">
+		<c:if test="${commentDAO.getListComments(param.id).size() >0 }">	
+		
+			<div class="row">
+				<div class="col-sm-1">
+					<div class="thumbnail">
+						<img class="img-responsive user-photo"
+							src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+					</div>
+					<!-- /thumbnail -->
+				</div>
+				<!-- /col-sm-1 -->
+
+				<div class="col-sm-5">
+					<div class="panel panel-comment panel-default ">
+						<div class="panel-heading-comment panel-heading">
+							<strong>${comment.nameUser }</strong> <span class="text-muted">commented
+								${comment.dateComment }</span>
+						</div>
+						<div class="panel-body">${comment.content }</div>
+						<!-- /panel-body -->
+						<!-- <div class="col-sm-4 col-md-offset-5"> -->
+						<form action="deleteComment" method="get">
+								<input type="hidden" name="idTour" value="${param.id }">
+						        <input type="hidden" name="idComment" value="${comment.idComment }">
+								<input type="hidden" name="isMain" value="main">
+							<button type="submit" class="btn btn-default btn-sm">
+								
+								<i class="fa fa-2x fa-times" aria-hidden="true"></i> Xoá
+							</button>
+						</form>
+						<!-- </div> -->
+					</div>
+					<!-- /panel panel-default -->
+					
+					<c:if test="${commentDAO.getListSubComment(comment.idComment).size() > 0 }">
+						<c:forEach items="${commentDAO.getListSubComment(comment.idComment)}" var="sub">
+							
+					<div class="row">
+						<div class="col-sm-2">
+							<div class="thumbnail">
+								<img class="img-responsive user-photo"
+									src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+							</div>
+							<!-- /thumbnail -->
+						</div>
+						<!-- /col-sm-1 -->
+
+						<div class="col-sm-10">
+							<div class="panel panel-comment panel-default">
+								<div class="panel-heading-comment panel-heading">
+									<strong>${sub.nameUser }</strong> <span class="text-muted">commented
+										${sub.dateComment}</span>
+								</div>
+								<div class="panel-body">${sub.content }</div>
+								<!-- /panel-body -->
+								<form action="deleteComment" method="get">
+								<input type="hidden" name="idTour" value="${param.id }">
+									<input type="hidden" name="idComment" value="${sub.idComment }">
+								<input type="hidden" name="isMain" value="sub">
+									<button type="submit" class="btn btn-default btn-sm">
+										<i class="fa fa-2x fa-times" aria-hidden="true"></i> Xoá
+									</button>
+								</form>
+							</div>
+							<!-- /panel panel-default -->
+						</div>
+						<!-- /col-sm-10 -->
+					</div>
+						</c:forEach>
+						
+					</c:if>
+					
+					<!-- COmment child -->
+					
+					
+					
+					
+					<!-- COmment child -->
+					<!-- /row -->
+				</div>
+				<!-- /col-sm-5 -->
+			</div>
+		
+		
+		</c:if>
+		</c:forEach>
+		
+
+			<!-- <div class="row">
+				<div class="col-sm-1">
+					<div class="thumbnail">
+						<img class="img-responsive user-photo"
+							src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+					</div>
+					/thumbnail
+				</div>
+				/col-sm-1
+
+				<div class="col-sm-5">
+					<div class="panel panel-comment panel-default ">
+						<div class="panel-heading-comment panel-heading">
+							<strong>myusername</strong> <span class="text-muted">commented
+								5 days ago</span>
+						</div>
+						<div class="panel-body">Panel content</div>
+						/panel-body
+						<div class="col-sm-4 col-md-offset-5">
+						<form action="">
+							<button type="submit" class="btn btn-default btn-sm">
+								<i class="fa fa-2x fa-times" aria-hidden="true"></i> Xoá
+							</button>
+						</form>
+						</div>
+					</div>
+					/panel panel-default
+					
+					
+					
+					COmment child
+
+					<div class="row">
+						<div class="col-sm-2">
+							<div class="thumbnail">
+								<img class="img-responsive user-photo"
+									src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+							</div>
+							/thumbnail
+						</div>
+						/col-sm-1
+
+						<div class="col-sm-10">
+							<div class="panel panel-comment panel-default">
+								<div class="panel-heading-comment panel-heading">
+									<strong>myusername</strong> <span class="text-muted">commented
+										5 days ago</span>
+								</div>
+								<div class="panel-body">Panel content</div>
+								/panel-body
+								<form action="">
+									<button type="submit" class="btn btn-default btn-sm">
+										<i class="fa fa-2x fa-times" aria-hidden="true"></i> Xoá
+									</button>
+								</form>
+							</div>
+							/panel panel-default
+						</div>
+						/col-sm-10
+					</div>
+					
+					
+					
+					COmment child
+					/row
+				</div>
+				/col-sm-5
+			</div> -->
+			<!-- /row --> 
+			<!-- /.content -->
+			<!-- Comment -->
+		
+		
+			</section>
+		<!-- /.content-wrapper -->
+		<footer class="main-footer">
+		<div class="pull-right hidden-xs">
+			<b>Version</b> 2.3.8
+		</div>
+		<strong>Copyright &copy; 2014-2016 </strong> By Lee Anh </footer>
+
+		<!-- Control Sidebar -->
+		<aside class="control-sidebar control-sidebar-dark"> <!-- Create the tabs -->
+		<ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+			<li><a href="#control-sidebar-home-tab" data-toggle="tab"><i
+					class="fa fa-home"></i></a></li>
+			<li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i
+					class="fa fa-gears"></i></a></li>
+		</ul>
+		<!-- Tab panes -->
+		<div class="tab-content">
+			<!-- Home tab content -->
+			<div class="tab-pane" id="control-sidebar-home-tab">
+				<h3 class="control-sidebar-heading">Recent Activity</h3>
+				<ul class="control-sidebar-menu">
+					<li><a href="javascript:void(0)"> <i
+							class="menu-icon fa fa-birthday-cake bg-red"></i>
+
+							<div class="menu-info">
+								<h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+
+								<p>Will be 23 on April 24th</p>
+							</div>
+					</a></li>
+					<li><a href="javascript:void(0)"> <i
+							class="menu-icon fa fa-user bg-yellow"></i>
+
+							<div class="menu-info">
+								<h4 class="control-sidebar-subheading">Frodo Updated His
+									Profile</h4>
+
+								<p>New phone +1(800)555-1234</p>
+							</div>
+					</a></li>
+					<li><a href="javascript:void(0)"> <i
+							class="menu-icon fa fa-envelope-o bg-light-blue"></i>
+
+							<div class="menu-info">
+								<h4 class="control-sidebar-subheading">Nora Joined Mailing
+									List</h4>
+
+								<p>nora@example.com</p>
+							</div>
+					</a></li>
+					<li><a href="javascript:void(0)"> <i
+							class="menu-icon fa fa-file-code-o bg-green"></i>
+
+							<div class="menu-info">
+								<h4 class="control-sidebar-subheading">Cron Job 254
+									Executed</h4>
+
+								<p>Execution time 5 seconds</p>
+							</div>
+					</a></li>
+				</ul>
+				<!-- /.control-sidebar-menu -->
+
+				<h3 class="control-sidebar-heading">Tasks Progress</h3>
+				<ul class="control-sidebar-menu">
+					<li><a href="javascript:void(0)">
+							<h4 class="control-sidebar-subheading">
+								Custom Template Design <span
+									class="label label-danger pull-right">70%</span>
+							</h4>
+
+							<div class="progress progress-xxs">
+								<div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+							</div>
+					</a></li>
+					<li><a href="javascript:void(0)">
+							<h4 class="control-sidebar-subheading">
+								Update Resume <span class="label label-success pull-right">95%</span>
+							</h4>
+
+							<div class="progress progress-xxs">
+								<div class="progress-bar progress-bar-success"
+									style="width: 95%"></div>
+							</div>
+					</a></li>
+					<li><a href="javascript:void(0)">
+							<h4 class="control-sidebar-subheading">
+								Laravel Integration <span class="label label-warning pull-right">50%</span>
+							</h4>
+
+							<div class="progress progress-xxs">
+								<div class="progress-bar progress-bar-warning"
+									style="width: 50%"></div>
+							</div>
+					</a></li>
+					<li><a href="javascript:void(0)">
+							<h4 class="control-sidebar-subheading">
+								Back End Framework <span class="label label-primary pull-right">68%</span>
+							</h4>
+
+							<div class="progress progress-xxs">
+								<div class="progress-bar progress-bar-primary"
+									style="width: 68%"></div>
+							</div>
+					</a></li>
+				</ul>
+				<!-- /.control-sidebar-menu -->
+
+			</div>
+			<!-- /.tab-pane -->
+			<!-- Stats tab content -->
+			<div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab
+				Content</div>
+			<!-- /.tab-pane -->
+			<!-- Settings tab content -->
+			<div class="tab-pane" id="control-sidebar-settings-tab">
+				<form method="post">
+					<h3 class="control-sidebar-heading">General Settings</h3>
+
+					<div class="form-group">
+						<label class="control-sidebar-subheading"> Report panel
+							usage <input type="checkbox" class="pull-right" checked>
+						</label>
+
+						<p>Some information about this general settings option</p>
+					</div>
+					<!-- /.form-group -->
+
+					<div class="form-group">
+						<label class="control-sidebar-subheading"> Allow mail
+							redirect <input type="checkbox" class="pull-right" checked>
+						</label>
+
+						<p>Other sets of options are available</p>
+					</div>
+					<!-- /.form-group -->
+
+					<div class="form-group">
+						<label class="control-sidebar-subheading"> Expose author
+							name in posts <input type="checkbox" class="pull-right" checked>
+						</label>
+
+						<p>Allow the user to show his name in blog posts</p>
+					</div>
+					<!-- /.form-group -->
+
+					<h3 class="control-sidebar-heading">Chat Settings</h3>
+
+					<div class="form-group">
+						<label class="control-sidebar-subheading"> Show me as
+							online <input type="checkbox" class="pull-right" checked>
+						</label>
+					</div>
+					<!-- /.form-group -->
+
+					<div class="form-group">
+						<label class="control-sidebar-subheading"> Turn off
+							notifications <input type="checkbox" class="pull-right">
+						</label>
+					</div>
+					<!-- /.form-group -->
+
+					<div class="form-group">
+						<label class="control-sidebar-subheading"> Delete chat
+							history <a href="javascript:void(0)" class="text-red pull-right"><i
+								class="fa fa-trash-o"></i></a>
+						</label>
+					</div>
+					<!-- /.form-group -->
+				</form>
+			</div>
+			<!-- /.tab-pane -->
+		</div>
+		</aside>
+		<!-- /.control-sidebar -->
+		<!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+		<div class="control-sidebar-bg"></div>
+	</div>
+	<!-- ./wrapper -->
+
+	<!-- jQuery 2.2.3 -->
+	<%@ include file="fileJS.jsp"%>
+
+
+	<script type="text/javascript">
+		ckeditor("content");
+		$(document)
+				.ready(
+						function() {
+							$('#form-category')
+									.submit(
+											function() {
+												var title = $.trim($('#title')
+														.val());
+												var placePickup = $.trim($(
+														'#placePickup').val());
+												var placeDrop = $.trim($(
+														'#placeDrop').val());
+												var imageTitle = $.trim($(
+														'#imageTitle').val());
+												var content = $.trim($(
+														'#content').val());
+												var category = $.trim($(
+														'#category').val());
+												var flag = true;
+												// title
+												if (title.length <= 0) {
+													$('#title')
+															.attr(
+																	"placeholder",
+																	"Bạn chưa nhập tên Tour");
+													flag = false;
+													// debugger;
+												} else {
+													$('#title').attr(
+															"placeholder", "");
+												}
+												//
+												if (placePickup.length <= 0) {
+													$('#placePickup')
+															.attr(
+																	"placeholder",
+																	"Bạn chưa nhập điểm đón");
+													flag = false;
+													// debugger;
+												} else {
+													$('#placePickup').attr(
+															"placeholder", "");
+												}
+												//
+												if (placeDrop.length <= 0) {
+													$('#placeDrop')
+															.attr(
+																	"placeholder",
+																	"Bạn chưa nhập điểm tới");
+													flag = false;
+													// debugger;
+												} else {
+													$('#placeDrop').attr(
+															"placeholder", "");
+												}
+												//
+												if (category.length <= 0) {
+													$('#categoryError')
+															.text(
+																	"Bạn chưa chọn thể loại ");
+													flag = false;
+													// debugger;
+												} else {
+													$('#categoryError')
+															.text("");
+												}
+												//
+												/*  if (imageTitle.length <= 0){
+												 $('#imageError').text( "Bạn chưa có ảnh ");
+												 flag = false;
+												     // debugger;
+												   }
+												   else{
+												    $('#imageError').text("");
+												}
+												// */
+												return flag;
+											});
+						});
+	</script>
+	<script type="text/javascript">
+		function readURL(input) {
+			var url = input.value;
+			var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+			if (input.files
+					&& input.files[0]
+					&& (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) {
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					$('#target-avatar').attr('src', e.target.result);
+				}
+				reader.readAsDataURL(input.files[0]);
+			} else {
+				$('#target-avatar').attr('src', '');
+			}
+		}
+	</script>
+
+</body>
+</html>

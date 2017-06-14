@@ -75,7 +75,7 @@ public class TourDAO {
 			for(TourDetail tourdetail: listTour){
 				TourModel tourmodel = new TourModel();
 				tourmodel.setIdTourDetail(tourdetail.getIdTourDeTail());
-
+				tourmodel.setImageTitle(tourdetail.getTour().getImageTitle());
 				tourmodel.setRealPrice(tourdetail.getRealPrice());
 				tourmodel.setVirtualPrice(tourdetail.getVirtualPrice());
 				tourmodel.setTitle(tourdetail.getTour().getTitle());
@@ -121,6 +121,7 @@ public class TourDAO {
 				tourModel.setTimeEnd(tour.getTimeOff());
 				tourModel.setTitle(tour.getTour().getTitle());
 				tourModel.setVirtualPrice(tour.getVirtualPrice());
+				tourModel.setImageTitle(tour.getTour().getImageTitle());
 
 			} catch (Exception e) {
 				session.getTransaction().rollback();

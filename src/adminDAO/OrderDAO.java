@@ -17,7 +17,7 @@ public class OrderDAO {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		try {
 			session.beginTransaction();
-				Query query = session.createQuery("from Order where stateMoney = 1 ");
+				Query query = session.createQuery("from Order where stateMoney = 0 ");
 				List<Order> list = query.list();
 				if(list.size() >0){
 					for(Order orders: list){
@@ -42,7 +42,6 @@ public class OrderDAO {
 		}
 		finally{
 			session.close();
-			HibernateUtil.sutdown();
 		}
 		return listOders;
 		
@@ -62,19 +61,20 @@ public class OrderDAO {
 		}
 		finally{
 			session.close();
-			HibernateUtil.sutdown();
 		}
 		return true;
 	}
 	// to update Order to state got money when we got money from user.
 	// Author :Hieu
 	// Date: 12/6/2017
-	public boolean  updateStateGetMoneyOrder(String idOrder){
+	public boolean  updateStateGetMoneyOrder(String idOrder , int state){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		try {
 			session.beginTransaction();
-		Order order = 	(Order) session.get(Order.class, idOrder);
-				order.setStateMoney(2);
+		      Order order = (Order) session.get(Order.class, idOrder.trim());
+		    
+		      order.setStateMoney(state);
+		      
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			session.getTransaction().rollback();
@@ -83,7 +83,6 @@ public class OrderDAO {
 		}
 		finally{
 			session.close();
-			HibernateUtil.sutdown();
 		}
 		return true;
 		

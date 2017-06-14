@@ -1,6 +1,9 @@
 package adminModel;
 
+import java.io.File;
 import java.util.Date;
+
+
 
 public class TourModel {
 	// field of TOur
@@ -12,6 +15,9 @@ public class TourModel {
 	private String content;
 	private String category;
 	private String idCategory;
+
+	
+	
 	
 	public String getIdCategory() {
 		return idCategory;

@@ -16,7 +16,15 @@ public class TourModel implements Comparable<TourModel> {
 	private String pickupPlace;
 	private String dropOffPlace;
 	private String content;
+	private String imageTitle;
 	
+	
+	public String getImageTitle() {
+		return imageTitle;
+	}
+	public void setImageTitle(String imageTitle) {
+		this.imageTitle = imageTitle;
+	}
 	public String getIdTourDetail() {
 		return idTourDetail;
 	}

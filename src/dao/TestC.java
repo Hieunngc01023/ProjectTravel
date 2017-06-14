@@ -35,7 +35,10 @@ public class TestC extends ActionSupport {
 		try {
 
 			session.beginTransaction();
-		System.out.println(((Category)session.get(Category.class, "category5btv346")).getDesCategory());
+			User user = (User) session.get(User.class, 1);
+			Tour tour = (Tour) session.get(Tour.class, "tour1btv303");
+			Comment comment = new Comment();
+			comment.setUser(user);
 			
 			session.getTransaction().commit();			
 		} catch (HibernateException e) {

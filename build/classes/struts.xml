@@ -71,6 +71,34 @@
        		<result name="success">/admin/indexCategory.jsp</result>
        		<result name="error">error.html</result>
        	</action>
+       	<action name="addTour" class="adminController.TourController" method="addNew">
+       		<result name="success">/admin/indexTour.jsp</result>
+       		<result name="error">error.html</result>
+       	</action>
+       	<action name="updateTour" class="adminController.TourController" method="update">
+       		<result name="success">/admin/indexTour.jsp</result>
+       		<result name="error">error.html</result>
+       	</action>
+       	<action name="deleteComment" class="adminController.CommentController" method="delete">
+       		<result name="success">/admin/indexTour.jsp</result>
+       		<result name="error">error.html</result>
+       	</action>
+       	<action name="getListTourDetailAction" class="adminController.TourDetailController" method="getListTour">
+       		<result name="success">/admin/indexTourDetail.jsp</result>
+       		<result name="error">error.html</result>
+       	</action>
+       	<action name="addNewTourDetailAction" class="adminController.TourDetailController" method="addNewTourDetails">
+       		<result name="success">/admin/indexTourDetail.jsp</result>
+       		<result name="error">error.html</result>
+       	</action>
+       	<action name="updateTourDetailAction" class="adminController.TourDetailController" method="updateTourDetails">
+       		<result name="success">/admin/indexTourDetail.jsp</result>
+       		<result name="error">error.html</result>
+       	</action>
+       	<action name="updateOrderTourAdminAction" class="adminController.OrderTourContrller" method="updateStateMoney">
+       		<result name="success">/admin/indexOrderTour.jsp</result>
+       		<result name="error">error.html</result>
+       	</action>
         	
     </package>
 </struts>

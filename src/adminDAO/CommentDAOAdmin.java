@@ -27,7 +27,6 @@ public class CommentDAOAdmin {
 		}
 		finally{
 			session.close();
-			HibernateUtil.sutdown();
 		}
 		return true;
 	}

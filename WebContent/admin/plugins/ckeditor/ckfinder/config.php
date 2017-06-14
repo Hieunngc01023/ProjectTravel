@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /*
  * ### CKFinder : Configuration File - Basic Instructions
  *
@@ -55,7 +55,7 @@ $baseUrl : the base path used to build the final URL for the resources handled
 in CKFinder. If empty, the default value (/userfiles/) is used.
 
 Examples:
-	$baseUrl = 'http://example.com/ckfinder/files/';
+	$baseUrl = 'http://http://localhost:8080/admin-assets/img/';
 	$baseUrl = '/userfiles/';
 
 ATTENTION: The trailing slash is required.

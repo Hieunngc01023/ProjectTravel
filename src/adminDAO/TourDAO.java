@@ -1,9 +1,11 @@
 package adminDAO;
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import org.apache.commons.io.FileUtils;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -15,6 +17,25 @@ import util.HibernateUtil;
 import adminModel.*;
 public class TourDAO {
 	
+	
+/*	public TourModel getTourDetails(String idTour){
+		TourModel tour = new TourModel();
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		try {
+			session.beginTransaction();
+			Tour tourEntity = (Tour) session.get(Tour.class, idTour);
+			
+			
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+			System.out.println("Error: "+e.getMessage());
+		}
+		finally{
+			session.close();
+		}
+		return tour;
+	}*/
 	
 	// this method used to getListTours
 	// Author:Hieu.
@@ -35,8 +56,10 @@ public class TourDAO {
 					tourModel.setImageTitle(tour.getImageTitle());
 					tourModel.setPlaceDropOff(tour.getPlaceDropOff());
 					tourModel.setPlacePickUp(tour.getPlacePickUp());
-					tourModel.setTitle(tour.getContent());
+					tourModel.setTitle(tour.getTitle());
 					tourModel.setCategory(tour.getCategory().getNameCategory());
+					tourModel.setContent(tour.getContent());
+					tourModel.setIdCategory(tour.getCategory().getIdCategory());
 					listTourModels.add(tourModel);
 				}
 			}
@@ -47,7 +70,6 @@ public class TourDAO {
 		}
 		finally{
 			session.close();
-			HibernateUtil.sutdown();
 		}
 		return listTourModels;
 	}
@@ -56,9 +78,8 @@ public class TourDAO {
 	// TourModel of adminModel package
 	// Author: Hieu
 	// Date: 11/6/2017
-	public boolean addNewTour(String idcategory, TourModel tourmodel){
+	public boolean addNewTour(String idcategory, TourModel tourmodel , File image, String imageName, String filePath){
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		
 		
 		try {
 			session.beginTransaction();
@@ -81,7 +102,19 @@ public class TourDAO {
 			tour.setCategory(category);
 			tour.setContent(tourmodel.getContent());
 			tour.setIdTour(idTour);
-			tour.setImageTitle(tourmodel.getImageTitle());
+			String filediretory = filePath+"/"+"admin/admin-assets/img";
+			String imageTitle = "admin-assets/img/"+idTour+imageName;
+			String filePathnew = filePath+"/admin/"+imageTitle;
+			String imageNametoStore = idTour+imageName;
+			
+			if(new File(filePathnew).exists()){
+				return false;
+			}
+			File file = new File(filediretory, imageNametoStore);
+			FileUtils.copyFile(image, file);
+			
+			
+			tour.setImageTitle(imageNametoStore);
 			tour.setPlaceDropOff(tourmodel.getPlaceDropOff());
 			tour.setPlacePickUp(tourmodel.getPlacePickUp());
 			tour.setTitle(tourmodel.getTitle());
@@ -95,14 +128,13 @@ public class TourDAO {
 		}
 		finally{
 			session.close();
-			HibernateUtil.sutdown();
 		}
 		return true;
 	}
 	// update old Tour by tourModel(parameters from client) and id of Category	
 	// Author: Hieu
 	// Dte 11/6/2017
-	public boolean updateTour(TourModel tourModel, String idCategory){
+	public boolean updateTour( String idCategory,TourModel tourModel,File image, String imageName, String filePath ){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		try {
 			session.beginTransaction();
@@ -110,7 +142,23 @@ public class TourDAO {
 			Tour tour = (Tour) session.get(Tour.class, tourModel.getIdTour());
 			tour.setCategory(category);
 			tour.setContent(tourModel.getContent());
-			tour.setImageTitle(tourModel.getImageTitle());
+			
+			if(image != null){
+				String filediretory = filePath+"/"+"admin/admin-assets/img";
+				String imageTitle = "admin-assets/img/"+tourModel.getIdTour()+imageName;
+				String filePathnew = filePath+"/admin/"+imageTitle;
+				String imageNametoStore = tourModel.getIdTour()+imageName;
+				
+				if(new File(filePathnew).exists()){
+					return false;
+				}
+				File file = new File(filediretory, imageNametoStore);
+				FileUtils.copyFile(image, file);
+
+				tour.setImageTitle(imageNametoStore);
+				
+			}
+			
 			tour.setPlaceDropOff(tourModel.getPlaceDropOff());
 			tour.setPlacePickUp(tourModel.getPlacePickUp());
 			tour.setTitle(tourModel.getTitle());
@@ -122,12 +170,11 @@ public class TourDAO {
 		}
 		finally{
 			session.close();
-			HibernateUtil.sutdown();
 		}
 		return true;
 	}
 	
-	// to get all Tours are wating state.
+	// to get all Tours are in wating, running and close  state.
 	public List<TourModel> getListsToursDetailsbyStateState(int state){
 		List<TourModel> listTourModels = new ArrayList<>();
 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -159,6 +206,7 @@ public class TourDAO {
 						model.setTimeOff(tourDetail.getTimeOff().toString());
 						model.setTitle(tourDetail.getTour().getTitle());
 						model.setVirtualPrice(tourDetail.getVirtualPrice());
+						listTourModels.add(model);
 				}
 			}
 			
@@ -169,7 +217,6 @@ public class TourDAO {
 		}
 		finally{
 			session.close();
-			HibernateUtil.sutdown();
 		}
 		return listTourModels;
 		
@@ -205,6 +252,7 @@ public class TourDAO {
 						model.setTimeOff(tourDetail.getTimeOff().toString());
 						model.setTitle(tourDetail.getTour().getTitle());
 						model.setVirtualPrice(tourDetail.getVirtualPrice());
+						listTourModels.add(model);
 				}
 			}
 			
@@ -215,7 +263,6 @@ public class TourDAO {
 		}
 		finally{
 			session.close();
-			HibernateUtil.sutdown();
 		}
 		return listTourModels;
 		
@@ -247,7 +294,6 @@ public class TourDAO {
 		}
 		finally{
 			session.close();
-			HibernateUtil.sutdown();
 		}
 		return true;
 		
@@ -292,7 +338,6 @@ public class TourDAO {
 		}
 		finally{
 			session.close();
-			HibernateUtil.sutdown();
 		}
 		return true;
 	}
@@ -309,9 +354,11 @@ public class TourDAO {
 				tourDetail.setRealPrice(tourmodel.getRealPrice());
 				tourDetail.setSale1(tourmodel.getSale1());
 				tourDetail.setSale2(tourmodel.getSale2());
-				tourDetail.setTimeBegin(new SimpleDateFormat("MM/dd/yyyy").parse(tourmodel.getTimeBegin()));
-				tourDetail.setTimeOff(new SimpleDateFormat("MM/dd/yyyy").parse(tourmodel.getTimeOff()));
+			/*	tourDetail.setTimeBegin(new SimpleDateFormat("MM/dd/yyyy").parse(tourmodel.getTimeBegin()));
+				tourDetail.setTimeOff(new SimpleDateFormat("MM/dd/yyyy").parse(tourmodel.getTimeOff()));*/
 				tourDetail.setVirtualPrice(tourmodel.getVirtualPrice());
+				tourDetail.setIMPORTANT(tourmodel.getIMPORTANT());
+				tourDetail.setStateTour(tourmodel.getStateTour());
 				session.save(tourDetail);
 				
 			session.getTransaction().commit();
@@ -322,7 +369,6 @@ public class TourDAO {
 		}
 		finally{
 			session.close();
-			HibernateUtil.sutdown();
 		}
 		return true;
 	}

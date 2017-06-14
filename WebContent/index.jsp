@@ -622,7 +622,7 @@
 							<article class="one-fourth promo">
 								
 								<div class="ribbon-small">- <f:formatNumber value="${(item.virtualPrice - item.realPrice)*100/item.virtualPrice }" minFractionDigits="0" maxFractionDigits="0"></f:formatNumber>%</div>
-								<figure><a href="#" title=""><img src="images/uploads/cruise1.jpg" alt="" /></a></figure>
+								<figure><a href="#" title=""><img src="admin/admin-assets/img/${item.imageTitle }" alt="" /></a></figure>
 								<div class="details">
 									<h3>${item.title}</h3>
 									 <span class="price">Giá :	  <em style="text-decoration: line-through;"> <f:formatNumber value="${item.virtualPrice}" minFractionDigits="0" maxFractionDigits="0"></f:formatNumber> VND  </em> <em> <f:formatNumber value="${item.realPrice}" minFractionDigits="0" maxFractionDigits="0"></f:formatNumber>  VND | </em>  </span>
@@ -647,7 +647,7 @@
 						<div class="row">
 						<c:forEach items="${tourDao.getListHotTour()}" var="item">
 							<article class="one-fourth">
-								<figure><a href="location.html" title=""><img src="images/uploads/slider4.jpg" alt="" /></a></figure>
+								<figure><a href="location.html" title=""><img src="admin/admin-assets/img/${item.imageTitle }" alt="" /></a></figure>
 								<div class="details">
 									<a href="DetailTravel.jsp?idTour=${item.idTourDetail}" title="View all" class="gradient-button">View all</a>
 									<h4>${item.title}</h4> 
@@ -677,105 +677,37 @@
 					</header>
 
 					<!--top Gia Tot-->
-					<jsp:useBean id="cate" class="adminDAO.CategoryDAO"></jsp:useBean>
 					<div class="destinations">
 						<div class="row">
 							<!--column-->
+							
+							<c:forEach items="${tourDao.getListCheapestTour()}" var="item">
 							<article class="one-fourth">
-								<figure><a href="location.html" title=""><img src="images/uploads/slider4.jpg" alt="" /></a></figure>
+								<figure><a href="location.html" title=""><img src="admin/admin-assets/img/${item.imageTitle }" alt="" /></a></figure>
 								<div class="details">
-									<a href="location.html" title="View all" class="gradient-button">View all</a>
-									<h4>Amsterdam</h4>
-									<span class="count">929 Hotels</span>
+									<a href="DetailTravel.jsp?idTour=${item.idTourDetail}" title="View all" class="gradient-button">View all</a>
+									<h4>${item.title}</h4> 
 									<div class="ribbon">
-										<div class="half hotel">
-											<a href="hotels.html" title="View all">
-												<span class="small">from</span>
-												<span class="price">&#36; 70</span>
-											</a>
+										<div class="half col-md-6 ">
+												<span class="col-md-6 date-tour">${item.timBegin }</span>
+												<span class=" col-md-3 day-tour ">${item.quatiDate } ngày</span>
 										</div>
-										<div class="half flight">
-											<a href="flights.html" title="View all">
-												<span class="small">from</span>
-												<span class="price">&#36; 150</span>
-											</a>
+										<div class="half col-md-6">
+											<!-- <a href="flights.html" title="View all"> -->
+												<span class="col-md-6 price-tour1"><f:formatNumber value="${item.virtualPrice }" minFractionDigits="0" maxFractionDigits="0"></f:formatNumber> đ</span>
+												<span class="col-md-6 price-tour2"><f:formatNumber value="${item.realPrice }" minFractionDigits="0" maxFractionDigits="0"></f:formatNumber>đ</span>
+											<!-- </a> -->
 										</div>
 									</div>
 								</div>
 							</article>
+						</c:forEach>
+							
 							<!--//column-->
 							<!--column-->
-							<article class="one-fourth promo">
-								<div class="ribbon-small">- 50%</div>
-								<figure><a href="location.html" title=""><img src="images/uploads/slider4.jpg" alt="" /></a></figure>
-								<div class="details">
-									<a href="location.html" title="View all" class="gradient-button">View all</a>
-									<h4>Amsterdam</h4>
-									<span class="count">929 Hotels</span>
-									<div class="ribbon">
-										<div class="half hotel">
-											<a href="hotels.html" title="View all">
-												<span class="small">from</span>
-												<span class="price">&#36; 70</span>
-											</a>
-										</div>
-										<div class="half flight">
-											<a href="flights.html" title="View all">
-												<span class="small">from</span>
-												<span class="price">&#36; 150</span>
-											</a>
-										</div>
-									</div>
-								</div>
-							</article>
-							<!--//column-->
-							<!--column-->
-							<article class="one-fourth">
-								<figure><a href="location.html" title=""><img src="images/uploads/slider4.jpg" alt="" /></a></figure>
-								<div class="details">
-									<a href="location.html" title="View all" class="gradient-button">View all</a>
-									<h4>Amsterdam</h4>
-									<span class="count">929 Hotels</span>
-									<div class="ribbon">
-										<div class="half hotel">
-											<a href="hotels.html" title="View all">
-												<span class="small">from</span>
-												<span class="price">&#36; 70</span>
-											</a>
-										</div>
-										<div class="half flight">
-											<a href="flights.html" title="View all">
-												<span class="small">from</span>
-												<span class="price">&#36; 150</span>
-											</a>
-										</div>
-									</div>
-								</div>
-							</article>
-							<!--//column-->
-							<!--column-->
-							<article class="one-fourth">
-								<figure><a href="location.html" title=""><img src="images/uploads/slider4.jpg" alt="" /></a></figure>
-								<div class="details">
-									<a href="location.html" title="View all" class="gradient-button">View all</a>
-									<h4>Amsterdam</h4>
-									<span class="count">929 Hotels</span>
-									<div class="ribbon">
-										<div class="half hotel">
-											<a href="hotels.html" title="View all">
-												<span class="small">from</span>
-												<span class="price">&#36; 70</span>
-											</a>
-										</div>
-										<div class="half flight">
-											<a href="flights.html" title="View all">
-												<span class="small">from</span>
-												<span class="price">&#36; 150</span>
-											</a>
-										</div>
-									</div>
-								</div>
-							</article>
+							
+							
+							
 							<!--//column-->
 						</div>
 					</div>

@@ -3,11 +3,25 @@ package model;
 import java.util.Date;
 
 public class BlogModel {
+	public String getTimeCreated() {
+		return timeCreated;
+	}
 	private int idBlog;
 	private String content;
 	private String title;
 	private String imageTitle;
-	private Date timeCreated;
+	private String timeCreated;
+	private String nameCreate;
+	
+	public String getNameCreate() {
+		return nameCreate;
+	}
+	public void setNameCreate(String nameCreate) {
+		this.nameCreate = nameCreate;
+	}
+	public void setTimeCreated(String timeCreated) {
+		this.timeCreated = timeCreated;
+	}
 	public int getIdBlog() {
 		return idBlog;
 	}
@@ -32,12 +46,5 @@ public class BlogModel {
 	public void setImageTitle(String imageTitle) {
 		this.imageTitle = imageTitle;
 	}
-	public Date getTimeCreated() {
-		return timeCreated;
-	}
-	public void setTimeCreated(Date timeCreated) {
-		this.timeCreated = timeCreated;
-	}
 	
-
 }

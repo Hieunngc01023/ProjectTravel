@@ -103,8 +103,9 @@ public class OrderCarModel {
 				+ ", placeRender=" + placeRender + ", stateDriver="
 				+ stateDriver + ", price=" + price + ", note=" + note
 				+ ", stateGetMoney=" + stateGetMoney + ", nameCar=" + nameCar
-				+ "]";
+				+ ", nameUser=" + nameUser + "]";
 	}
+	
 	
 	
 	

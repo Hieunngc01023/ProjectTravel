@@ -132,10 +132,10 @@ public class OrderCar {
 		this.quanOrder = quanOrder;
 	}
 
-	@Column(name = "PLACE_RECIEVE", nullable = false)
+	@Column(name = "PLACE_RECIEVE", nullable = false, columnDefinition = "NVARCHAR(300)")
 	private String placeRecieve;
 	
-	@Column(name = "PLACE_RENDER" , nullable = false)
+	@Column(name = "PLACE_RENDER" , nullable = false, columnDefinition = "NVARCHAR(300)")
 	private String placeRender;
 	
 	@Column(name = "STATE_DRIVER" , nullable = false)
@@ -143,7 +143,7 @@ public class OrderCar {
 	
 	@Column(name = "PRICE", nullable = false)
 	private int price;
-	@Column(name = "NOTE")
+	@Column(name = "NOTE", columnDefinition = "NVARCHAR(500)")
 	private String note;
 	
 	@Column(name = "STATE_GETMONEY", nullable = false)

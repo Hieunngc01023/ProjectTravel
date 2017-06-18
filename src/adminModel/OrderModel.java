@@ -13,6 +13,15 @@ public class OrderModel {
 	private String userName;
 	private int userPhone;
 	private int modelPayment;
+	
+	private String nameTour;
+	
+	public String getNameTour() {
+		return nameTour;
+	}
+	public void setNameTour(String nameTour) {
+		this.nameTour = nameTour;
+	}
 	public int getModelPayment() {
 		return modelPayment;
 	}
@@ -76,6 +85,14 @@ public class OrderModel {
 	}
 	public void setTourName(String tourName) {
 		this.tourName = tourName;
+	}
+	@Override
+	public String toString() {
+		return "OrderModel [idOrder=" + idOrder + ", price=" + price
+				+ ", quanOrder=" + quanOrder + ", note=" + note
+				+ ", timeCreated=" + timeCreated + ", userName=" + userName
+				+ ", userPhone=" + userPhone + ", modelPayment=" + modelPayment
+				+ ", stateMoney=" + stateMoney + ", tourName=" + tourName + "]";
 	}
 	
 

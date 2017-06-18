@@ -39,120 +39,7 @@
 	<!--- //loading animation -->
 	
 	<!--header-->
-	<header class="header">
-		<div class="wrap">
-			<!--logo-->
-			<div class="logo"><a href="index.html" title="Book Your Travel"><img src="images/txt/logo.png" alt="Book Your Travel" /></a></div>
-			<!--//logo-->
-			
-			<!--ribbon-->
-			<div class="ribbon">
-				<nav>
-					<ul class="profile-nav">
-						<li class="active"><a href="#" title="My Account">Tài Khoản</a></li>
-						<li><a href="login.html" title="Login">Đăng Nhập</a></li>
-						<li><a href="my_account.html" title="Settings">Cài Đặt</a></li>
-					</ul>
-					<ul class="lang-nav">
-						<li class="active"><a href="#" title="VietName">VietNamese</a></li>
-						<li><a href="#" title="English ">English</a></li>
-					</ul>
-				</nav>
-			</div>
-			<!--//ribbon-->
-			
-			<!--search-->
-			<div class="search">
-				<form id="search-form" method="get" action="search-form">
-					<input type="search" placeholder="Tìm Kiếm Tour" name="site_search" id="site_search" /> 
-					<input type="submit" id="submit-site-search" value="submit-site-search" name="submit-site-search"/>
-				</form>
-			</div>
-			<!--//search-->
-			
-			<!--contact-->
-			<div class="contact">
-				<span>Tư Vấn 24/7</span>
-				<span class="number">0989-999-888</span>
-			</div>
-			<!--//contact-->
-		</div>
-		
-		<!--main navigation-->
-		<nav class="main-nav">
-			<div class="wrap">
-				<ul class="slimmenu" id="">
-					<li><a href="hotels.html" title="Hotels">Hotels</a>
-					</li>
-					<li><a href="flights.html" title="Flights">Chuyến Bay</a></li>
-					<li><a href="flight_and_hotels.html" title="Flight + Hotel">Bay + Hotel</a></li>
-					<li><a href="cruises.html" title="Cruises">Chuyến Đi</a></li>
-					<li><a href="car_rentals.html" title="Car rental">Thuê Xe</a></li>
-					 <li><a href="contact.html" title="Contact">Liên Hệ</a></li>
-					<li><a href="blog.html" title="Blog">Chia Sẻ</a>
-						<ul>
-							<li><a href="blog_single.html" title="Single Post">Single Post</a>
-						</ul>
-					</li>
-					<li class="has-mega"><a href="#" title="Pages">Page</a>
-						<ul class="mega">
-							<li>
-								<div class="row">
-									<div class="one-fifth">
-										<p>COMMON PAGES</p>
-										<ul>
-											<li><a href="page_left_sidebar.html" title="Page with left sidebar">Page with left sidebar</a></li>
-											<li><a href="page_right_sidebar.html" title="Page with right sidebar">Page with right sidebar</a></li>
-											<li><a href="page_both_sidebars.html" title="Page with both sidebars">Page with both sidebars</a></li>
-											<li><a href="page_no_sidebars.html" title="Page with no sidebars">Page with no sidebars</a></li>
-										</ul>
-									</div>
-									<div class="one-fifth">
-										<p>LISTING LAYOUTS</p>
-										<ul>
-											<li><a href="hotels_2col.html" title="Listing 2 columns">Listing 2 columns</a></li>
-											<li><a href="hotels_3col.html" title="Listing 3 columns">Listing 3 columns</a></li>
-											<li><a href="hotels.html" title="Listing 4 columns">Listing 4 columns</a></li>
-											<li><a href="hotel.html" title="Single listing">Single listing</a></li>
-										</ul>
-									</div>
-									<div class="one-fifth">
-										<p>USER PAGES</p>
-										<ul>
-											<li><a href="login.html" title="Login">Login</a></li>
-											<li><a href="register.html" title="Register">Register</a></li>
-											<li><a href="my_account.html" title="My Account">My account</a></li>
-											<li><a href="error.html" title="Error 404">Error 404</a></li>
-										</ul>
-									</div>
-									<div class="one-fifth">
-										<p>SPECIALTY PAGES</p>
-										<ul>
-											<li><a href="search_results.html" title="Search results hotels">Search results hotels</a></li>
-											<li><a href="search_results_flights.html" title="Search results flights">Search results flights</a></li>
-											<li><a href="get_inspired.html" title="Get inspired">Get inspired</a></li>
-											<li><a href="get_inspired_results.html" title="Get inspired results">Get inspired results</a></li>
-										</ul>
-									</div>
-									<div class="one-fifth">
-										<p>&nbsp;</p>
-										<ul>
-											<li><a href="booking-step1html" title="Booking step 1">Booking step 1</a></li>
-											<li><a href="booking-step2.html" title="Booking step 2">Booking step 2</a></li>
-											<li><a href="booking-step3.html" title="Booking step 3">Booking step 3</a></li>
-											<li><a href="loading.html" title="Loading">Loading</a></li>
-										</ul>
-									</div>
-								</div>
-							</li>
-						</ul>
-					</li>
-					
-				</ul>
-			</div>
-		</nav>
-		<!--//main navigation-->
-	</header>
+	<%@ include file="header.jsp" %>
 	<!--//header-->
 	
 	<!--main-->
@@ -261,12 +148,13 @@
 					<!--availability-->
 					<section id="availability" class="tab-content">
 						<article>
-							<h2>Chương Trình Tour</h2>
+							<h2>Một số hình ảnh.</h2>
 							<div class="text-wrap">
+							${car.content }
+								<!-- <img src="images/uploads/car13.jpg" alt="" /><br>
 								<img src="images/uploads/car13.jpg" alt="" /><br>
 								<img src="images/uploads/car13.jpg" alt="" /><br>
-								<img src="images/uploads/car13.jpg" alt="" /><br>
-								<img src="images/uploads/car13.jpg" alt="" /><br>
+								<img src="images/uploads/car13.jpg" alt="" /><br> -->
 							</div>
 							
 							
@@ -376,66 +264,10 @@
 	<!--//main-->
 	
 	<!--footer-->
-	<footer class="footer">
-		<div class="wrap">
-			<div class="row">
-				<!--column-->
-				<article class="one-fourth">
-					<h6>Book Travel</h6>
-					<p>Số 8-Tôn Thất Thuyết - Hà Nội </p>
-					<p><em>P:</em> Tư Vấn 24/7: 0989-999-888</p>
-					<p><em>E:</em> <a href="#" title="booking@mail.com">Angrycat@mail.com</a></p>
-				</article>
-				<!--//column-->
-				<!--column-->
-				<article class="one-fourth">
-					<h6>Follow us</h6>
-					<ul class="social">
-							<li><a href="#" title="facebook"><i class="fa fa-fw fa-facebook"></i></a></li>
-							<li><a href="#" title="youtube"><i class="fa  fa-fw fa-youtube"></i></a></li>
-							<li><a href="#" title="gplus"><i class="fa fa-fw fa-google-plus"></i></a></li>
-							<li><a href="#" title="twitter"><i class="fa fa-fw fa-twitter"></i></a></li>
-						</ul>
-				</article>
-				<!--//column-->
-				
-				<!--column-->
-				<article class="one-fourth">
-					<h6>Đăng ký Email để nhận thông tin khuyến mãi mới nhất </h6>
-					<form id="newsletter" action="newsletter.php" method="post">
-						<fieldset>
-							<input type="email" id="newsletter_signup" name="newsletter_signup" placeholder="Nhập Email của Bạn" />
-							<input type="submit" id="newsletter_submit" name="newsletter_submit" value="Đăng Kí" class="gradient-button" />
-						</fieldset>
-					</form>
-				</article>
-				<!--//column-->
-				
-				<div class="bottom full-width">
-					<p class="copy">Copyright 2016 Angry Cat travel . All rights By Lee Anh </p>
-					<nav>
-						<ul>
-							<li><a href="#" title="About us">About us</a></li>
-							<li><a href="contact.html" title="Contact">Contact</a></li>
-							<li><a href="#" title="Partners">Partners</a></li>
-							<li><a href="#" title="Customer service">Customer service</a></li>
-						</ul>
-					</nav>
-				</div>
-			</div>
-		</div>
-	</footer>
+	<%@ include file="footer.jsp" %>
 	<!---footer-->
 	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-	<script src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false"></script>
-	<script type="text/javascript"  src="js/infobox.js"></script>
-	<script type="text/javascript" src="js/jquery.uniform.min.js"></script>
-	<script type="text/javascript" src="js/jquery.slimmenu.min.js"></script>
-	<script type="text/javascript" src="js/lightslider.min.js"></script>
-	<script type="text/javascript" src="js/lightgallery-all.min.js"></script>
-	<script type="text/javascript" src="js/scripts.js"></script>
+	
 	<script type="text/javascript">
 	function initialize() {
 		var secheltLoc = new google.maps.LatLng(21.0287935, 105.7800219);

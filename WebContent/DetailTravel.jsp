@@ -39,120 +39,7 @@
 	<!--- //loading animation -->
 	
 	<!--header-->
-	<header class="header">
-		<div class="wrap">
-			<!--logo-->
-			<div class="logo"><a href="index.html" title="Book Your Travel"><img src="images/txt/logo.png" alt="Book Your Travel" /></a></div>
-			<!--//logo-->
-			
-			<!--ribbon-->
-			<div class="ribbon">
-				<nav>
-					<ul class="profile-nav">
-						<li class="active"><a href="#" title="My Account">Tài Khoản</a></li>
-						<li><a href="login.html" title="Login">Đăng Nhập</a></li>
-						<li><a href="my_account.html" title="Settings">Cài Đặt</a></li>
-					</ul>
-					<ul class="lang-nav">
-						<li class="active"><a href="#" title="VietName">VietNamese</a></li>
-						<li><a href="#" title="English ">English</a></li>
-					</ul>
-				</nav>
-			</div>
-			<!--//ribbon-->
-			
-			<!--search-->
-			<div class="search">
-				<form id="search-form" method="get" action="search-form">
-					<input type="search" placeholder="Tìm Kiếm Tour" name="site_search" id="site_search" /> 
-					<input type="submit" id="submit-site-search" value="submit-site-search" name="submit-site-search"/>
-				</form>
-			</div>
-			<!--//search-->
-			
-			<!--contact-->
-			<div class="contact">
-				<span>Tư Vấn 24/7</span>
-				<span class="number">0989-999-888</span>
-			</div>
-			<!--//contact-->
-		</div>
-		
-		<!--main navigation-->
-		<nav class="main-nav">
-			<div class="wrap">
-				<ul class="slimmenu" id="">
-					<li><a href="hotels.html" title="Hotels">Hotels</a>
-					</li>
-					<li><a href="flights.html" title="Flights">Chuyến Bay</a></li>
-					<li><a href="flight_and_hotels.html" title="Flight + Hotel">Bay + Hotel</a></li>
-					<li><a href="cruises.html" title="Cruises">Chuyến Đi</a></li>
-					<li><a href="car.jsp" title="Car rental">Thuê Xe</a></li>
-					 <li><a href="contact.jsp" title="Contact">Liên Hệ</a></li>
-					<li><a href="blog.html" title="Blog">Chia Sẻ</a>
-						<ul>
-							<li><a href="blog_single.html" title="Single Post">Single Post</a>
-						</ul>
-					</li>
-					<li class="has-mega"><a href="#" title="Pages">Page</a>
-						<ul class="mega">
-							<li>
-								<div class="row">
-									<div class="one-fifth">
-										<p>COMMON PAGES</p>
-										<ul>
-											<li><a href="page_left_sidebar.html" title="Page with left sidebar">Page with left sidebar</a></li>
-											<li><a href="page_right_sidebar.html" title="Page with right sidebar">Page with right sidebar</a></li>
-											<li><a href="page_both_sidebars.html" title="Page with both sidebars">Page with both sidebars</a></li>
-											<li><a href="page_no_sidebars.html" title="Page with no sidebars">Page with no sidebars</a></li>
-										</ul>
-									</div>
-									<div class="one-fifth">
-										<p>LISTING LAYOUTS</p>
-										<ul>
-											<li><a href="hotels_2col.html" title="Listing 2 columns">Listing 2 columns</a></li>
-											<li><a href="hotels_3col.html" title="Listing 3 columns">Listing 3 columns</a></li>
-											<li><a href="hotels.html" title="Listing 4 columns">Listing 4 columns</a></li>
-											<li><a href="hotel.html" title="Single listing">Single listing</a></li>
-										</ul>
-									</div>
-									<div class="one-fifth">
-										<p>USER PAGES</p>
-										<ul>
-											<li><a href="login.html" title="Login">Login</a></li>
-											<li><a href="register.html" title="Register">Register</a></li>
-											<li><a href="my_account.html" title="My Account">My account</a></li>
-											<li><a href="error.html" title="Error 404">Error 404</a></li>
-										</ul>
-									</div>
-									<div class="one-fifth">
-										<p>SPECIALTY PAGES</p>
-										<ul>
-											<li><a href="search_results.html" title="Search results hotels">Search results hotels</a></li>
-											<li><a href="search_results_flights.html" title="Search results flights">Search results flights</a></li>
-											<li><a href="get_inspired.html" title="Get inspired">Get inspired</a></li>
-											<li><a href="get_inspired_results.html" title="Get inspired results">Get inspired results</a></li>
-										</ul>
-									</div>
-									<div class="one-fifth">
-										<p>&nbsp;</p>
-										<ul>
-											<li><a href="booking-step1html" title="Booking step 1">Booking step 1</a></li>
-											<li><a href="booking-step2.html" title="Booking step 2">Booking step 2</a></li>
-											<li><a href="booking-step3.html" title="Booking step 3">Booking step 3</a></li>
-											<li><a href="loading.html" title="Loading">Loading</a></li>
-										</ul>
-									</div>
-								</div>
-							</li>
-						</ul>
-					</li>
-					
-				</ul>
-			</div>
-		</nav>
-		<!--//main navigation-->
-	</header>
+	<%@ include file="header.jsp" %>
 	<!--//header-->
 	
 	<!--main-->
@@ -236,30 +123,7 @@
 						<article>
 							<h2>Chương Trình Tour</h2>
 							<div class="text-wrap">
-								<p>Ngày 1 : TP. HỒ CHÍ MINH - BẮC KINH (Ăn trưa, tối)
-
-									Trưởng đòan Công ty Vietravel đón Quý khách tại cổng hẹn ở phi trường Tân Sơn Nhất đáp chuyến bay đi Bắc Kinh. Quý khách ăn sáng nhẹ trên máy bay. Đến Bắc Kinh, xe và hướng dẫn viên địa phương sẽ đón đoàn đưa đi ăn trưa. Buổi chiều, Quý khách tham quan Tử Cấm Thành - là cung điện của các triều đại từ giữa nhà Minh đến cuối nhà Thanh Trung Quốc, có diện tích 720.000 m2 gồm 800 cung và 8.886 phòng, được UNESCO công nhận là Di sản thế giới, tham quan Quảng Trường Thiên An Môn - là quảng trường rộng nhất thế giới, có thể chứa một lúc 1 triệu người. . Sau đó, Quý khách ghé mua sắm kỳ hươu tại Đông Tiện Môn -  tìm hiểu về Kỳ Hưu, một thần thú đem lại may mắn cho người dân Trung Quốc Thưởng thức chương trình biểu diễn xiếc đặc sắc. Ăn tối với món vịt quay Bắc Kinh nổi tiếng và trở về khách sạn nghỉ ngơi. Nhận phòng tại khách sạn  tiêu chuẩn 3 sao.</p><br>
-
-									<p>Ngày 2 : BẮC KINH (Ăn ba bữa)
-
-									Sau khi ăn sáng tại khách sạn, Quý khách tham quan Vạn Lý Trường Thành - một trong những kỳ quan của thế giới, là công trình nhân tạo với mục đích phục vụ cho quân sự có một không hai trên thế giới. Quý khách tiếp tục tham quan Thập Tam Lăng - đây là quần thể lăng mộ của 13 đời vua nhà Minh (1368-1644), được UNESCO công nhận là Di sản văn hóa thế giới vào năm 2003. Sau đó, Quý khách ghé thăm cửa hàng đá cẩm thạch và hiệu thuốc Bắc nổi tiếng Đồng Nhân Đường. Sau bữa tối, Quý khách tự do mua sắm tại phố Vương Phủ Tỉnh. Về lại khách sạn nghỉ ngơi.
-									</p><br>
-									<p>
-									Ngày 3 : BẮC KINH - THƯỢNG HẢI (Ăn ba bữa)
-
-									Ăn sáng tại khách sạn. Quý khách ghé thăm cửa hàng ngọc trai, tham quan Di Hòa Viên - từng là nơi nghỉ dưỡng của Hoàng Gia, có kiến trúc độc đáo đậm nét Trung Hoa với hồ nước, vườn hoa, những cành liễu rũ bên bờ hồ thơ mộng, được UNESCO công nhận là di sản thế giới. Sau bữa tối, Quý khách khởi hành ra sân bay đáp chuyến bay đến Thượng Hải. Đến nơi, Quý khách nhận phòng khách sạn nghỉ ngơi.
-									</p><br>
-									<p>
-									Ngày 4 : THƯỢNG HẢI (Ăn ba bữa)
-
-									Sau khi ăn sáng tại khách sạn, Đoàn tham quan chùa Ngọc Phật, ghé thăm cửa hàng dao, tham quan Bến Thượng Hải. Sau đó, Quý khách tự do mua sắm tại phố Nam Kinh. Ăn tối tại nhà hàng địa phương và trở về khách sạn nghỉ ngơi.
-									</p><br>
-									<p>
-									Ngày 5 : THƯỢNG HẢI - TÔ CHÂU (Ăn ba bữa)
-
-									Sau khi ăn sáng, Quý khách khởi hành đi Tô Châu bằng xe máy lạnh. Quý khách tham quan  Hàn Sơn Tự  - một trong những ngôi chùa cổ của Trung Quốc với bức bích họa nổi tiếng “Hàn Sơn – Thập Đắc” được khắc trên đá của danh họa đời Thanh. Tiếp tục tham quan Sư Tử Lâm - Tuyệt tác kiến trúc viên lâm Tô Châu, là một trong 4 lâm viên đẹp nhất Tô Châu. Trong Sư Tử Lâm, người ta xây dựng nhiều hang động nhân tạo rất kỳ ảo chẳng khác nào những mê cung. Sau đó, Quý khách tham quan xưởng sản xuất tơ lụa nổi tiếng của Tô Châu, cửa hàng ấm tử sa. Ăn tối, nhận phòng tại khách sạn  tiêu chuẩn 3 sao.
-
-									</p>
+								${tour.content }
 							</div>
 							
 							
@@ -464,7 +328,7 @@
 								<c:when test="${sessionScope.email != null }">
 								<jsp:useBean id="user" class="dao.UserDAO" scope="page"></jsp:useBean>
 								    <c:set var="user" value="${user.getUserDetail(sessionScope.email) }"></c:set>
-										<form class="row" id= "form" action="commentAction">
+										<form class="row" id= "form" action="commentAction" method="post">
 							<input type="hidden" name="typeComment" id="typeComment" value="main">
 							<input type="hidden" name="idMain" value ="" id="idMain">
 							<input type="hidden" name="idTour" value="${tour.idTour }">
@@ -487,7 +351,7 @@
 							</form>
 								</c:when>
 								<c:otherwise>
-									<form class="row" id= "form" action="commentAction">
+									<form class="row" id= "form" action="commentAction" method="post">
 							<input type="hidden" name="typeComment" id="typeComment" value="main">
 							<input type="hidden" name="idMain" value ="" id="idMain">
 							<input type="hidden" name="idTour" value="${tour.idTour }">
@@ -560,129 +424,9 @@
 	<!--//main-->
 	
 	<!--footer-->
-	<footer class="footer">
-		<div class="wrap">
-			<div class="row">
-				<!--column-->
-				<article class="one-fourth">
-					<h6>Book Travel</h6>
-					<p>Số 8-Tôn Thất Thuyết - Hà Nội </p>
-					<p><em>P:</em> Tư Vấn 24/7: 0989-999-888</p>
-					<p><em>E:</em> <a href="#" title="booking@mail.com">Angrycat@mail.com</a></p>
-				</article>
-				<!--//column-->
-				<!--column-->
-				<article class="one-fourth">
-					<h6>Follow us</h6>
-					<ul class="social">
-							<li><a href="#" title="facebook"><i class="fa fa-fw fa-facebook"></i></a></li>
-							<li><a href="#" title="youtube"><i class="fa  fa-fw fa-youtube"></i></a></li>
-							<li><a href="#" title="gplus"><i class="fa fa-fw fa-google-plus"></i></a></li>
-							<li><a href="#" title="twitter"><i class="fa fa-fw fa-twitter"></i></a></li>
-						</ul>
-				</article>
-				<!--//column-->
-				
-				<!--column-->
-				<article class="one-fourth">
-					<h6>Đăng ký Email để nhận thông tin khuyến mãi mới nhất </h6>
-					<form id="newsletter" action="newsletter.php" method="post">
-						<fieldset>
-							<input type="email" id="newsletter_signup" name="newsletter_signup" placeholder="Nhập Email của Bạn" />
-							<input type="submit" id="newsletter_submit" name="newsletter_submit" value="Đăng Kí" class="gradient-button" />
-						</fieldset>
-					</form>
-				</article>
-				<!--//column-->
-				
-				<div class="bottom full-width">
-					<p class="copy">Copyright 2016 Angry Cat travel . All rights By Lee Anh </p>
-					<nav>
-						<ul>
-							<li><a href="#" title="About us">About us</a></li>
-							<li><a href="contact.html" title="Contact">Contact</a></li>
-							<li><a href="#" title="Partners">Partners</a></li>
-							<li><a href="#" title="Customer service">Customer service</a></li>
-						</ul>
-					</nav>
-				</div>
-			</div>
-		</div>
-	</footer>
+	<%@ include file="footer.jsp" %>
 	<!---footer-->
 	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-	<script src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false"></script>
-	<script type="text/javascript"  src="js/infobox.js"></script>
-	<script type="text/javascript" src="js/jquery.uniform.min.js"></script>
-	<script type="text/javascript" src="js/jquery.slimmenu.min.js"></script>
-	<script type="text/javascript" src="js/lightslider.min.js"></script>
-	<script type="text/javascript" src="js/lightgallery-all.min.js"></script>
-	<script type="text/javascript" src="js/scripts.js"></script>
-	<script type="text/javascript">
-	function initialize() {
-		var secheltLoc = new google.maps.LatLng(21.0287183, 105.7795214);
-
-		var myMapOptions = {
-			 zoom: 17
-			,center: secheltLoc
-			,mapTypeId: google.maps.MapTypeId.ROADMAP
-		};
-		var theMap = new google.maps.Map(document.getElementById("map_canvas"), myMapOptions);
-
-
-		var marker = new google.maps.Marker({
-			map: theMap,
-			draggable: true,
-			position: new google.maps.LatLng(21.0287183, 105.7795214),
-			visible: true
-		});
-
-		var boxText = document.createElement("div");
-		boxText.innerHTML = "<strong>Book Travel</strong> Hotline:0989-999-888 <br>Số 8 Tôn-Thât-Thuyết HN";
-
-		var myOptions = {
-			 content: boxText
-			,disableAutoPan: false
-			,maxWidth: 0
-			,pixelOffset: new google.maps.Size(-140, 0)
-			,zIndex: null
-			,closeBoxURL: ""
-			,infoBoxClearance: new google.maps.Size(1, 1)
-			,isHidden: false
-			,pane: "floatPane"
-			,enableEventPropagation: false
-		};
-
-		google.maps.event.addListener(marker, "click", function (e) {
-			ib.open(theMap, this);
-		});
-
-		var ib = new InfoBox(myOptions);
-		ib.open(theMap, marker);
-	}
-	</script>
 	
-	<script type="text/javascript">
-    	 $(document).ready(function() {
-            $('#image-gallery').lightSlider({
-                gallery:true,
-                item:1,
-                thumbItem:6,
-                slideMargin: 0,
-                speed:500,
-                auto:true,
-                loop:true,
-                onSliderLoad: function() {
-                    $('#image-gallery').removeClass('cS-hidden');
-                }  
-            });
-			
-			$('#gallery1,#gallery2,#gallery3,#gallery4').lightGallery({
-				download:false
-			});
-		});
-    </script>
 	</body>
 </html>

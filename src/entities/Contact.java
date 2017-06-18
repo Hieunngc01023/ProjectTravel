@@ -19,10 +19,9 @@ public class Contact {
 	
 	@Column(name = "EMAIL", nullable = false)
 	private String email;
-	@Lob
-	@Column(name = "CONTENT", nullable= false)
+	@Column(name = "CONTENT", nullable= false, columnDefinition = "NVARCHAR(1000)")
 	private String content;
-	@Column(name= "NAME", nullable = false)
+	@Column(name= "NAME", nullable = false , columnDefinition = "NVARCHAR(200)")
 	private String fullName;
 	
 	public String getFullName() {

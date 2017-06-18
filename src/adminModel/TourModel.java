@@ -139,6 +139,19 @@ public class TourModel {
 	public void setStateTour(int stateTour) {
 		this.stateTour = stateTour;
 	}
+	@Override
+	public String toString() {
+		return "TourModel [idTour=" + idTour + ", title=" + title
+				+ ", placePickUp=" + placePickUp + ", placeDropOff="
+				+ placeDropOff + ", imageTitle=" + imageTitle + ", content="
+				+ content + ", category=" + category + ", idCategory="
+				+ idCategory + ", idTourDeTail=" + idTourDeTail
+				+ ", timeBegin=" + timeBegin + ", timeOff=" + timeOff
+				+ ", IMPORTANT=" + IMPORTANT + ", realPrice=" + realPrice
+				+ ", virtualPrice=" + virtualPrice + ", quantitySeat="
+				+ quantitySeat + ", sale1=" + sale1 + ", sale2=" + sale2
+				+ ", stateTour=" + stateTour + "]";
+	}
 	
 	
 

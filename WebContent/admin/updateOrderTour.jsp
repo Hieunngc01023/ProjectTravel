@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
@@ -334,7 +335,9 @@
       <input type="hidden" name="idOrder" value="${param.idOrder }">
         <div class="form-group">
           <label for="name">Tên Tour</label>
-          <input type="text" class="form-control" value=" ${param.tourName }" id="name" name="name" readonly="readonly" >
+          <jsp:useBean id="orderDAO" class="adminDAO.OrderDAO"></jsp:useBean>
+          <c:set var="order" value="${orderDAO.getOrderDetail(param.idOrder) }"></c:set>
+          <input type="text" class="form-control" value=" ${order.tourName }" id="name" name="name" readonly="readonly" >
         </div>
           <div class="form-group  ">
             <label for="">Thanh Toán</label>

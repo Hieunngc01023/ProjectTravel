@@ -28,8 +28,7 @@ public class SubCommentBlog {
 	@Temporal(TemporalType.DATE)
 	@Column(name = "DATE_COMMENT")
 	private Date dateComment;
-	@Column(name = "CONTENT", nullable = false)
-	@Lob
+	@Column(name = "CONTENT", nullable = false, columnDefinition = "ntext")
 	private String content;
 	@JoinColumn(name="ID_USER")
 	@ManyToOne

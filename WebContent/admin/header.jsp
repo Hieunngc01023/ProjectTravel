@@ -4,7 +4,7 @@
 <!-- sidebar menu: : style can be found in sidebar.less -->
 <ul class="sidebar-menu">
 	<li class="header">MAIN NAVIGATION</li>
-	<li class="active treeview"><a href="index.html"> <i
+	<li class="active treeview"><a href="index.jsp"> <i
 			class="fa fa-dashboard"></i> <span>Dashboard</span> <span
 			class="pull-right-container"> <i
 				class="fa fa-angle-left pull-right"></i>
@@ -40,8 +40,6 @@
 		<ul class="treeview-menu">
 			<li class="active"><a href="indexTourDetail.jsp"><i
 					class="fa fa-circle-o"></i> Danh sách TourDetail</a></li>
-			<li><a href="createTourDetail.jsp"><i class="fa fa-circle-o"></i>
-					Thêm mới TourDetail</a></li>
 		</ul></li>
 
 	<li class="treeview"><a href="#"> <i
@@ -86,7 +84,27 @@
 		<ul class="treeview-menu">
 			<li class="active"><a href="indexOrderCar.jsp"><i
 					class="fa fa-circle-o"></i> Danh sách OrderCar</a></li>
-			
+
+		</ul></li>
+	<li class="treeview"><a href="#"> <i class="fa fa-pencil"></i>
+			<span>Blog</span> <span class="pull-right-container"> <i
+				class="fa fa-angle-left pull-right"></i>
+		</span>
+	</a>
+		<ul class="treeview-menu">
+			<li class="active"><a href="indexBlog.jsp"><i
+					class="fa fa-circle-o"></i> Danh sách Blog</a></li>
+			<li><a href="createBlog.jsp"><i class="fa fa-circle-o"></i>
+					Thêm mới Blog</a></li>
+		</ul></li>
+	<li class="treeview"><a href="#"> <i class="fa fa-phone"></i>
+			<span>Contact</span> <span class="pull-right-container"> <i
+				class="fa fa-angle-left pull-right"></i>
+		</span>
+	</a>
+		<ul class="treeview-menu">
+			<li class="active"><a href="indexContact.jsp"><i
+					class="fa fa-circle-o"></i> Danh sách Contact</a></li>
 		</ul></li>
 
 

@@ -23,12 +23,12 @@ public class Tour {
 	@Id
 	@Column(name="ID_TOUR")
 	private String idTour;
-	@Column(name="title", nullable= false)
+	@Column(name="title", nullable= false, columnDefinition = "NVARCHAR(200)")
 	private String title;
 	
-	@Column(name= "PLACE_PICKUP", nullable = false)
+	@Column(name= "PLACE_PICKUP", nullable = false, columnDefinition = "NVARCHAR(400)")
 	private String placePickUp;
-	@Column(name = "PLACE_DROP", nullable= false)
+	@Column(name = "PLACE_DROP", nullable= false , columnDefinition = "NVARCHAR(200)")
 	private String placeDropOff;
 	@Column(name= "IMAGE_TITLE", nullable = false)
 	private String imageTitle;
@@ -41,8 +41,7 @@ public class Tour {
 		this.listSubComments = listSubComments;
 	}
 
-	@Column(name= "CONTENT", nullable = false)
-	@Lob
+	@Column(name= "CONTENT", nullable = false , columnDefinition = "ntext")
 	private String content;
 	public List<Comment> getListComments() {
 		return listComments;

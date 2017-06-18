@@ -3,6 +3,7 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
+ <!-- <constant name="struts.multipart.saveDir" value="location of your choice" />  -->
 	<package name="default" extends="struts-default" namespace="/">
         
         <action name="test" class="dao.TestC">
@@ -23,6 +24,7 @@
         	<result name="error">error.html</result>
         </action> 
         <action name="loginAction" class="controller.AuthenticationAction" method="login">
+        	<result name="input">admin/index.jsp</result>
         	<result name="success">index.jsp</result>
         	<result name= "input">login.jsp</result>
         </action>
@@ -131,8 +133,28 @@
        		<result name="success">/admin/indexOrderCar.jsp</result>
        		<result name="error">error.html</result>
        	</action>
-       
-       	
+       <action name="getListOrderCarbyStateAdmin" class="adminController.OrderCarAdminController" method="getListOrderCar">
+       		<result name="success">/admin/indexOrderCar.jsp</result>
+       		<result name="error">error.html</result>
+       </action>
+       <action name="getListOrderTourbyStateAdmin" class="adminController.OrderTourContrller" method="getListORderTourAdmin">
+       		<result name="success">/admin/indexOrderTour.jsp</result>
+       		<result name="error">error.html</result>
+       </action>
+       <action name="getListTOurAdmin" class="adminController.TourController" method="getListTourbyIdCate">
+       <result name="success">/admin/indexTour.jsp</result>
+       		<result name="error">error.html</result>
+       </action>
+       <action name="getTotalOrderTourByTime" class="adminController.OrderDasbodController">
+       	<result name="success">/admin/index.jsp</result>
+       </action>
+       <action name="getTotalOrderCarByTime" class="adminController.OrderDasBodCarController">
+       	<result name="success">/admin/index.jsp</result>
+       </action>
+       <action name="createBlogAdmin"  class="controller.BlogController">
+       		<result name="success">/admin/indexBlog.jsp</result>
+       		<result name="error">error.html</result>
+       	</action>
         	
     </package>
 </struts>

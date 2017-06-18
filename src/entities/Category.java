@@ -18,9 +18,9 @@ public class Category {
 	
 	@Id
 	private String idCategory;
-	@Column(name="NAME_CATEGORY", nullable= false, unique= true , columnDefinition="nvarchar")
+	@Column(name="NAME_CATEGORY", nullable= false, unique= true, columnDefinition = "NVARCHAR(200)" )
 	private String nameCategory;
-	@Column(name="DESCRIPSION", nullable  = false,  length = 1000, columnDefinition="nvarchar")
+	@Column(name="DESCRIPSION", nullable  = false,  length = 1000, columnDefinition="NVARCHAR(300)")
 	private String desCategory;
 	
 	@OneToMany(mappedBy ="category")

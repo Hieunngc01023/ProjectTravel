@@ -1,6 +1,11 @@
 package adminController;
 
+import java.util.List;
+
+import org.apache.struts2.ServletActionContext;
+
 import adminDAO.OrderCarDAO;
+import adminModel.OrderCarModel;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -9,6 +14,15 @@ import com.opensymphony.xwork2.ActionSupport;
 public class OrderCarAdminController extends ActionSupport {
 	private String idOrder;
 	private int stateGetMoney;
+	
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
+	private String keyword;
 	public String getIdOrder() {
 		return idOrder;
 	}
@@ -52,4 +66,41 @@ public class OrderCarAdminController extends ActionSupport {
 		}	
 	}
 
+	public String getListOrderCar(){
+		if(stateGetMoney == 3){
+			List<OrderCarModel>  listOrder = new OrderCarDAO().getListOrderCar(keyword);
+			try {
+				ServletActionContext.getRequest().setAttribute("listTourDetail", listOrder);
+			} catch (Exception e) {
+				return ERROR;
+			}
+		}
+		else if(stateGetMoney == 2){
+			List<OrderCarModel>  listOrder = new OrderCarDAO().getListOrderCarbyStateGetMoney(stateGetMoney, keyword);
+			try {
+				ServletActionContext.getRequest().setAttribute("listTourDetail", listOrder);
+			} catch (Exception e) {
+				return ERROR;
+			}
+		}
+		else if(stateGetMoney == 1){
+			List<OrderCarModel>  listOrder = new OrderCarDAO().getListOrderCarbyStateGetMoney(stateGetMoney, keyword);
+			try {
+				ServletActionContext.getRequest().setAttribute("listTourDetail", listOrder);
+			} catch (Exception e) {
+				return ERROR;
+			}
+		}
+		else if(stateGetMoney == 0){
+			List<OrderCarModel>  listOrder = new OrderCarDAO().getListOrderCarbyStateGetMoney(stateGetMoney, keyword);
+			try {
+				ServletActionContext.getRequest().setAttribute("listTourDetail", listOrder);
+			} catch (Exception e) {
+				return ERROR;
+			}
+		}
+		return SUCCESS;
+		
+		
+	}
 }

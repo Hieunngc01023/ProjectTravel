@@ -21,7 +21,7 @@ public class User {
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	@Id
 	private int id;
-	@Column(name="FULL_NAME", nullable= false)
+	@Column(name="FULL_NAME", nullable= false , columnDefinition = "NVARCHAR(200)")
 	private String fullName;
 	@Column(name="EMAIL", nullable=false, unique= true)
 	private String email;
@@ -124,7 +124,7 @@ public class User {
 	}
 	@Column(name ="PHONE_NUMBER")
 	private int phoneNumber;
-	@Column(name="ADDRESS")
+	@Column(name="ADDRESS", columnDefinition= "NVARCHAR(250)")
 	private String address;
 	
 	@OneToMany(mappedBy = "user")

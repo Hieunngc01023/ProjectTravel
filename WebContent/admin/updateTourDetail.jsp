@@ -348,9 +348,11 @@
       		<label class="idTour">Tên Tour
       			</label>
       			<jsp:useBean id="tourDAO" class="adminDAO.TourDAO" scope="page"></jsp:useBean>
+      			<c:set var="t" value="${tourDAO.getTourbyID(param.idTour)}"></c:set>
       			<select class="form-control" name="idTour" id="idTour" required>
-      				<option value="${param.idTour }">${param.title }</option>
-      				<c:forEach items="${tourDAO.getListTours() }" var="tour">
+      				<option value="${param.idTour }">${t.title }</option>
+      				<c:set var="keyword" value=""></c:set>
+      				<c:forEach items="${tourDAO.getListTours(keyword) }" var="tour">
       					<option value="${tour.idTour }">${tour.title }</option>  
       				</c:forEach>
       			</select>

@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 import dao.TourDAO;
@@ -16,7 +17,7 @@ import util.HibernateUtil;
 import adminModel.*;
 public class OrderCarDAO {
 	
-	public List<OrderCarModel> getListOrderCar(){
+	public List<OrderCarModel> getListOrderCar(String keyword){
 		List<OrderCarModel> listordercars = new ArrayList<>();
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		try {
@@ -39,7 +40,15 @@ public class OrderCarDAO {
 						carModel.setTimeDropOff(order.getTimeDropOff().toString());
 						carModel.setTimePickUp(order.getTimePickUp().toString());
 						carModel.setNameCar(order.getCar().getNameCar());
-						listordercars.add(carModel);
+						String allFields = carModel.toString();
+						if(keyword.isEmpty())
+						{
+							listordercars.add(carModel);	
+						}
+						else if(allFields.toLowerCase().contains(keyword.toLowerCase().trim()) ){
+							listordercars.add(carModel);
+								
+							}
 					}
 					
 				}		
@@ -54,6 +63,54 @@ public class OrderCarDAO {
 		return listordercars;
 		
 	}
+	public List<OrderCarModel> getListOrderCarbyStateGetMoney(int state, String keyword){
+		List<OrderCarModel> listordercars = new ArrayList<>();
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		try {
+			session.beginTransaction();
+				Query query = session.createQuery("from OrderCar where stateGetMoney =?");
+				query.setCacheable(true);
+				query.setParameter(0, state);
+				List<OrderCar> list = query.list();
+				if(list.size() >0){
+					for(OrderCar order: list){
+						OrderCarModel carModel = new OrderCarModel();
+						carModel.setNameUser(order.getUser().getFullName());
+						carModel.setIdOrder(order.getIdOrder());
+						carModel.setModelPayment(order.getModelPayment());
+						carModel.setNote(order.getNote());
+						carModel.setPlaceRecieve(order.getPlaceRecieve());
+						carModel.setPlaceRender(order.getPlaceRender());
+						carModel.setPrice(order.getPrice());
+						carModel.setStateDriver(order.getStateDriver());
+						carModel.setStateGetMoney(order.getStateGetMoney());
+						carModel.setTimeCreated(order.getTimeCreated().toString());
+						carModel.setTimeDropOff(order.getTimeDropOff().toString());
+						carModel.setTimePickUp(order.getTimePickUp().toString());
+						carModel.setNameCar(order.getCar().getNameCar());
+						String allFields = carModel.toString();
+						if(keyword.isEmpty())
+						{
+							listordercars.add(carModel);	
+						}
+						else if(allFields.toLowerCase().contains(keyword.toLowerCase().trim()) ){
+							listordercars.add(carModel);
+								
+							}
+					}
+					
+				}		
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+			System.out.println("Error: "+e.getMessage());
+		}
+		finally{
+			session.close();
+		}
+		return listordercars;
+	}
+	
 	public boolean  deleteOrder(String idOrder){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		try {

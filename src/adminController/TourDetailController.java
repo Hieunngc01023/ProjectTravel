@@ -23,8 +23,18 @@ public class TourDetailController extends ActionSupport {
 	private int sale2;
 	private String idTourDeTail;
 	
+	private String keyword;
 	
 	
+	
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
 
 	public String getIdTourDeTail() {
 		return idTourDeTail;
@@ -116,7 +126,7 @@ public class TourDetailController extends ActionSupport {
 	
 	public String getListTour(){
 		if(stateTour == 0){
-			List<TourModel> listTourModel = new TourDAO().getAllTourDetailsHistory();
+			List<TourModel> listTourModel = new TourDAO().getAllTourDetailsHistory(keyword);
 			try {
 				ServletActionContext.getRequest().setAttribute("listTourDetail", listTourModel);
 			} catch (Exception e) {
@@ -125,7 +135,7 @@ public class TourDetailController extends ActionSupport {
 			
 		}
 		else if(stateTour == 1){
-			List<TourModel> listTourModel = new TourDAO().getListsToursDetailsbyStateState(1);
+			List<TourModel> listTourModel = new TourDAO().getListsToursDetailsbyStateState(1, keyword);
 			try {
 				ServletActionContext.getRequest().setAttribute("listTourDetail", listTourModel);
 			} catch (Exception e) {
@@ -133,7 +143,7 @@ public class TourDetailController extends ActionSupport {
 			}
 		}
 		else if(stateTour == 2){
-			List<TourModel> listTourModel = new TourDAO().getListsToursDetailsbyStateState(2);
+			List<TourModel> listTourModel = new TourDAO().getListsToursDetailsbyStateState(2, keyword);
 			try {
 				ServletActionContext.getRequest().setAttribute("listTourDetail", listTourModel);
 			} catch (Exception e) {
@@ -141,7 +151,7 @@ public class TourDetailController extends ActionSupport {
 			}
 		}
 		else{
-			List<TourModel> listTourModel = new TourDAO().getListsToursDetailsbyStateState(3);
+			List<TourModel> listTourModel = new TourDAO().getListsToursDetailsbyStateState(3, keyword);
 			try {
 				ServletActionContext.getRequest().setAttribute("listTourDetail", listTourModel);
 			} catch (Exception e) {

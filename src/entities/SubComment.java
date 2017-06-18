@@ -55,8 +55,7 @@ public class SubComment {
 	public void setTour(Tour tour) {
 		this.tour = tour;
 	}
-	@Column(name = "CONTENT", nullable = false)
-	@Lob
+	@Column(name = "CONTENT", nullable = false,  columnDefinition = "NVARCHAR(500)")
 	private String content;
 	@JoinColumn(name="ID_USER")
 	@ManyToOne
@@ -66,7 +65,7 @@ public class SubComment {
 	@ManyToOne
 	private Tour tour;
 	
-	@JoinColumn(name ="ID_PARENT")
+	@JoinColumn(name ="ID_PARENT" )
 	@ManyToOne
 	private Comment parentComment;
 

@@ -1,6 +1,7 @@
 package adminController;
 
 import java.io.File;
+import java.util.List;
 
 import org.apache.struts2.ServletActionContext;
 
@@ -19,6 +20,15 @@ public class TourController extends ActionSupport  {
 	private String imageTitleContenType;
 	 private String imageTitleFileName;
 	 private String content;
+	 
+	 private String keyword;
+	 
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
 	public String getTitle() {
 		return title;
 	}
@@ -102,6 +112,27 @@ public class TourController extends ActionSupport  {
 			return SUCCESS;
 		else
 			return ERROR;
+	}
+	
+	public String getListTourbyIdCate(){
+		if(idCategory.equals("")){
+			List<TourModel> listTour = new TourDAO().getListTours(keyword);
+			try {
+				ServletActionContext.getRequest().setAttribute("listTourDetail", listTour);
+			} catch (Exception e) {
+				return ERROR;
+			}
+		}
+		else{
+			List<TourModel> listTour = new TourDAO().getListTourByidCategory(idCategory, keyword);
+			try {
+				ServletActionContext.getRequest().setAttribute("listTourDetail", listTour);
+			} catch (Exception e) {
+				return ERROR;
+			}
+			
+		}
+		return SUCCESS;
 	}
 	 
 }

@@ -25,8 +25,7 @@ public class Order {
 	private int price;
 	@Column(name="QUANTITY", nullable= false)
 	private int quanOrder;
-	@Lob
-	@Column(name="NOTE", nullable = false)
+	@Column(name="NOTE", nullable = false, columnDefinition = "NVARCHAR(500)")
 	private String note;
 	
 

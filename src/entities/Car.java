@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -45,7 +46,7 @@ public class Car {
 	@Column(name= "QUANTITY_CAR" , nullable = false)
 	private int quantityCar;
 	
-	@Column(name = "CONTENT", nullable = false)
+	@Column(name = "CONTENT", nullable = false, columnDefinition = "ntext")
 	private String content;
 
 	public int getIdCar() {

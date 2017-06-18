@@ -316,7 +316,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Tour
+        TourDetail
         <small>table</small>
       </h1>
       <ol class="breadcrumb">
@@ -364,7 +364,7 @@
               <th>Giá thật</th>
               <th>Trạng thái</th>
               <th>
-                <a href="#" class="btn btn-success btn-xs">
+                <a href="createTourDetail.jsp" class="btn btn-success btn-xs">
                   <i class="fa fa-plus"></i> Add new
                 </a>
               </th>
@@ -431,7 +431,8 @@
             </tr>
              
 			<jsp:useBean id="tourDAO" class="adminDAO.TourDAO" scope="page"></jsp:useBean>
-			 <c:forEach items="${tourDAO.getAllTourDetailsHistory() }" var="tourDetail">
+			<c:set var="keyword" value=""></c:set>
+			 <c:forEach items="${tourDAO.getAllTourDetailsHistory(keyword) }" var="tourDetail">
 				<tr>
               <td>${tourDetail.idTourDeTail }</td>
               <td>

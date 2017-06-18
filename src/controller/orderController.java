@@ -150,9 +150,10 @@ public class orderController extends ActionSupport implements SessionAware {
 //				order.setStateGetMoney(1);				
 //				 enoughSeat =	new OrderTourDAO().executeOrder(order);
 			case "onlineReturn":
-				OrderModel or = (OrderModel) sessionOrder.get("orderCar");
+				OrderModel or = (OrderModel) sessionOrder.get("order");
+			
 				or.setModelPayment(3);
-				or.setStateGetMoney(1);						
+				or.setStateGetMoney(1);					
 				enoughSeat =	new OrderTourDAO().executeOrder(or);
 				or.setIdOrder(OrderTourDAO.idOrderNew);
 				or.setTotalPrice(OrderTourDAO.totalPrice);

@@ -333,12 +333,16 @@
     <section class="content">
        <div class="box-body table-responsive no-padding">
          <div class="row">
-         <form action="#" method="get" >
+         <form action="getListTOurAdmin" method="get" >
             <div class="col-md-3 form-group">
-              <select class="form-control" name="cate">
+              <select class="form-control" name="idCategory">
                 <option value="">Select All Category</option>
-                <option   value="1">du lịch</option>
-                <option   value="2">thám hiểm</option>
+                <jsp:useBean id="cate" class="adminDAO.CategoryDAO" scope="page"></jsp:useBean>
+							<c:forEach items="${cate.getListCategory() }" var="category">
+								<option value="${category.idCategory }">
+									${category.nameCategory }</option>
+							</c:forEach>
+               
               </select>
             </div> 
             <div class="col-md-5 form-group">
@@ -352,7 +356,53 @@
 
           </form>
         </div>
-        <table class="table table-hover">
+        <c:choose>
+        	<c:when test="${requestScope.listTourDetail != null }">
+        		<table class="table table-hover">
+          <tbody>
+            <tr>
+              <th>ID Tour</th>
+              <th>Tiêu Đề</th>
+              <th>Địa điểm đón</th>
+              <th>Địa điểm tới</th>
+              <th>Danh mục</th>
+              <th>
+                <a href="createTour.jsp" class="btn btn-success btn-xs">
+                  <i class="fa fa-plus"></i> Add new
+                </a>
+              </th>
+            </tr>
+             
+			<c:forEach items="${requestScope.listTourDetail }" var="tour">
+			 <tr>
+              <td>${tour.idTour }</td>
+              <td>
+                 <p>${tour.title }</p>
+                <img width="100px" src="admin-assets/img/${tour.imageTitle }" alt="">
+              </td> 
+              <td>${tour.placePickUp }</td>
+              <td>${tour.placeDropOff }</td>
+              <td>${tour.category }</td>
+              <td>
+                <a href="updateTour.jsp?id=${tour.idTour }&title=${tour.title}&placePickUp=${tour.placePickUp}&placeDropOff=${tour.placeDropOff}&imageTitle=${tour.imageTitle}&idCategory=${tour.idCategory}" class="btn btn-info btn-xs">
+                  <i class="fa fa-pencil"></i> Update
+                </a> <br>
+                 <a href="createTourDetail.jsp?idTour=${tour.idTour }" class="btn btn-primary btn-xs">
+                  <i class="fa fa-plush"></i> CreateTourDetail
+                </a> 
+              </td>
+            </tr> 
+				
+			</c:forEach>
+            
+            
+             
+          </tbody>
+        </table>
+        		
+        	</c:when>
+        	<c:otherwise>
+        		<table class="table table-hover">
           <tbody>
             <tr>
               <th>ID Tour</th>
@@ -368,7 +418,8 @@
             </tr>
              
 			<jsp:useBean id="tourDAO" class="adminDAO.TourDAO"></jsp:useBean>
-			<c:forEach items="${tourDAO.getListTours() }" var="tour">
+			<c:set var="keyword" value=""></c:set>
+			<c:forEach items="${tourDAO.getListTours(keyword) }" var="tour">
 			<tr>
               <td>${tour.idTour }</td>
               <td>
@@ -379,8 +430,12 @@
               <td>${tour.placeDropOff }</td>
               <td>${tour.category }</td>
               <td>
-                <a href="updateTour.jsp?id=${tour.idTour }&title=${tour.title}&placePickUp=${tour.placePickUp}&placeDropOff=${tour.placeDropOff}&imageTitle=${tour.imageTitle}&content=${tour.content}&idCategory=${tour.idCategory}" class="btn btn-info btn-xs">
+                <a href="updateTour.jsp?id=${tour.idTour }&title=${tour.title}&placePickUp=${tour.placePickUp}&placeDropOff=${tour.placeDropOff}&imageTitle=${tour.imageTitle}&idCategory=${tour.idCategory}" class="btn btn-info btn-xs">
                   <i class="fa fa-pencil"></i> Update
+                  
+                </a> <br>
+                 <a href="createTourDetail.jsp?idTour=${tour.idTour }"" class="btn btn-primary btn-xs">
+                  <i class="fa fa-plush"></i> CreateTourDetail
                 </a> 
               </td>
             </tr>
@@ -391,6 +446,11 @@
              
           </tbody>
         </table>
+        	</c:otherwise>
+        </c:choose>
+        
+        
+        
       </div>
 
     </section>

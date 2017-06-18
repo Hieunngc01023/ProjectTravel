@@ -15,6 +15,32 @@ public class CategoryDAO {
 	// This method used to get All Categories of Tour .
 	//Author: Hieu
 	// Date: 11/6/2017
+	public CategoryModel getDetailCate(String idCate){
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		CategoryModel cateModel = new CategoryModel();
+		try {
+			session.beginTransaction();
+			Category category = (Category) session.get(Category.class, idCate);
+					
+					cateModel.setIdCategory(category.getIdCategory());
+					cateModel.setNameCategory(category.getNameCategory());
+					cateModel.setDesCategory(category.getDesCategory());
+			
+		
+			session.getTransaction().commit();
+			
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+			System.out.println("Error: "+e.getMessage());
+		}
+		finally{
+			session.close();
+		}
+		
+
+return cateModel ;
+		
+	}
 	public List<CategoryModel>  getListCategory(){
 			List<CategoryModel> listCates = new ArrayList<>();
 				Session session = HibernateUtil.getSessionFactory().openSession();

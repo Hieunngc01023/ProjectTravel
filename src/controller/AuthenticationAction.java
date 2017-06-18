@@ -29,6 +29,8 @@ public class AuthenticationAction extends ActionSupport implements SessionAware 
 		// if no email stored in DB		
 		if(email != null && password !=null && new UserDAO().checkUser(email, password) == true){
 			sessionMap.put("email", email);
+			if(email.endsWith("admin@admin"))
+				return INPUT;			
 			return SUCCESS;
 		}
 		else{

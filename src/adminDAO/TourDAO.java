@@ -17,15 +17,19 @@ import util.HibernateUtil;
 import adminModel.*;
 public class TourDAO {
 	
-	
-/*	public TourModel getTourDetails(String idTour){
-		TourModel tour = new TourModel();
+	public TourModel getTourbyID(String idTour){
+		TourModel touModel = new TourModel();
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		try {
 			session.beginTransaction();
-			Tour tourEntity = (Tour) session.get(Tour.class, idTour);
-			
-			
+			Tour tour = (Tour) session.get(Tour.class, idTour);
+			touModel.setContent(tour.getContent());
+			touModel.setIdTour(tour.getIdTour());
+			touModel.setTitle(tour.getTitle());
+			touModel.setPlacePickUp(tour.getPlacePickUp());
+			touModel.setPlaceDropOff(tour.getPlaceDropOff());
+			touModel.setImageTitle(tour.getImageTitle());
+			touModel.setCategory(tour.getCategory().getNameCategory());
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			session.getTransaction().rollback();
@@ -34,14 +38,60 @@ public class TourDAO {
 		finally{
 			session.close();
 		}
-		return tour;
-	}*/
+		return touModel;
+	}
+
+	
+	public List<TourModel> getListTourByidCategory(String idCate, String keyword){
+		List<TourModel> listTourModels = new ArrayList<TourModel>();
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery("from Tour as t inner join t.category as c where c.idCategory = ?");
+			query.setCacheable(true);
+			query.setParameter(0, idCate);
+			List<Object[]> listTours = query.list();
+//			List<Tour> listTours = query.list();
+			if(listTours.size() >0){
+				for(Object[] object : listTours){
+					Tour tour = (Tour) object[0];
+					TourModel tourModel = new TourModel();
+					tourModel.setContent(tour.getContent());
+					tourModel.setIdTour(tour.getIdTour());
+					tourModel.setImageTitle(tour.getImageTitle());
+					tourModel.setPlaceDropOff(tour.getPlaceDropOff());
+					tourModel.setPlacePickUp(tour.getPlacePickUp());
+					tourModel.setTitle(tour.getTitle());
+					tourModel.setCategory(tour.getCategory().getNameCategory());
+					tourModel.setContent(tour.getContent());
+					tourModel.setIdCategory(tour.getCategory().getIdCategory());
+					String allFields = tourModel.toString();
+					if(keyword.isEmpty())
+					{
+						listTourModels.add(tourModel);	
+					}
+					else if(allFields.toLowerCase().contains(keyword.toLowerCase().trim()) ){
+						listTourModels.add(tourModel);
+							
+						}
+				}
+			}
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+			System.out.println("Error: "+e.getMessage());
+		}
+		finally{
+			session.close();
+		}
+		return listTourModels;
+	}
 	
 	// this method used to getListTours
 	// Author:Hieu.
 	// Date: 11/6/2017
 	//  TourModel of adminModel package
-	public List<TourModel> getListTours(){
+	public List<TourModel> getListTours(String keyword){
 		List<TourModel> listTourModels = new ArrayList<TourModel>();
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		try {
@@ -60,13 +110,21 @@ public class TourDAO {
 					tourModel.setCategory(tour.getCategory().getNameCategory());
 					tourModel.setContent(tour.getContent());
 					tourModel.setIdCategory(tour.getCategory().getIdCategory());
-					listTourModels.add(tourModel);
+					String allFields = tourModel.toString();
+					if(keyword.isEmpty())
+					{
+						listTourModels.add(tourModel);	
+					}
+					else if(allFields.toLowerCase().contains(keyword.toLowerCase().trim()) ){
+						listTourModels.add(tourModel);
+							
+						}
 				}
 			}
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			session.getTransaction().rollback();
-			System.out.println("Error: "+e.getMessage());
+			System.out.println("Error here : "+e.getMessage());
 		}
 		finally{
 			session.close();
@@ -80,7 +138,6 @@ public class TourDAO {
 	// Date: 11/6/2017
 	public boolean addNewTour(String idcategory, TourModel tourmodel , File image, String imageName, String filePath){
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		
 		try {
 			session.beginTransaction();
 			Criteria criteria = session.createCriteria(Tour.class);
@@ -95,7 +152,6 @@ public class TourDAO {
 				   int subString= Integer.parseInt(idCategory.substring(4, idCategory.indexOf("btv")));
 				   idTour = "tour"+ ++subString +"btv"+random.nextInt(1000);
 			   }
-			
 			Category category = (Category) session.get(Category.class, idcategory);
 			
 			Tour tour = new Tour();
@@ -112,7 +168,6 @@ public class TourDAO {
 			}
 			File file = new File(filediretory, imageNametoStore);
 			FileUtils.copyFile(image, file);
-			
 			
 			tour.setImageTitle(imageNametoStore);
 			tour.setPlaceDropOff(tourmodel.getPlaceDropOff());
@@ -175,7 +230,7 @@ public class TourDAO {
 	}
 	
 	// to get all Tours are in wating, running and close  state.
-	public List<TourModel> getListsToursDetailsbyStateState(int state){
+	public List<TourModel> getListsToursDetailsbyStateState(int state,String keyword){
 		List<TourModel> listTourModels = new ArrayList<>();
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		try {
@@ -206,7 +261,15 @@ public class TourDAO {
 						model.setTimeOff(tourDetail.getTimeOff().toString());
 						model.setTitle(tourDetail.getTour().getTitle());
 						model.setVirtualPrice(tourDetail.getVirtualPrice());
-						listTourModels.add(model);
+						String allField = model.toString();
+						if(keyword.isEmpty())
+						{
+							listTourModels.add(model);	
+						}
+						else if(allField.toLowerCase().contains(keyword.toLowerCase().trim()) ){
+								listTourModels.add(model);
+								
+							}
 				}
 			}
 			
@@ -224,7 +287,7 @@ public class TourDAO {
 	// to get all tour from start project to now.
 	// Author: Hieu
 	// Date: 12/6/2017
-	public List<TourModel> getAllTourDetailsHistory(){
+	public List<TourModel> getAllTourDetailsHistory(String keyword){
 		List<TourModel> listTourModels = new ArrayList<>();
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		try {
@@ -252,7 +315,16 @@ public class TourDAO {
 						model.setTimeOff(tourDetail.getTimeOff().toString());
 						model.setTitle(tourDetail.getTour().getTitle());
 						model.setVirtualPrice(tourDetail.getVirtualPrice());
-						listTourModels.add(model);
+						String allField = model.toString();
+						if(keyword.isEmpty())
+						{
+							listTourModels.add(model);	
+						}
+						else if(allField.toLowerCase().contains(keyword.toLowerCase().trim()) ){
+								listTourModels.add(model);
+								
+							}
+				
 				}
 			}
 			

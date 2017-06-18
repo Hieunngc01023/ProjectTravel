@@ -25,8 +25,7 @@ public class Blog {
 	@GeneratedValue
 	@Id
 	private int idBlog;
-	@Lob
-	@Column(name = "CONTENT", nullable = false)
+	@Column(name = "CONTENT", nullable = false, columnDefinition = "ntext" )
 	private String content;
 	
 	public List<CommentBlog> getListCommentBlogs() {
@@ -45,7 +44,7 @@ public class Blog {
 		this.listSubCommentBlogs = listSubCommentBlogs;
 	}
 
-	@Column(name = "TITLE" , nullable = false)
+	@Column(name = "TITLE" , nullable = false, columnDefinition = "ntext" )
 	private String title;
 	
 	@Column(name= "IMAGE_TITLE", nullable = false)

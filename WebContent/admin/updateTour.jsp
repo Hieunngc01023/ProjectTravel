@@ -316,7 +316,8 @@
 				check loi nha
 			</div>
 
-
+			<jsp:useBean id="tourDAO" class="adminDAO.TourDAO" scope="page"></jsp:useBean>
+			<c:set var="tour" value="${tourDAO.getTourbyID(param.id) }" ></c:set>
 
 			<div class="row">
 				<form action="updateTour" method="post" id="form-category"
@@ -324,33 +325,35 @@
 					<div class="form-group col-sm-6 col-sm-offset-3">
 						<label for="title">Tên Tour</label> <input type="text"
 							class="form-control" name="title" id="title"
-							placeholder="Nhập Tên Tour" value="${param.title }">
+							placeholder="Nhập Tên Tour" value="${tour.title }">
 					</div>
 					<div class="form-group col-sm-6 col-sm-offset-3">
-						<label class="control-label col-md-3">Category </label> <select
+						<label class="control-label col-md-3">Category </label>
+						 <select
 							class="form-control" name="idCategory" id="category">
 							<jsp:useBean id="cate" class="adminDAO.CategoryDAO" scope="page"></jsp:useBean>
 							<c:forEach items="${cate.getListCategory() }" var="category">
 								<option value="${category.idCategory }">
 									${category.nameCategory }</option>
 							</c:forEach>
-						</select> <span class="text-danger" id="categoryError"></span>
+						</select>
+						 <span class="text-danger" id="categoryError"></span>
 					</div>
 					<div class="form-group col-sm-6 col-sm-offset-3 ">
 						<label for="placePickup">Địa điểm đón </label> <input type="text"
 							class="form-control" name="placePickup" id="placePickup"
-							placeholder="Nhập địa điểm đón" value="${param.placePickUp }">
+							placeholder="Nhập địa điểm đón" value="${tour.placePickUp }">
 					</div>
 					<div class="form-group col-sm-6 col-sm-offset-3">
 						<label for="placeDrop">Địa điểm đến</label> <input type="text"
 							class="form-control" name="placeDrop" id="placeDrop"
-							placeholder="Nhập địa điểm đến" value="${param.placeDropOff }">
+							placeholder="Nhập địa điểm đến" value="${tour.placeDropOff }">
 					</div>
 
 					<div class="form-group col-sm-6 col-sm-offset-3">
 						<label for="imageTitle"> Ảnh đại diện tour</label>
 						<!-- <img id="target-avatar" src="" width="152" alt=""> -->
-						<img src="admin-assets/img/${param.imageTitle }" width="152"
+						<img src="admin-assets/img/${tour.imageTitle }" width="152"
 							alt="User Image" id="target-avatar"> <input type="file"
 							onchange="readURL(this)" name="imageTitle" id="imageTitle"
 							class="form-control"> <span class="text-danger"
@@ -360,7 +363,7 @@
 						<label for="content">Lịch Trình</label>
 						<!-- <div class="col-md-12"> -->
 						<textarea id="content" class="form-control" name="content"
-							rows="10">${param.content }</textarea>
+							rows="10">${tour.content }</textarea>
 						<span class="text-danger" id="contentError"></span>
 						<!-- </div> -->
 					</div>
@@ -437,7 +440,7 @@
 								</div>
 								<div class="panel-body">${sub.content }</div>
 								<!-- /panel-body -->
-								<form action="deleteComment" method="get">
+								<form action="deleteComment" method="post">
 								<input type="hidden" name="idTour" value="${param.id }">
 									<input type="hidden" name="idComment" value="${sub.idComment }">
 								<input type="hidden" name="isMain" value="sub">

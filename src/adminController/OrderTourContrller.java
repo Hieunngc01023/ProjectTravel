@@ -1,12 +1,26 @@
 package adminController;
 
+import java.util.List;
+
+import org.apache.struts2.ServletActionContext;
+
 import adminDAO.OrderDAO;
+import adminModel.OrderModel;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 public class OrderTourContrller extends ActionSupport{
 	private String idOrder;
 	int stateMoney;
+	
+	private String keyword;
+	
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
 	public String getIdOrder() {
 		return idOrder;
 	}
@@ -37,6 +51,35 @@ public class OrderTourContrller extends ActionSupport{
 			else {
 				return ERROR;
 			}
+		
+		
+	}
+	public String getListORderTourAdmin(){
+		if(stateMoney == 2){
+			List<OrderModel> listOrder = new OrderDAO().getAllOrders(keyword);
+			try {
+				ServletActionContext.getRequest().setAttribute("listTourDetail", listOrder);
+			} catch (Exception e) {
+				return ERROR;
+			}
+		}
+		else if(stateMoney  == 1){
+			List<OrderModel> listOrder = new OrderDAO().getListOrderbyState(stateMoney, keyword);
+			try {
+				ServletActionContext.getRequest().setAttribute("listTourDetail", listOrder);
+			} catch (Exception e) {
+				return ERROR;
+			}
+		}
+		else if(stateMoney == 0){
+			List<OrderModel> listOrder = new OrderDAO().getListOrderbyState(stateMoney, keyword);
+			try {
+				ServletActionContext.getRequest().setAttribute("listTourDetail", listOrder);
+			} catch (Exception e) {
+				return ERROR;
+			}
+		}
+		return SUCCESS;
 		
 		
 	}

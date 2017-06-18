@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -329,14 +330,16 @@
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                 check loi nha
       </div>
+      <jsp:useBean id="categoryDAO" class="adminDAO.CategoryDAO" scope="page"></jsp:useBean>
+      <c:set var = "cate" value= "${categoryDAO.getDetailCate(param.id) }"></c:set>
       <form action="updateCategory" method="post" id="form-category" class="col-sm-6 col-sm-offset-3 form" novalidate>
         <div class="form-group">
           <label for="name">Ten Danh Muc</label>
-          <input type="text" class="form-control" value="${param.name }" id="name" name="name" placeholder="Nhập tên danh mục" >
+          <input type="text" class="form-control" value="${cate.nameCategory }" id="name" name="name" placeholder="Nhập tên danh mục" >
         </div>
         <div class="form-group">
           <label for="description">Description</label>
-           <textarea id="description" class="form-control" name="description"  >${param.des }</textarea>
+           <textarea id="description" class="form-control" name="description"  >${cate.desCategory }</textarea>
       </div>
       <input type="hidden" name="id" value="${param.id }">
       <div class="form-group text-center">

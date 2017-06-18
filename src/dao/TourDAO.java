@@ -44,6 +44,17 @@ public class TourDAO {
 		return listToutHot;
 	}
 	
+	// This method used to get All Tours in Wating state and importatn is 0(nomal)
+	public List<TourModel> getListNormalTour(){
+		List<TourModel> listToutHot = new ArrayList<>();
+		for(TourModel tour : fetchTour())
+		{
+			if(tour.getImportant() == 0)
+				listToutHot.add(tour);
+		}
+		return listToutHot;
+	}
+	
 	
 	// This method used to fetch all Tours with state is waiting, and sort with (virtual_price - real_price) 
 	// Author: Hieu

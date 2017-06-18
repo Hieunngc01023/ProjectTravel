@@ -36,10 +36,7 @@ public class TestC extends ActionSupport {
 		try {
 
 			session.beginTransaction();
-		
-			System.out.println("so luong: "+new CarDAO().getListCars().size());
-			
-			session.getTransaction().commit();			
+			System.out.println((new DashBodDAO().getTotalOrderdasbodCar("15/06/2017", "").getListOrderCar().size()));	
 		} catch (HibernateException e) {
 			e.printStackTrace();
 			System.out.println("Error: "+e.getMessage());

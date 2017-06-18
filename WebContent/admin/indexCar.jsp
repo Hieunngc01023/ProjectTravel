@@ -344,7 +344,7 @@
 									<td><f:formatNumber value="${car.price }"
 											maxFractionDigits="0" minFractionDigits="0"></f:formatNumber> đ</td>
 									<td>${car.quantityCar }xe</td>
-									<td><a href="UpdateCar.jsp?idCar=${car.idCar}&nameCar=${car.nameCar}&brand=${car.brand}&gear=${car.gear}&quanitySeat=${car.quanitySeat}&fuel=${car.fuel}&price=${car.price}&imageTitle=${car.imageTitle}&content=${car.content}&quantityCar=${car.quantityCar}" class="btn btn-info btn-xs"> <i
+									<td><a href="UpdateCar.jsp?idCar=${car.idCar}&nameCar=${car.nameCar}&brand=${car.brand}&gear=${car.gear}&quanitySeat=${car.quanitySeat}&fuel=${car.fuel}&price=${car.price}&imageTitle=${car.imageTitle}&quantityCar=${car.quantityCar}" class="btn btn-info btn-xs"> <i
 											class="fa fa-pencil"></i> Update
 									</a></td>
 								</tr>
